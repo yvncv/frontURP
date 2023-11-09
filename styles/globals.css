@@ -1,0 +1,1121 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+
+:root {
+    --primario: #00823A;
+    --rojo: #d53939;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #323232;
+}
+
+.cabecera--principal {
+    background-color: var(--primario);
+    box-shadow: 2px 6px 9px rgb(0 0 0 / 10%);
+    position: relative;
+    margin-bottom: 30px;
+    justify-content: space-between;
+    margin-left: auto;
+    width: calc(100% - 250px);
+}
+
+.card-body {
+    padding-bottom: 60px;
+}
+
+.nombre-expositor {
+    font-size: 12px;
+    margin-top: -7px;
+    color: #878787;
+}
+
+.descripcion-card {
+    color: #656565;
+}
+
+.sidebar--admin {
+    background-color: #00823a;
+    border: none;
+    width: 250px;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    padding: 15px;
+}
+
+.sidebar--admin li a {
+    color: #fff
+}
+
+.contenedor-main {
+    width: calc(100% - 250px);
+    margin-left: 250px;
+}
+
+.contenedor-main .iniciar-sesion-pg {
+    width: calc(100%);
+    margin-left: -125px;
+}
+
+.contenedor-main .iniciar-sesion-pg button {
+    background-color: var(--primario) !important;
+    border-color: var(--primario);
+}
+
+.btn-ojo {}
+
+.enlace-extra-login {
+    display: none;
+}
+
+.nombre-uni h1 {
+    color: #fff;
+    font-size: 20px;
+}
+
+.acciones-defecto img,
+.alumno-acciones img {
+    cursor: pointer;
+    width: 30px;
+    margin: 0px 10px;
+}
+.acciones-defecto > img,
+.alumno-acciones > img{
+    display: none;
+}
+.alumno-acciones {
+    display: flex;
+}
+
+.logo-urp {
+    display: block;
+    margin: auto;
+    margin-bottom: 30px !important;
+}
+
+.sidebar--admin hr {
+    border-color: #fff;
+    opacity: 1 !important;
+    margin-bottom: 30px;
+}
+
+.sidebar--admin ul {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0;
+}
+
+.sidebar--admin ul li {
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.acordeon-confes div {
+    background-color: transparent !important;
+    border: none !important;
+}
+
+.acordeon-confes .accordion-body {
+    padding: 0 !important;
+    padding-left: 30px;
+}
+
+.acordeon-confes .accordion-body a {
+    padding-left: 20px;
+    margin: 15px 0px;
+}
+
+.acordeon-confes button {
+    background-color: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+}
+
+.acordeon-confes * {
+    color: #fff !important;
+}
+
+
+nav .navbar-brand {
+    margin: 0px;
+    padding: 0px;
+}
+
+#navbarNav ul li a,
+.btn--loguin {
+    color: #fff;
+    font-weight: bold;
+}
+
+.contenedor--enlaces-cabecera {}
+
+.contenedor--enlaces-cabecera button {
+    background-color: transparent;
+}
+
+.btn--loguin {
+    background-color: transparent !important;
+    color: #fff;
+    transition: .4s ease all;
+    border: none !important;
+}
+
+.alumno-acciones p {
+    text-align: center;
+}
+
+body>div.offcanvas.offcanvas-end.show>div.offcanvas-body>div {
+    overflow: hidden;
+}
+
+.offcanvas-backdrop.show {
+    opacity: .7 !important;
+    background-color: #131313 !important;
+}
+
+
+
+.contenedor-catalogo {
+    display: grid;
+    /* width: 100%; */
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr));
+    column-gap: 20px;
+    row-gap: 20px;
+    margin-top: 20px;
+}
+
+.contenedor-catalogo>.card {
+    border-radius: 15px;
+    border: none;
+    box-shadow: 0px 0px 5px rgb(0 0 0 / 25%);
+    margin: 10px;
+
+}
+
+
+.btn--agregar-carrito,
+.btn_loguin {
+    background-color: var(--rojo) !important;
+    border: 1px solid var(--rojo);
+    color: #fff;
+    transition: .4s ease all;
+}
+
+.btn_loguin {
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+    text-align: center;
+
+}
+
+.btn--agregar-carrito:hover,
+.btn_loguin:hover {
+    background-color: #fff !important;
+    border: 1px solid var(--rojo);
+    color: var(--rojo);
+}
+
+
+
+
+.btn--admin {
+    background-color: transparent !important;
+    border: none !important;
+    outline: none !important;
+    transition: .4s ease all;
+}
+
+.btn--admin:hover {
+    background-color: #d2d2d2 !important;
+}
+
+.carrito-btn-borrar {
+    border: none;
+    background-color: transparent;
+}
+
+.carrito-btn-borrar:hover {
+    background-color: rgb(169, 169, 169) !important;
+}
+
+.cont-login>div {
+    border: 1px solid #f8f8f8;
+    box-shadow: 6px 8px 19px 4px #9a9a9a6b;
+    border-radius: 20px;
+    padding: 40px 30px;
+}
+
+.cont--registrate {
+    max-width: 630px;
+    margin: auto;
+}
+
+.form-control:focus {
+    border-color: #d5393987;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem #d539393f;
+}
+
+.d--recepcion-col {
+    display: flex !important;
+    flex-direction: row;
+    gap: 25px;
+    margin-top: 25px;
+}
+
+.d--recepcion-col>div,
+.d--recepcion-col>form {
+    width: 50%;
+}
+
+#__next>div>div>div>div>div.d-flex.flex-column>div>div>div,
+.d--recepcion-col>form>h3 {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #a8a8a8;
+    height: 50px;
+}
+
+.btn--loguin-invert {
+    background-color: #fff !important;
+    border: 1px solid var(--rojo);
+    color: var(--rojo);
+    transition: .4s ease all;
+}
+
+.btn--loguin-invert svg {
+    width: 0px;
+    overflow: hidden;
+    transition: .3s ease all;
+}
+
+.btn--loguin-invert:hover {
+    background-color: var(--rojo) !important;
+    border: 1px solid var(--rojo);
+    color: #fff !important;
+}
+
+.btn--loguin-invert:hover svg {
+    width: 22px !important;
+}
+
+body .form-check-input:checked {
+    background-color: var(--rojo);
+    border-color: var(--rojo);
+}
+
+body .form-check-input:focus,
+body .form-control:focus {
+    border-color: #d5393942;
+    outline: 0;
+    box-shadow: 0 0 0 0.10rem rgb(213 57 57 / 15%);
+}
+
+.seccion--edit-profile>form {
+    width: 100%;
+    max-width: 630px;
+    margin: auto;
+}
+
+.btn-controladores,
+.btn-controladores:hover {
+    background-color: transparent;
+    border-color: transparent;
+    color: var(--rojo);
+}
+
+.enlaces-main {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.enlaces-main a {
+    text-decoration: none;
+    border-radius: 10px;
+    padding: 3px 18px;
+}
+
+.cont-img {
+    position: relative;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    overflow: hidden;
+}
+
+.cont-img::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #00000039;
+    left: 0;
+    top: 0;
+}
+
+.expositor-card {
+    position: absolute;
+    color: #fff;
+    margin-bottom: 0px;
+    left: 15px;
+    z-index: 10;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.expositor-card img {
+    margin-right: 10px;
+}
+
+.expositor-card.card-fecha {
+    top: 10px;
+}
+
+.expositor-card.card-salon {
+    top: 40px;
+}
+
+.expositor-card.card-salon::before {
+    top: 40px;
+}
+
+.card-dirigido {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    color: #fff;
+    z-index: 9;
+}
+
+.btnInscribir {
+    position: absolute;
+    background-color: rgb(0 130 58 / 72%);
+    color: #fff;
+    width: fit-content;
+    margin: 10px;
+    border-color: rgb(0 130 58 / 72%);
+    border-radius: 10px;
+    right: 0px;
+    bottom: 0px;
+    font-size: 15px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+}
+
+.accordion-button:not(.collapsed)::after {
+    color: #fff !important;
+}
+
+.btnBoton {
+    background-color: rgb(0 130 58 / 72%);
+    color: #fff;
+    width: fit-content;
+    margin: 10px;
+    border-color: rgb(0 130 58 / 72%);
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 140px;
+}
+
+.btnBoton:hover {
+    background-color: #00662e;
+    border-color: #00823a;
+}
+
+.btnBoton:active {
+    background-color: #00662e;
+    border-color: #00823a;
+}
+
+.modal-dialog {
+    width: 600px;
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    color: var(--bs-modal-color);
+    pointer-events: auto;
+    background-color: var(--bs-modal-bg);
+    background-clip: padding-box;
+    border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
+    border-radius: var(--bs-modal-border-radius);
+    outline: 0;
+}
+
+.modal-header .btn-close {
+    padding: 5px;
+    margin: 0px;
+}
+
+.lblinscribNow {
+    margin: 0 auto;
+}
+
+.etiqCaja {
+    font-size: 18px;
+}
+
+.textCaja {
+    font-size: 18px;
+    width: 100%;
+    border-radius: 7px;
+    border: none;
+    background-color: #e0e0e0;
+    margin: 2px 0 10px;
+    padding: 5px;
+}
+
+.etiqInfoAlumno {
+    font-size: 24px;
+    color: #7B7B7B;
+    border-bottom: 2px solid #E0E0E0;
+    margin: 25px 0 10px;
+}
+
+.grupoLabelCaja {}
+
+.containergrupoLabelCaja {
+    display: flex;
+    gap: 20px
+}
+
+.containergrupoLabelCaja>div {
+    width: 50%;
+}
+
+.containergrupoLabelCaja input {
+    background-color: #F5F5F5;
+    font-size: 14px;
+    padding: 7px 12px;
+}
+
+.codigoQR {
+    height: auto;
+    max-width: 100%;
+    width: 100%;
+}
+
+button {
+    border: none;
+    padding: 7px;
+    font-weight: 500;
+}
+
+.contenedorQR {
+    height: auto;
+    margin: 0 auto;
+    max-width: 186px;
+    width: 100%;
+}
+
+.contenedor-proximos {
+    max-height: 80vh;
+    overflow-y: scroll;
+}
+
+.textoQR {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.btn-ojo {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.btn-ojo img {
+    width: 25px;
+}
+
+.btn-ojo:hover {
+    background-color: transparent;
+    border-color: transparent;
+}
+
+.overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+}
+
+.contenido-modal {
+    width: 655px;
+    min-height: 100px;
+    background: #fff;
+    position: relative;
+    border-radius: 30px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    padding: 20px;
+}
+
+.encabezado-modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.encabezado-modal h3 {
+    font-weight: 500;
+    font-size: 32px;
+    color: #535353;
+}
+
+.boton-cerrar {
+    position: absolute;
+    top: 20px;
+    padding: 5px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    cursor: pointer;
+    transition: .3s ease all;
+    border-radius: 59px;
+    box-shadow: 0px 0px 10px #d1c8c8;
+    color: #1766DC;
+    background-color: #f2f2f2;
+    display: flex;
+}
+
+.boton-cerrar img {
+    width: 100% !important;
+    height: auto !important;
+    rotate: 45deg;
+}
+
+.contenido {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.botones-modal {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-left: 20px;
+}
+
+.seccion {
+    width: 300px;
+    padding: 15px;
+}
+
+.seccion h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.seccion p {
+    background-color: #F5F5F5;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.seccion-botones {
+    display: flex;
+    width: 600px;
+    padding: 15px;
+}
+
+.seccion-botones .botones-modal {
+    justify-content: flex-end;
+}
+
+.seccion-botones h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.seccion-tema-descripcion {
+    padding: 15px;
+    width: 600px;
+}
+
+.seccion-tema-descripcion h5 {
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.seccion-tema-descripcion p {
+    background-color: #F5F5F5;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.contenido-modal-confirm {
+    width: 450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.contenido-modal-confirm h1 {
+    text-align: center;
+    font-size: 1.6em;
+    padding: 10px;
+}
+
+.contenido-modal-confirm img {
+    width: 150px;
+}
+
+.contenido-modal-confirm-btns Button {
+    width: 100px;
+    height: 40px;
+}
+
+.envio-solicitud-form {
+    width: 100%;
+    max-width: 350px;
+}
+
+.header-mis-conferencias {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: #D9D9D9 solid 3px;
+    padding-bottom: 10px;
+}
+
+.contenido-mis-conferencias {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.seccion-mis-conferencias {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 341px;
+    height: 360px;
+    margin: 20px;
+    padding-top: 70px;
+    justify-content: space-around;
+    box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.excepcion {
+    padding-top: 20px !important;
+}
+
+.seccion-mis-conferencias img {
+    width: 101px;
+    height: 108.84px;
+}
+
+.seccion-mis-conferencias h1 {
+    font-size: 28px;
+    font-weight: 600;
+    text-align: center;
+}
+
+.seccion-mis-conferencias h2 {
+    font-size: 22px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.seccion-mis-conferencias a {
+    text-decoration: none;
+    color: #42B247;
+}
+
+@keyframes progress {
+    0% {
+        --percentage: 0;
+    }
+
+    100% {
+        --percentage: var(--value);
+    }
+}
+
+@property --percentage {
+    syntax: '<number>';
+    inherits: true;
+    initial-value: 0;
+}
+
+[role="progressbar"] {
+    --percentage: var(--value);
+    --primary: rgb(0, 130, 58);
+    --secondary: rgb(225, 225, 225);
+    --size: 250px;
+    height: 150px;
+    animation: progress 2s 0.5s forwards;
+    width: var(--size);
+    aspect-ratio: 2/ 1;
+    border-radius: 50% / 100% 100% 0 0;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+}
+
+[role="progressbar"]::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: conic-gradient(from 0.75turn at 50% 100%, var(--primary) calc(var(--percentage) * 1% / 2), var(--secondary) calc(var(--percentage) * 1% / 2 + 0.1%));
+    mask: radial-gradient(at 50% 100%, white 50%, transparent 50.5%);
+    mask-mode: alpha;
+    -webkit-mask: radial-gradient(at 50% 100%, #0000 65%, #000 65.5%);
+    -webkit-mask-mode: alpha;
+}
+
+[role="progressbar"]::after {
+    counter-reset: percentage var(--value);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--primary);
+    background: none;
+}
+
+.contenido-convalida-conferencias {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.inputs {
+    width: 427.21px;
+    margin-bottom: 34px;
+}
+
+.inputs input {
+    width: 100%;
+    height: 42px;
+    border: none;
+    background-color: #F5F5F5;
+    border-radius: 5px;
+}
+
+.card-inscrito {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.card-inscrito-seccion-boton {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.card-inscrito-seccion-boton a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 9px;
+    border-radius: 5px;
+    background-color: #00823a;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.card-inscrito-seccion-boton span {
+    text-decoration: none;
+    color: #fff;
+    font-size: 12px;
+    padding: 7px 9px;
+    border-radius: 5px;
+    background-color: #00823a;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+
+.card-inscrito-texto {
+    max-width: 187px;
+    color: #353535;
+    margin-bottom: 10px;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.card-inscrito-texto img {
+    margin-right: 10px;
+}
+
+.btnMaterial {
+    background-color: rgb(0 130 58 / 72%);
+    color: #fff;
+    max-height: 39px;
+    max-width: 144px;
+    width: fit-content;
+    margin: 10px;
+    border-color: rgb(0 130 58 / 72%);
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 8px 20px;
+    text-transform: uppercase;
+}
+
+.card-body-inscrito {
+    padding-bottom: 0px !important;
+}
+
+.seccion-titulo-alumno {
+    width: 600px;
+    border-bottom: 1px solid #E8E8E8;
+    margin: 15px;
+}
+
+.seccion-titulo-alumno h3 {
+    color: #7B7B7B;
+    font-size: 20px;
+}
+
+.inscribirme-ahora {
+    margin: auto;
+    padding: 10px 40px;
+    border-radius: 5px;
+    background-color: #00823A;
+    color: #ffff;
+}
+
+.devolverCadena {
+    color: #42B247;
+    font-weight: 500;
+    text-align: center;
+}
+
+.file {
+    display: flex;
+    align-items: baseline;
+}
+
+.file input {
+    display: none;
+}
+
+.file label {
+    background-color: #F5F5F5;
+    height: 42px;
+    width: 146px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.file img {
+    margin-right: 5px;
+}
+
+.file h3 {
+    font-size: 12px;
+    color: #898989;
+    margin-left: 13px;
+}
+
+.btnEnviar {
+    background-color: rgb(0 130 58 / 72%);
+    max-width: 210px;
+    color: #ffff;
+    border-radius: 5px;
+}
+
+.my-qr-reader {
+    width: 500px;
+}
+
+.my-qr-reader-cont {
+    display: flex;
+    justify-content: center;
+}
+
+.catalog-row {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-bottom: 1px solid #ccc;
+    /* Añade una línea de separación entre filas */
+}
+
+.catalog-row-image img {
+    width: 100px;
+    /* Ajusta este valor según necesites */
+    height: auto;
+    border-radius: 0.25rem;
+    margin-right: 1rem;
+}
+
+.catalog-row-info {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 1rem;
+}
+
+.catalog-row-info span {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    /* Ajusta el tamaño de fuente según prefieras */
+}
+
+.catalog-row-action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.btnInscribir {
+    margin-left: 1rem;
+}
+
+/* Estilos para cuando la fila esté inscrita */
+.catalog-row.inscrito .btnInscribir {
+    background-color: #28a745;
+    /* Verde, o el color que prefieras */
+    color: white;
+}
+
+/* Si deseas que las filas tengan un color de fondo alternado para mejorar la legibilidad */
+.catalog-row:nth-child(odd) {
+    background-color: #f8f9fa;
+}
+
+.catalog-row:nth-child(even) {
+    background-color: #e9ecef;
+}
+
+/* Ajustes de responsividad, si necesitas que se vea bien en dispositivos móviles */
+@media (max-width: 768px) {
+    .catalog-row {
+        flex-direction: column;
+    }
+
+    .catalog-row-image img {
+        width: 100%;
+        /* Las imágenes se expanden al 100% del ancho en móviles */
+    }
+
+    .catalog-row-action {
+        justify-content: center;
+        padding-top: 1rem;
+    }
+}
+
+
+.contenido-tabla-relaciones {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ccc;
+}
+
+.seccion-tabla-relaciones {
+    margin-bottom: 20px;
+}
+
+.contenido-tabla-relaciones table {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contenido-tabla-relaciones thead {
+    background-color: #f5f5f5;
+    text-align: center;
+}
+
+.contenido-tabla-relaciones th,
+.contenido-tabla-relaciones td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.contenido-tabla-relaciones th {
+    font-weight: bold;
+}
+
+.contenido-tabla-relaciones tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.envio-solicitud-form {
+    margin: 0 auto;
+    width: 50%;
+}
+
+.envio-solicitud-form input,
+select,
+textarea {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    width: 100%;
+}
+
+.envio-solicitud-form input:focus,
+select:focus,
+textarea:focus {
+    border-color: #4caf50;
+}
+
+.envio-solicitud-form label {
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.envio-solicitud-form button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.envio-solicitud-form button:hover {
+    background-color: #3e8e41;
+}
