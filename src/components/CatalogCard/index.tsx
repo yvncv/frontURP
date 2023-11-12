@@ -38,7 +38,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         </p>
         <p className="expositor-card card-salon">
           <img src="\salon-icon.svg" alt="salon" />
-          {/* catalog?.salons.data[0].attributes.nombre */ }
+          {catalog?.salons.data[0].attributes.nombre}
         </p>
         <p className="card-dirigido">{catalog.dirigido}</p>
       </div>

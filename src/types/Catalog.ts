@@ -8,7 +8,7 @@ export type Catalog = {
     url: string; 
   };
   expositor: string;
-  fecha: DateSchema;
+  fecha: Date;
   hora: DateSchema;
   dirigido: string;
   disponible: boolean;
