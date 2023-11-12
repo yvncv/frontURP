@@ -97,7 +97,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     </div>
                     <div className="seccion">
                       <h5>Salón: </h5>
-                      <p>{catalogo.salon === null ? "No establecido" : catalogo.salon}</p>
+                      <p>{catalogo?.salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons.data[0].attributes.nombre}</p>
                     </div>
                     <div className="seccion">
                       <h5>Dirigido a: </h5>
