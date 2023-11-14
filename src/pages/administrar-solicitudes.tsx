@@ -48,7 +48,7 @@ const Catalogo = () => {
                   <td>{catalog.id}</td>
                   <td>{catalog.tema_conferencia}</td>
                   <td>{catalog.dirigido}</td>
-                  <td>{catalog.salon}</td>
+                  <td>{catalog?.salons.data[0].attributes.nombre}</td>
                   <td>{catalog.solicitado_por}</td>
                   <td>{catalog.disponible === null
                       ? "En Espera"

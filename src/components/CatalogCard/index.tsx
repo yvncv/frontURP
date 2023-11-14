@@ -55,6 +55,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
           onClick={() => {
             cambiarEstadoModal(!estadoModal);
             setCatalogElement(catalog);
+            //AGREGAR FUNCION DE CONFERENCIAID Y ALUMNOID
           }}
         >
           Inscribirse
