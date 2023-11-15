@@ -11,7 +11,7 @@ const VerCatalogo = () => {
   const conferenciasDisponibles = catalogs.filter(
     (catalog) => catalog.disponible
   );
-  return (
+  return ( 
     <ResponsivePage>
       <div className="container mt-3 mb-4">
         <h2>Próximas conferencias disponibles</h2>
