@@ -42,11 +42,13 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
 
   let flag = false;
 
-  catalog.inscripciones.forEach((inscripcion) => {
-    if (inscripcion.codigo == user?.codigo) {
-      flag = true;
-    }
-  });
+  if(catalog.inscripciones != null){
+    catalog.inscripciones.forEach((inscripcion) => {
+      if (inscripcion.codigo == user?.codigo) {
+        flag = true;
+      }
+    });
+  }
 
   return (
     <Card key={`catalog-${catalog.id}`}>
@@ -62,7 +64,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         </p>
         <p className="expositor-card card-salon">
           <img src="\salon-icon.svg" alt="salon" />
-          {catalog?.salon.data.attributes.nombre}
+          {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
         </p>
         <p className="card-dirigido">{catalog.dirigido}</p>
       </div>

@@ -39,17 +39,22 @@ const ProximasConfes = () => {
 
   let proximasConferencias: Catalog[] = [];
 
-  catalogs.forEach(catalog => {
-    let flag = false;
-    catalog.inscripciones.forEach(inscripcion => {
-        if(inscripcion.codigo == user?.codigo){
-            flag = true;
-        }
-    })
-    if(flag != true){
-        proximasConferencias.push(catalog);
-    }
-  });
+  if(catalogs.length != 0) {
+    catalogs.forEach(catalog => {
+      let flag = false;
+      if(catalog.inscripciones != null){
+        catalog.inscripciones.forEach(inscripcion => {
+          if(inscripcion.codigo == user?.codigo){
+              flag = true;
+          }
+      })
+      }
+      if(flag != true){
+          proximasConferencias.push(catalog);
+      }
+    });
+  }
+  
 
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();

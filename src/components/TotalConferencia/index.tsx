@@ -11,14 +11,19 @@ export const TotalConferencia = () => {
         totalConferencia = 40;
     }
     let conferenciaAsistio = 0;
-    catalogs.forEach(catalog => {
-        catalog.inscripciones.forEach(inscripcion => {
-            if(inscripcion.codigo == user?.codigo) {
-                if(inscripcion.asistencia == "Sí")
-                    conferenciaAsistio++;
+    if(catalogs.length != 0){
+        catalogs.forEach(catalog => {
+            if(catalog.inscripciones != null){
+                catalog.inscripciones.forEach(inscripcion => {
+                    if(inscripcion.codigo == user?.codigo) {
+                        if(inscripcion.asistencia == "Sí")
+                            conferenciaAsistio++;
+                    }
+                });
             }
         });
-    });
+    }
+    
     const progressBarStyles = {
       '--value': conferenciaAsistio  * 100 / totalConferencia
     };

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Catalog } from "../../types/Catalog";
+import { Catalog, Inscripcion } from "../../types/Catalog";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import ModalQR from '../ModalQR';
 import { Form } from "react-bootstrap";
@@ -48,9 +48,9 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
         asistencia: "No"
       };
       // Obtén la lista de objetos actual del campo JSON
-      const listaDeAlumnos = catalogo.inscripciones;
+      let listaDeAlumnos: Inscripcion[] = [];
 
-        if(listaDeAlumnos.length == 0){
+        if(listaDeAlumnos?.length == 0){
           listaDeAlumnos.push(nuevoAlumno);
         }
         else{
@@ -110,7 +110,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     </div>
                     <div className="seccion">
                       <h5>Salón: </h5>
-                      <p>{catalogo.salon.data.attributes.nombre === null ? "No establecido" : catalogo.salon.data.attributes.nombre}</p>
+                      <p>{catalogo.salon.data?.attributes?.nombre === null ? "No establecido" : catalogo.salon.data?.attributes?.nombre}</p>
                     </div>
                     <div className="seccion">
                       <h5>Dirigido a: </h5>
