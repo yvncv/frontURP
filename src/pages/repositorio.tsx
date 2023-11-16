@@ -1,6 +1,7 @@
 import { ResponsivePage } from "../components/ResponsivePage";
 import Link from "next/link";
 import CatalogsRepo from "../components/CatalogsRepo";
+import { BuscadorRepo } from "../components/BuscadorRepo";
 
 const VerCatalogo = () => {
   return (
@@ -10,13 +11,11 @@ const VerCatalogo = () => {
         <Link href="/mis-conferencias"><img src="\icon-forward.svg" alt="search" /></Link>
       </div>
       <div className="container senalizacion">
-        <div className="senalizacion-seccion"><div className="circulo-asistio"></div><h6>Asistió</h6></div>
-        <div className="senalizacion-seccion"><div className="circulo-no-asistio"></div><h6>No asistió</h6></div>
-        <div className="senalizacion-seccion"><div className="circulo-pendiente"></div><h6>Pendiente</h6></div>
+        <div className="senalizacion-seccion"><img src="/icon-check.png" alt="check" /><h6>Asistió</h6></div>
+        <div className="senalizacion-seccion"><img src="/icon-equis.png" alt="equis" /><h6>No asistió</h6></div>
+        <div className="senalizacion-seccion"><img src="/icon-clock.png" alt="clock" /><h6>Pendiente</h6></div>
       </div>
-      <div className="container contenedor-proximos">
-        <CatalogsRepo/>
-      </div>
+        <BuscadorRepo/>
     </ResponsivePage>
   );
 };

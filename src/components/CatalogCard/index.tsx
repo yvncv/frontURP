@@ -5,11 +5,9 @@ import { User } from "../../types/User";
 import ModalInscribir from "../BotonModal";
 import { useState, useEffect } from "react";
 import { useResponsivePageContext } from "../ResponsivePage/context";
-
-import { Salon } from "../../types/Salon";
 import axios from "axios";
 
-function formatearFecha(fechaOriginal) {
+function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
   fecha.setDate(fecha.getDate() + 1);
   const dia = fecha.getDate();
@@ -20,7 +18,6 @@ function formatearFecha(fechaOriginal) {
 }
 
 export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
-  const [hovered, setHovered] = useState(false);
   const { user } = useResponsivePageContext();
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();
@@ -29,9 +26,9 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiFoto = await axios.get(`http://localhost:1338/api/catologos/${catalog.id}?populate=foto`);
+        const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalog.id}?populate=foto`);
         const url = apiFoto.data.data.attributes.foto.data.attributes.url;
-        setFotoUrl(`http://localhost:1338${url}`);
+        setFotoUrl(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com${url}`);
       } catch (error) {
         console.error("Error al obtener la foto:", error);
       }

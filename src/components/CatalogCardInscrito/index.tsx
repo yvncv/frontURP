@@ -12,7 +12,7 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
   const { user } = useResponsivePageContext();
   const [fotoUrl, setFotoUrl] = useState("");
 
-  let color = '';
+  let estado = '';
 
   const fecha = new Date();
   const fechaConferencia = new Date(catalog.fecha);
@@ -21,14 +21,14 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
   catalog.inscripciones.forEach(inscripcion => {
     if(inscripcion.codigo == user?.codigo){
         if(inscripcion.asistencia == "Sí"){
-          color = "#B4E5A4";
+          estado = 'Asistió';
         }
         else{
           if(fechaConferencia > fecha){
-            color = "#EDEDED"
+            estado = 'Pendiente';
           }
           else{
-            color = "#E56E5A";
+            estado = 'No asistió';
           }
         }
     }
@@ -37,9 +37,9 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const apiFoto = await axios.get(`http://localhost:1338/api/catologos/${catalog.id}?populate=foto`);
+        const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalog.id}?populate=foto`);
         const url = apiFoto.data.data.attributes.foto.data.attributes.url;
-        setFotoUrl(`http://localhost:1338${url}`);
+        setFotoUrl(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com${url}`);
       } catch (error) {
         console.error("Error al obtener la foto:", error);
       }
@@ -47,15 +47,9 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
 
     fetchData();
   }, [catalog.id]);
-
-
-const character__body = {
-  "background-color" : color,
-  "color" : "#000"
-}
   
   return (
-    <Card style={character__body} key={`catalog-${catalog.id}`}>
+    <Card key={`catalog-${catalog.id}`}>
     <div className="cont-img">
       <Card.Img
         variant="top"
@@ -63,25 +57,30 @@ const character__body = {
       />
     </div>
 
-    <Card.Body className="card-body-inscrito" style={character__body}>
-      <Card.Title style={character__body}>{catalog.tema_conferencia}</Card.Title>
-      <p className="nombre-expositor" style={character__body}>Dirigido por: {catalog.expositor}</p>
-      <div className="card-inscrito" style={character__body}>
+    <Card.Body className="card-body-inscrito">
+      <Card.Title>{catalog.tema_conferencia}</Card.Title>
+      <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
+      <div className="card-inscrito">
         <div className="card-inscrito-seccion-texto">
-          <p className="card-inscrito-texto" style={character__body}>
+          <div className="card-estado-conferencia">{estado == "Asistió"? (
+            <img src="\icon-check.png" alt="asistio" />
+          ): estado === "No asistió"? (
+            <img src="\icon-equis.png" alt="noAsistio" />
+          ): <img src="\icon-clock.png" alt="pendiente" />}</div>
+          <p className="card-inscrito-texto">
             <img src="\calendario-icon-black.svg" alt="fecha" />
             {catalog.fecha} -{" "}
             {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
           </p>
 
-          <p className="card-inscrito-texto" style={character__body}>
+          <p className="card-inscrito-texto">
             <img src="\salon-icon-black.svg" alt="salon" />
-            {catalog?.salon.data.attributes.nombre}
+            {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
           </p>
         </div>
-        <div className="card-inscrito-seccion-boton" style={character__body}>
+        <div className="card-inscrito-seccion-boton">
           {catalog.repositorio ? (
-            <a href={catalog.repositorio} target="_blank">VER MATERIAL</a>
+            <a href={catalog.repositorio} targetet="_blank">VER MATERIAL</a>
           ) : (
             <span>MATERIAL NO DISPONIBLE</span>
           )}

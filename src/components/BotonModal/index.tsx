@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog, Inscripcion } from "../../types/Catalog";
@@ -10,6 +10,7 @@ import {useResponsivePageContext} from "../ResponsivePage/context";
 import { useCatalogs } from '../../hooks/catalog/useCatalogs';
 import { useUsers } from '../../hooks/user/useUsers';
 import { url } from 'inspector';
+import axios from 'axios';
 
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
@@ -31,6 +32,22 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const { catalogs, myCatalog } = useCatalogs();
 
     const [estadoModal, cambiarEstadoModal] = useState(false);
+
+    const [fotoUrl, setFotoUrl] = useState();
+
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalogo.id}?populate=foto`);
+    //       setFotoUrl(apiFoto.data.data.attributes.foto);
+    //       console.log(fotoUrl);
+    //     } catch (error) {
+    //       console.error("Error al obtener la foto:", error);
+    //     }
+    //   };
+  
+    //   fetchData();
+    // }, [catalogo.id]);
 
     //al darle click al boton
     const handleOnSubmit = async (data: any) => {
@@ -69,6 +86,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       const updatedCatalog = {
         ...catalogo,
         inscripciones: listaDeAlumnos,
+        // foto: fotoUrl,
       };
   
       // Llama a la función updateCatalog para actualizar el catálogo con la nueva lista de objetos.

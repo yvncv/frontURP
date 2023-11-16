@@ -8,7 +8,6 @@ const VerCatalogo = () => {
     <ResponsivePage>
       <div className="container mt-3 mb-4 header-mis-conferencias">
         <h2>Mis conferencias</h2>
-        <img src="\icon -search.svg" alt="search" />
       </div>
 
       <div className="container contenido-mis-conferencias">

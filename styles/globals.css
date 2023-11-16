@@ -50,6 +50,7 @@ h6 {
     position: absolute;
     top: 0;
     padding: 15px;
+    position: fixed;
 }
 
 .sidebar--admin li a {
@@ -522,11 +523,6 @@ button {
     margin: 0 auto;
     max-width: 186px;
     width: 100%;
-}
-
-.contenedor-proximos {
-    max-height: 80vh;
-    overflow-y: scroll;
 }
 
 .textoQR {
@@ -1132,23 +1128,73 @@ textarea:focus {
     display: flex;
 }
 
+.senalizacion img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
 .circulo-asistio{
     height: 20px;
     width: 20px;
-    background-color: #B4E5A4;
+    background-color: #28a745;
     border-radius: 50%;
 }
 
 .circulo-no-asistio{
     height: 20px;
     width: 20px;
-    background-color: #E56E5A;
+    background-color: #BF1300;
     border-radius: 50%;
 }
 
 .circulo-pendiente{
     height: 20px;
     width: 20px;
-    background-color: #EDEDED;
+    background-color: #5E5E5E;
     border-radius: 50%;
+}
+.inputBuscar {
+    width: 50% !important;
+    height: 40px;
+    border: none;
+    background-color: #eeeeee;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.inputBuscar:focus {
+    outline: none;
+}
+
+.contenedor-input {
+    justify-content: center;
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.botonBuscador {
+    border-radius: 5px 0px 0px 5px;
+    padding: 0 10px 0 10px;
+
+}
+
+.card-img, .card-img-bottom, .card-img-top {
+    width: 100%;
+    height: 100%;
+}
+
+.card-estado-conferencia{
+    background-color: #fff;
+    padding: 9px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.card{
+    position: relative;
 }

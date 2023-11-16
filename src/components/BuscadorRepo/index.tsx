@@ -6,6 +6,7 @@ import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
 import { CatalogCardInscrito } from "../CatalogCardInscrito";
 import { CatalogCard } from "../CatalogCard";
+import CatalogsRepo from "../CatalogsRepo";
 
 // USAR:
 // npm i bootstrap axios
@@ -26,8 +27,13 @@ export const BuscadorRepo = () => {
     filtrar(e.target.value);
   };
 
+  const hoy = new Date();
+
   const filtrar = (terminoBusqueda: any) => {
     var resultadosBusqueda = catalogs.filter((catalog) => {
+      let fc = catalog.fecha;
+      let fechaConferencia = new Date(fc.toString());
+      fechaConferencia.setDate(fechaConferencia.getDate() + 1);
       if (
         catalog.tema_conferencia
           .toString()
@@ -37,19 +43,21 @@ export const BuscadorRepo = () => {
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase())
-        //   ||
-        // catalog.dirigido
-        //   .toString()
-        //   .toLowerCase()
-        //   .includes(terminoBusqueda.toLowerCase()) ||
-        //   catalog.salon
-        //   .toString()
-        //   .toLowerCase()
-        //   .includes(terminoBusqueda.toLowerCase()) ||
-        // catalog.fecha
-        //   .toString()
-        //   .toLowerCase()
-        //   .includes(terminoBusqueda.toLowerCase())
+          ||
+        catalog.dirigido
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+          catalog?.salon.data?.attributes?.nombre
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+        catalog.fecha
+          .toString()
+          .toLowerCase()
+          .includes(terminoBusqueda.toLowerCase()) ||
+          (terminoBusqueda.toLowerCase() === "hoy" &&
+          fechaConferencia.toLocaleDateString() == hoy.toLocaleDateString())
       ) {
         return catalog;
       }
@@ -64,15 +72,16 @@ export const BuscadorRepo = () => {
   return (
     <div className="contenedor-buscador-confes">
       <div className="contenedor-input">
+      <button className="botonBuscador">
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
         <input
           className="inputBuscar"
           value={busqueda}
           placeholder="Buscar conferencia por tema, expositor, escuela, auditorio, fecha..."
           onChange={handleChange}
         />
-        <button className="btn btn-success">
-          <FontAwesomeIcon icon={faSearch} />
-        </button>
+        
       </div>
 
       <div className="container contenedor-proximos">
@@ -87,15 +96,10 @@ export const BuscadorRepo = () => {
             marginTop: "20px",
           }}
         >
-            {/* para próximas conferencias */}
-          {conferencias.map((catalog) => (
-            <CatalogCard key={catalog.id} catalog={catalog} />
-          ))}
 
-             {/* para repositorio 
           {conferencias.map((catalog) => (
             <CatalogCardInscrito key={catalog.id} catalog={catalog} />
-          ))}*/} 
+          ))}
         </div>
       </div>
     </div>

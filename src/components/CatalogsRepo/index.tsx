@@ -9,18 +9,23 @@ const CatalogsRepo = () => {
 
   let conferencias: Catalog[] = [];
 
-  catalogs.forEach(catalog => {
-    let flag = false;
-    catalog.inscripciones.forEach(inscripcion => {
-        if(inscripcion.codigo == user?.codigo){
-            flag = true;
-        }
-    })
-    if(flag == true){
-        conferencias.push(catalog);
-    }
-  });
-  
+  if(catalogs.length != 0) {
+    catalogs.forEach(catalog => {
+      let flag = false;
+      if(catalog.inscripciones != null) {
+        catalog.inscripciones.forEach(inscripcion => {
+          if(inscripcion.codigo == user?.codigo){
+              flag = true;
+          }
+      })
+      }
+      if(flag == true){
+          conferencias.push(catalog);
+      }
+    });
+  }
+
+  console.log(conferencias);
 
   return (
     <>

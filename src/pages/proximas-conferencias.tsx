@@ -8,8 +8,21 @@ const VerCatalogo = () => {
   console.log(catalogs);
 
   // Filtrar las conferencias disponibles
+  const fechaActual = new Date();
+
+  function convertirStringADate(fechaString: any, hora: any) {
+    const fechaObjeto = new Date(fechaString);
+    fechaObjeto.setDate(fechaObjeto.getDate() + 1)
+    const horaString = hora.toString();
+    const date = new Date(`2000-01-01 ${horaString}`);
+    fechaObjeto.setHours(date.getHours())
+    fechaObjeto.setMinutes(date.getMinutes())
+    fechaObjeto.setSeconds(date.getSeconds())
+    return fechaObjeto;
+  }
+
   const conferenciasDisponibles = catalogs.filter(
-    (catalog) => catalog.disponible
+    (catalog) => (catalog.disponible && (convertirStringADate(catalog.fecha.toString(), catalog.hora) > fechaActual) && (convertirStringADate(catalog.fecha.toString(), catalog.hora).getTime() > fechaActual.getTime()))
   );
   return ( 
     <ResponsivePage>
