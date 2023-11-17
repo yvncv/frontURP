@@ -182,7 +182,7 @@ const NewCatalog = () => {
                         <Form.Group className="form-group mb-3">
                         <Form.Label style={{ fontWeight: 'bold' }}>Salón</Form.Label>
                         <Form.Select onChange={event => {
-                            setValue('salons', event.target.value)
+                            setValue('salon', event.target.value)
                             setSalonId(Number(event.target.value));
                         }}>
                         <option>Seleccionar</option>
