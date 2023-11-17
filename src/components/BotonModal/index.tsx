@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import { Catalog } from "../../types/Catalog";
+import { Catalog, Inscripcion } from "../../types/Catalog";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import ModalQR from '../ModalQR';
 import { Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import {useResponsivePageContext} from "../ResponsivePage/context";
 import { useCatalogs } from '../../hooks/catalog/useCatalogs';
+import { useUsers } from '../../hooks/user/useUsers';
 import { url } from 'inspector';
+import axios from 'axios';
 
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
+    fecha.setDate(fecha.getDate() + 1);
     const dia = fecha.getDate();
     const mes = fecha.toLocaleDateString('es-ES', { month: 'long' });
     const anio = fecha.getFullYear();
@@ -21,6 +24,7 @@ function formatearFecha(fechaOriginal) {
 
 const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const { user } = useResponsivePageContext();
+    const { updateUser} = useUsers();
     const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();
   
     const { updateCatalog } = useCatalog(); // Asegúrate de importar la función updateCatalog correctamente.
@@ -29,14 +33,30 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
 
     const [estadoModal, cambiarEstadoModal] = useState(false);
 
+    const [fotoUrl, setFotoUrl] = useState();
+
+    // useEffect(() => {
+    //   const fetchData = async () => {
+    //     try {
+    //       const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalogo.id}?populate=foto`);
+    //       setFotoUrl(apiFoto.data.data.attributes.foto);
+    //       console.log(fotoUrl);
+    //     } catch (error) {
+    //       console.error("Error al obtener la foto:", error);
+    //     }
+    //   };
+  
+    //   fetchData();
+    // }, [catalogo.id]);
+
     //al darle click al boton
     const handleOnSubmit = async (data: any) => {
 
     //pone el miconf de la conferencia en true
       const handleMyCatalog = async (catalogId: string) => {
         await myCatalog(catalogId);
-        catalogo.miconf = true;
      };
+
       const nuevoAlumno = {
         nombre: user?.nombre,
         apellido: user?.apellido,
@@ -44,18 +64,29 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
         carrera: user?.escuela,
         asistencia: "No"
       };
-      catalogo.miconf = true;
-  
       // Obtén la lista de objetos actual del campo JSON
-      const listaDeAlumnos = catalogo.inscripciones || [];
-  
-      // Agrega el nuevo alumno a la lista de objetos
-      listaDeAlumnos.push(nuevoAlumno);
+      let listaDeAlumnos: Inscripcion[] = [];
+
+        if(listaDeAlumnos?.length == 0){
+          listaDeAlumnos.push(nuevoAlumno);
+        }
+        else{
+          listaDeAlumnos.forEach(alumno => {
+            if(alumno.codigo != nuevoAlumno.codigo) {
+              listaDeAlumnos.push(nuevoAlumno);
+            }
+            else{
+              console.log("El alumno ya se inscrbio")
+            }
+          });
+        }
+        
   
       // Actualiza el campo JSON del catálogo con la lista actualizada
       const updatedCatalog = {
         ...catalogo,
         inscripciones: listaDeAlumnos,
+        // foto: fotoUrl,
       };
   
       // Llama a la función updateCatalog para actualizar el catálogo con la nueva lista de objetos.
@@ -97,7 +128,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     </div>
                     <div className="seccion">
                       <h5>Salón: </h5>
-                      <p>{catalogo?.salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons.data[0].attributes.nombre}</p>
+                      <p>{catalogo.salon.data?.attributes?.nombre === null ? "No establecido" : catalogo.salon.data?.attributes?.nombre}</p>
                     </div>
                     <div className="seccion">
                       <h5>Dirigido a: </h5>

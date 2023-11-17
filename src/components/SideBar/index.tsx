@@ -90,7 +90,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 5 SECRETARIA
-          user?.role.id === 6 && (
+          user?.role.id === 4 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/relacion-conferencias">

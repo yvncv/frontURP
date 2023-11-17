@@ -1,37 +1,21 @@
 import { ResponsivePage } from "../components/ResponsivePage";
 import Link from "next/link";
-import { useCatalogs } from "../hooks/catalog/useCatalogs";
-import { CatalogCardInscrito } from "../components/CatalogCardInscrito";
+import CatalogsRepo from "../components/CatalogsRepo";
+import { BuscadorRepo } from "../components/BuscadorRepo";
 
 const VerCatalogo = () => {
-  const { catalogs } = useCatalogs(); // Usar "catalogs" en lugar de "catalogsClient"
-
-  // Filtrar las conferencias disponibles
-  const misConferencias = catalogs.filter((catalog) => catalog.miconf);
-  
   return (
-    <ResponsivePage>
+    <ResponsivePage> 
       <div className="container mt-3 mb-4 header-mis-conferencias">
         <h2>Repositorio de conferencias</h2>
         <Link href="/mis-conferencias"><img src="\icon-forward.svg" alt="search" /></Link>
       </div>
-
-      <div className="container contenedor-proximos">
-        <div
-          className="contenedor-catalogo"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fill, minmax(min(100%, 20rem), 1fr))",
-            columnGap: "35px",
-            rowGap: "25px",
-            marginTop: "20px",
-          }}
-        >
-          {misConferencias.map((catalog) => (
-            <CatalogCardInscrito key={catalog.id} catalog={catalog} /> // Usar "catalog.id" como clave
-          ))}
-        </div>
+      <div className="container senalizacion">
+        <div className="senalizacion-seccion"><img src="/icon-check.png" alt="check" /><h6>Asistió</h6></div>
+        <div className="senalizacion-seccion"><img src="/icon-equis.png" alt="equis" /><h6>No asistió</h6></div>
+        <div className="senalizacion-seccion"><img src="/icon-clock.png" alt="clock" /><h6>Pendiente</h6></div>
       </div>
+        <BuscadorRepo/>
     </ResponsivePage>
   );
 };
