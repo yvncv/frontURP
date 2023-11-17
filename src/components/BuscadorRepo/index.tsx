@@ -48,7 +48,7 @@ export const BuscadorRepo = () => {
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
-          catalog?.salon.data?.attributes?.nombre
+          catalog?.salons.data?.attributes?.nombre
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||

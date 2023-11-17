@@ -58,7 +58,7 @@ const NewCatalog = () => {
     const diasNoHabiles = useMemo(() => {
 
         const dias = catalogs.reduce((acc: Record<number,Date[]>, catalogs) => {
-            const salonId = catalogs.salons.data[0].id;
+            const salonId = catalogs.salon.data.id;
             const fecha = new Date(new Date (catalogs.fecha).toLocaleString('en', {timeZone: 'UTC'}))
             if(acc[salonId]){
             acc[salonId] = acc[salonId].concat(fecha);
