@@ -7,6 +7,7 @@ import {
   useResponsivePageContext,
   useResponsivePageDispatch,
 } from "../ResponsivePage/context";
+import Image from 'next/image';
 
 export const Header = () => {
   const [show, setShow] = useState(false);
@@ -42,27 +43,28 @@ export const Header = () => {
 
 
             <div className="acciones-defecto">
-              <img src="\icon.svg" alt="Logo" />
-              <img src="\icon.svg" alt="Logo" />
-              <img src="\icon.svg" alt="Logo" />
-              <img src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
             </div>
             <div className="nombre-uni">
               <h1>Universidad Ricardo Palma</h1>
             </div>
             <div className="alumno-acciones">
-              <img src="\icon.svg" alt="Logo" />
-              <img src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
+              <Image src="\icon.svg" alt="Logo" />
               {isLogged && user ? (
                 <Dropdown>
                   <Dropdown.Toggle variant="light btn--loguin" id="dropdown-basic">
-                    <img src="\profile-circle.svg" alt="Logo" />
+                    <Image src="\profile-circle.svg" alt="Logo" />
                   </Dropdown.Toggle>
       
                   <Dropdown.Menu>
                     <p>
                       {user.nombre} {user.apellido}
                     </p>
+                    {/*@ts-ignore*/}
                     <p>{user.conferencia}</p>
                     <Dropdown.Item onClick={goToProfile}>Mi perfil</Dropdown.Item>
                     {!isEmployee && (

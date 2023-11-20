@@ -7,6 +7,7 @@ import { useResponsivePageContext } from "../ResponsivePage/context";
 import axios from "axios";
 import { Convalida } from "../../types/Convalida";
 import { useEffect, useState } from "react";
+import Image from 'next/image';
 
 export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
   const { user } = useResponsivePageContext();
@@ -63,24 +64,28 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
       <div className="card-inscrito">
         <div className="card-inscrito-seccion-texto">
           <div className="card-estado-conferencia">{estado == "Asistió"? (
-            <img src="\icon-check.png" alt="asistio" />
+            <Image src="\icon-check.png" alt="asistio" />
           ): estado === "No asistió"? (
-            <img src="\icon-equis.png" alt="noAsistio" />
-          ): <img src="\icon-clock.png" alt="pendiente" />}</div>
+            <Image src="\icon-equis.png" alt="noAsistio" />
+          ): <Image src="\icon-clock.png" alt="pendiente" />}</div>
           <p className="card-inscrito-texto">
-            <img src="\calendario-icon-black.svg" alt="fecha" />
+            <Image src="\calendario-icon-black.svg" alt="fecha" />
             {catalog.fecha} -{" "}
+            {/*@ts-ignore*/}
             {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
           </p>
 
           <p className="card-inscrito-texto">
-            <img src="\salon-icon-black.svg" alt="salon" />
+            <Image src="\salon-icon-black.svg" alt="salon" />
             {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
           </p>
         </div>
+        
         <div className="card-inscrito-seccion-boton">
+          
           {catalog.repositorio ? (
-            <a href={catalog.repositorio} targetet="_blank">VER MATERIAL</a>
+            
+            <a href={catalog.repositorio} target="_blank" rel="noopener noreferrer">VER MATERIAL</a>
           ) : (
             <span>MATERIAL NO DISPONIBLE</span>
           )}
@@ -88,6 +93,6 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
       </div>
     </Card.Body>
   </Card>
-    
+    //target decia targetet
   );
 };

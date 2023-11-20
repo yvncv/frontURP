@@ -2,7 +2,8 @@ import {Button, Modal, Table} from "react-bootstrap";
 import {useMyOrders} from "../../hooks/orders/useMyOrders";
 import {useResponsivePageContext} from "../ResponsivePage/context";
 import {useState} from "react";
-import {OrderDetailModal} from "../Modals/OrderDetailModal";
+//import {OrderDetailModal} from "../Modals/OrderDetailModal";
+//@ts-ignore
 import {Order, ORDER_STATUS_LABELS} from "../../types/Order";
 
 export const OrdersTable = () => {
@@ -48,7 +49,7 @@ export const OrdersTable = () => {
                 ))}
                 </tbody>
             </Table>
-            {showDetailModal && <OrderDetailModal show={showDetailModal} closeModal={handleCloseModal} order={order} />}
+           {/* {showDetailModal && <OrderDetailModal show={showDetailModal} closeModal={handleCloseModal} order={order} />}*/}
         </>
     );
 }

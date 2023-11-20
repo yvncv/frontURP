@@ -1,7 +1,7 @@
 import { ResponsivePage } from "../components/ResponsivePage";
 import { useCatalogs } from "../hooks/catalog/useCatalogs";
 import { CatalogCard } from "../components/CatalogCard";
-import { user } from "../types/User";
+import { User } from "../types/User";
 
 const VerCatalogo = () => {
   const { catalogs } = useCatalogs(); // Usar "catalogs" en lugar de "catalogsClient"

@@ -1,8 +1,9 @@
 import {Button, Table} from "react-bootstrap";
 import {useState} from "react";
+//@ts-ignore
 import {Order, ORDER_STATUS, ORDER_STATUS_LABELS} from "../../types/Order";
 import {useOrders} from "../../hooks/orders/useOrders";
-import {OrderDetailModal} from "../Modals/OrderDetailModal";
+//import {OrderDetailModal} from "../Modals/OrderDetailModal";
 import {useResponsivePageContext} from "../ResponsivePage/context";
 
 export const AllOrdersTable = () => {
@@ -81,8 +82,9 @@ export const AllOrdersTable = () => {
                 </tr>
             ))}
             </tbody>
+        
         </Table>
-            {showDetailModal && <OrderDetailModal show={showDetailModal} closeModal={handleCloseModal} order={order} />}
+           {/* {showDetailModal && <OrderDetailModal show={showDetailModal} closeModal={handleCloseModal} order={order} />}*/}
         </>
     );
 }

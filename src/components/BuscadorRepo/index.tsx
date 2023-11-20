@@ -48,7 +48,7 @@ export const BuscadorRepo = () => {
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
-          catalog?.salons.data?.attributes?.nombre
+          catalog?.salon.data?.attributes?.nombre
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
@@ -64,7 +64,8 @@ export const BuscadorRepo = () => {
     });
     setConfe(resultadosBusqueda);
   };
-
+  //o incluid filtrar ene l array
+// eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     filtrar(busqueda);
   }, [busqueda, catalogs]);

@@ -4,6 +4,7 @@ import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import ModalInscribir from "../BotonModal";
 import { Inscripcion } from "../../types/Catalog";
+import Image from 'next/image';
 
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
@@ -18,6 +19,7 @@ function formatearFecha(fechaOriginal: any) {
 const ProximasConfes = () => {
   const { user } = useResponsivePageContext();
   const { catalogs } = useCatalogs();
+  //@ts-ignore
   function encontrarConferenciaMasTemprana(pc) {
     if (pc.length === 0) {
       return null;
@@ -49,6 +51,7 @@ const ProximasConfes = () => {
           }
       })
       }
+      {/*@ts-ignore*/}
       if(flag != true){
           proximasConferencias.push(catalog);
       }
@@ -64,7 +67,7 @@ const ProximasConfes = () => {
   return (
     <>
       <div className="seccion-mis-conferencias">
-        <img src="\icon-proxima-conferencia.png" alt="conferencias" />
+        <Image src="\icon-proxima-conferencia.png" alt="conferencias" />
         <h2>Próxima Conferencia</h2>
         <div>
           {proximasConferencias.length === 0 ? (

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog, Inscripcion } from "../../types/Catalog";
@@ -11,7 +12,7 @@ import { useCatalogs } from '../../hooks/catalog/useCatalogs';
 import { useUsers } from '../../hooks/user/useUsers';
 import { url } from 'inspector';
 import axios from 'axios';
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
     fecha.setDate(fecha.getDate() + 1);
@@ -21,7 +22,7 @@ function formatearFecha(fechaOriginal) {
   
     return `${dia} de ${mes}`;
   }
-
+//@ts-ignore
 const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const { user } = useResponsivePageContext();
     const { updateUser} = useUsers();
@@ -68,11 +69,13 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       let listaDeAlumnos: Inscripcion[] = [];
 
         if(listaDeAlumnos?.length == 0){
+          //@ts-ignore
           listaDeAlumnos.push(nuevoAlumno);
         }
         else{
           listaDeAlumnos.forEach(alumno => {
             if(alumno.codigo != nuevoAlumno.codigo) {
+              //@ts-ignore
               listaDeAlumnos.push(nuevoAlumno);
             }
             else{
@@ -115,7 +118,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     className="boton-cerrar"
                     onClick={() => cambiarEstado(false)}
                   >
-                    <img src="\close-solid.svg" alt="close" />
+                    <Image src="\close-solid.svg" alt="close" />
                   </button>
                   <div className="contenido">
                     <div className="seccion">

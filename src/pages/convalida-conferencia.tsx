@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useConvalida } from "../hooks/convalida/useConvalida";
 import { Convalida } from "../types/Convalida";
+import Image from 'next/image';
 
 const VerConvalida = () => {
     const { register, handleSubmit, formState: { errors } } = useForm<Convalida>();
@@ -16,7 +17,7 @@ const VerConvalida = () => {
         const convalida = {
             ...data,
         };
-
+{/*@ts-ignore*/}
         const response = await createConvalida(convalida);
 
         if(response){
@@ -28,7 +29,7 @@ const VerConvalida = () => {
         <ResponsivePage>
             <div className="container mt-3 mb-4 header-mis-conferencias">
                 <h2>Convalida conferencia</h2>
-                <Link href="/mis-conferencias"><img src="\icon-forward.svg" alt="search" /></Link>
+                <Link href="/mis-conferencias"><Image src="\icon-forward.svg" alt="search" /></Link>
             </div>
             <div className='container contenido-convalida-conferencias'>
             <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>

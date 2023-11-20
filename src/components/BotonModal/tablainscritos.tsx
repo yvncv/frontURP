@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog } from '../../types/Catalog';
@@ -9,7 +10,7 @@ import { useForm } from "react-hook-form";
 import {useResponsivePageContext} from "../ResponsivePage/context";
 import { useCatalogs } from '../../hooks/catalog/useCatalogs';
 import { url } from 'inspector';
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
     const dia = fecha.getDate();
@@ -51,7 +52,7 @@ function formatearFecha(fechaOriginal) {
     document.body.removeChild(link); // Limpiar el DOM
   };
 
-
+//@ts-ignore
 const TablaInscritos = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
   const { user } = useResponsivePageContext();
   const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();
@@ -77,6 +78,7 @@ const TablaInscritos = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const listaDeAlumnos = catalogo.inscripciones || [];
 
     // Agrega el nuevo alumno a la lista de objetos
+    //@ts-ignore
     listaDeAlumnos.push(nuevoAlumno);
 
     // Actualiza el campo JSON del catálogo con la lista actualizada
@@ -111,7 +113,7 @@ const TablaInscritos = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
               <h3>Relación de inscritos:</h3>
             </div>
             <button className="boton-cerrar" onClick={() => cambiarEstado(false)}>
-              <img src="\close-solid.svg" alt="close" />
+              <Image src="\close-solid.svg" alt="close" />
             </button>
             <div className="contenido-tabla-relaciones">
               <div className="seccion-tabla-relaciones">
@@ -126,6 +128,7 @@ const TablaInscritos = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     </tr>
                   </thead>
                   <tbody>
+                  {/*@ts-ignore*/}
                     {catalogo.inscripciones && catalogo.inscripciones.map((inscripcion, index) => (
                       <tr key={index}>
                         <td>{inscripcion.nombre}</td>

@@ -6,6 +6,7 @@ import ModalInscribir from "../BotonModal";
 import { useState, useEffect } from "react";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import axios from "axios";
+import Image from 'next/image';
 
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
@@ -55,12 +56,13 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
           src={fotoUrl}
         />
         <p className="expositor-card card-fecha">
-          <img src="\calendario-icon.svg" alt="fecha" />
+          <Image src="\calendario-icon.svg" alt="fecha" />
           {formatearFecha(catalog.fecha)} -{" "}
+          {/*@ts-ignore*/}
           {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
         </p>
         <p className="expositor-card card-salon">
-          <img src="\salon-icon.svg" alt="salon" />
+          <Image src="\salon-icon.svg" alt="salon" />
           {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
         </p>
         <p className="card-dirigido">{catalog.dirigido}</p>
@@ -73,6 +75,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         <p className="descripcion-card">{catalog.descripcion}</p>
       </Card.Body>
       <div>
+      {/*@ts-ignore*/}
         {flag == true ? (
           <Button className="btnInscribir" disabled={true} style={{"backgroundColor": "#3e8e41", "border": "none"}}>
             Inscrito

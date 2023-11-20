@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import { Button, Dropdown, Accordion } from "react-bootstrap";
+import Image from 'next/image';
+
 export const SideBar = () => {
   const { user } = useResponsivePageContext();
   return (
     <div className="sidebar--admin">
       <div>
-        <img src="\logo-urp.png" alt="" className="logo-urp" />
+        <Image src="\logo-urp.png" alt="" className="logo-urp" />
         <hr />
       </div>
       <ul>

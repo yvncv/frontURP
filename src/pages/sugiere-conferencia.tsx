@@ -8,6 +8,7 @@ import { useValids } from "../hooks/convalidar/validando";
 import { convalidar } from "../types/valido";
 import { useForm } from "react-hook-form";
 import router, { useRouter } from "next/router";
+import Image from 'next/image';
 
 const VerValidacion = () => {
   const { register, handleSubmit, formState: { errors } } = useForm<convalidar>();
@@ -32,7 +33,7 @@ const VerValidacion = () => {
       <div className="operacion">
         <div className="contenedor">
           <h2 className="titulo">Convalida tus conferencias</h2>
-          <img src="return.png" alt="imagentitulo" width={35} height={35}></img>
+          <Image src="return.png" alt="imagentitulo" width={35} height={35}></Image>
         </div>
       
       <Form className="ingresando-convalidacion" onSubmit={handleSubmit(handleOnSubmit)}>
