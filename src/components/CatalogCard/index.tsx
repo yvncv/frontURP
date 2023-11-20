@@ -56,13 +56,13 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
           src={fotoUrl}
         />
         <p className="expositor-card card-fecha">
-          <Image src="\calendario-icon.svg" alt="fecha" />
+          <img src="\calendario-icon.svg" alt="fecha" />
           {formatearFecha(catalog.fecha)} -{" "}
           {/*@ts-ignore*/}
           {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
         </p>
         <p className="expositor-card card-salon">
-          <Image src="\salon-icon.svg" alt="salon" />
+          <img src="\salon-icon.svg" alt="salon" />
           {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
         </p>
         <p className="card-dirigido">{catalog.dirigido}</p>

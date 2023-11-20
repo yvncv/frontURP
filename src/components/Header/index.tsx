@@ -43,21 +43,21 @@ export const Header = () => {
 
 
             <div className="acciones-defecto">
-              <Image src="\icon.svg" alt="Logo" />
-              <Image src="\icon.svg" alt="Logo" />
-              <Image src="\icon.svg" alt="Logo" />
-              <Image src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
             </div>
             <div className="nombre-uni">
               <h1>Universidad Ricardo Palma</h1>
             </div>
             <div className="alumno-acciones">
-              <Image src="\icon.svg" alt="Logo" />
-              <Image src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
+              <img src="\icon.svg" alt="Logo" />
               {isLogged && user ? (
                 <Dropdown>
                   <Dropdown.Toggle variant="light btn--loguin" id="dropdown-basic">
-                    <Image src="\profile-circle.svg" alt="Logo" />
+                    <img src="\profile-circle.svg" alt="Logo" />
                   </Dropdown.Toggle>
       
                   <Dropdown.Menu>

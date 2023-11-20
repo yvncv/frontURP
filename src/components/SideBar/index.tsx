@@ -8,7 +8,7 @@ export const SideBar = () => {
   return (
     <div className="sidebar--admin">
       <div>
-        <Image src="\logo-urp.png" alt="" className="logo-urp" />
+        <img src="\logo-urp.png" alt="" className="logo-urp" />
         <hr />
       </div>
       <ul>

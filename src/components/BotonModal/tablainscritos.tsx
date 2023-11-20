@@ -113,7 +113,7 @@ const TablaInscritos = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
               <h3>Relación de inscritos:</h3>
             </div>
             <button className="boton-cerrar" onClick={() => cambiarEstado(false)}>
-              <Image src="\close-solid.svg" alt="close" />
+              <img src="\close-solid.svg" alt="close" />
             </button>
             <div className="contenido-tabla-relaciones">
               <div className="seccion-tabla-relaciones">

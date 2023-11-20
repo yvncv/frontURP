@@ -29,7 +29,7 @@ const VerConvalida = () => {
         <ResponsivePage>
             <div className="container mt-3 mb-4 header-mis-conferencias">
                 <h2>Convalida conferencia</h2>
-                <Link href="/mis-conferencias"><Image src="\icon-forward.svg" alt="search" /></Link>
+                <Link href="/mis-conferencias"><img src="\icon-forward.svg" alt="search" /></Link>
             </div>
             <div className='container contenido-convalida-conferencias'>
             <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>

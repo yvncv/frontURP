@@ -118,7 +118,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                     className="boton-cerrar"
                     onClick={() => cambiarEstado(false)}
                   >
-                    <Image src="\close-solid.svg" alt="close" />
+                    <img src="\close-solid.svg" alt="close" />
                   </button>
                   <div className="contenido">
                     <div className="seccion">

@@ -33,7 +33,7 @@ const VerValidacion = () => {
       <div className="operacion">
         <div className="contenedor">
           <h2 className="titulo">Convalida tus conferencias</h2>
-          <Image src="return.png" alt="imagentitulo" width={35} height={35}></Image>
+          <img src="return.png" alt="imagentitulo" width={35} height={35}></img>
         </div>
       
       <Form className="ingresando-convalidacion" onSubmit={handleSubmit(handleOnSubmit)}>

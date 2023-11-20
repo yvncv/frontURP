@@ -67,7 +67,7 @@ const ProximasConfes = () => {
   return (
     <>
       <div className="seccion-mis-conferencias">
-        <Image src="\icon-proxima-conferencia.png" alt="conferencias" />
+        <img src="\icon-proxima-conferencia.png" alt="conferencias" />
         <h2>Próxima Conferencia</h2>
         <div>
           {proximasConferencias.length === 0 ? (

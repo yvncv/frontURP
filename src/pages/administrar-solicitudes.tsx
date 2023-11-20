@@ -66,7 +66,7 @@ const Catalogo = () => {
                         setCatalogElement(catalog);
                       }}
                     >
-                      <Image src="\eye-solid.svg" alt="detalles" />
+                      <img src="\eye-solid.svg" alt="detalles" />
                     </Button>
                   </td>
                 </tr>

@@ -64,12 +64,12 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
       <div className="card-inscrito">
         <div className="card-inscrito-seccion-texto">
           <div className="card-estado-conferencia">{estado == "Asistió"? (
-            <Image src="\icon-check.png" alt="asistio" />
+            <img src="\icon-check.png" alt="asistio" />
           ): estado === "No asistió"? (
-            <Image src="\icon-equis.png" alt="noAsistio" />
-          ): <Image src="\icon-clock.png" alt="pendiente" />}</div>
+            <img src="\icon-equis.png" alt="noAsistio" />
+          ): <img src="\icon-clock.png" alt="pendiente" />}</div>
           <p className="card-inscrito-texto">
-            <Image src="\calendario-icon-black.svg" alt="fecha" />
+            <img src="\calendario-icon-black.svg" alt="fecha" />
             {catalog.fecha} -{" "}
             {/*@ts-ignore*/}
             {catalog.hora === null ? "" : catalog.hora.slice(0, 5)}
