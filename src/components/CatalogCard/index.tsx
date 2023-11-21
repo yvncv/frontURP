@@ -1,5 +1,7 @@
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Form
+ } from "react-bootstrap";
 import { Catalog } from "../../types/Catalog";
+
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import { User } from "../../types/User";
 import ModalInscribir from "../BotonModal";
@@ -30,6 +32,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalog.id}?populate=foto`);
         const url = apiFoto.data.data.attributes.foto.data.attributes.url;
         setFotoUrl(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com${url}`);
+        
       } catch (error) {
         console.error("Error al obtener la foto:", error);
       }
@@ -53,7 +56,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
       <div className="cont-img">
         <Card.Img
           variant="top"
-          src={fotoUrl}
+          src={catalog.foto.data.attributes.url}
         />
         <p className="expositor-card card-fecha">
           <img src="\calendario-icon.svg" alt="fecha" />
@@ -75,6 +78,14 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         <p className="descripcion-card">{catalog.descripcion}</p>
       </Card.Body>
       <div>
+
+      
+
+              
+
+
+
+
       {/*@ts-ignore*/}
         {flag == true ? (
           <Button className="btnInscribir" disabled={true} style={{"backgroundColor": "#3e8e41", "border": "none"}}>
