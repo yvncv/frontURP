@@ -7,9 +7,7 @@ export const TotalConferencia = () => {
     const { user } = useResponsivePageContext();
     const { catalogs } = useCatalogs();
     let totalConferencia = 0;
-    if (user?.escuela == "Ingeniería Informática"){
-        totalConferencia = 40;
-    }
+    totalConferencia = 40;
     let conferenciaAsistio = 0;
     if(catalogs.length != 0){
         catalogs.forEach(catalog => {

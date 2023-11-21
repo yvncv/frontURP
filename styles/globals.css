@@ -1198,3 +1198,11 @@ textarea:focus {
 .card{
     position: relative;
 }
+
+.filtrado-comboBox{
+    display: flex;
+    justify-content: space-evenly;
+}
+.filtrado-comboBox-seccion{
+    width: 400px;
+}

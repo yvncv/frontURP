@@ -6,6 +6,7 @@ import ModalInscribir from "../BotonModal";
 import { useState, useEffect } from "react";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import axios from "axios";
+import ModalQR from "../ModalQR";
 
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
@@ -19,8 +20,12 @@ function formatearFecha(fechaOriginal: any) {
 
 export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
   const { user } = useResponsivePageContext();
+  // variables para BotonModal(ModalInscribir)
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();
+  // variables para ModalQR
+  const [estadoModalQR, cambiarEstadoModalQR] = useState(false);
+
   const [fotoUrl, setFotoUrl] = useState("");
 
   useEffect(() => {
@@ -50,10 +55,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
   return (
     <Card key={`catalog-${catalog.id}`}>
       <div className="cont-img">
-        <Card.Img
-          variant="top"
-          src={fotoUrl}
-        />
+        <Card.Img variant="top" src={fotoUrl} />
         <p className="expositor-card card-fecha">
           <img src="\calendario-icon.svg" alt="fecha" />
           {formatearFecha(catalog.fecha)} -{" "}
@@ -61,7 +63,9 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         </p>
         <p className="expositor-card card-salon">
           <img src="\salon-icon.svg" alt="salon" />
-          {catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}
+          {catalog?.salon.data?.attributes?.nombre === null
+            ? ""
+            : catalog.salon.data?.attributes?.nombre}
         </p>
         <p className="card-dirigido">{catalog.dirigido}</p>
       </div>
@@ -74,7 +78,11 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
       </Card.Body>
       <div>
         {flag == true ? (
-          <Button className="btnInscribir" disabled={true} style={{"backgroundColor": "#3e8e41", "border": "none"}}>
+          <Button
+            className="btnInscribir"
+            disabled={true}
+            style={{ backgroundColor: "#3e8e41", border: "none" }}
+          >
             Inscrito
           </Button>
         ) : (
@@ -94,7 +102,10 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         cambiarEstado={cambiarEstadoModal}
         catalogo={catalog}
         setCatalogo={setCatalogElement}
+        estadoModalQR = {estadoModalQR}
+        cambiarEstadoQR = {cambiarEstadoModalQR}
       />
+      <ModalQR estado={estadoModalQR} cambiarEstado={cambiarEstadoModalQR} />
     </Card>
   );
 };
