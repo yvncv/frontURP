@@ -32,7 +32,7 @@ export const TotalConferencia = () => {
             <div className="seccion-mis-conferencias excepcion">
                {/*@ts-ignore*/}
                     <div role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="40" style={progressBarStyles}>
-                        <Image className="img-excepcion" src="\icon-total-conferencias.png" alt="conferencias" />
+                        <img className="img-excepcion" src="\icon-total-conferencias.png" alt="conferencias" />
                     </div>
                     <h1>{conferenciaAsistio}</h1>
                     <h2>Total Conferencias</h2>
