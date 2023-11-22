@@ -10,7 +10,7 @@ import { useResponsivePageContext } from "../ResponsivePage/context";
 import axios from "axios";
 import Image from 'next/image';
 const imagenPorDefecto = "https://res.cloudinary.com/dbe36qiba/image/upload/v1700542339/1_mcbxr_Q9dmg_X6v8_KA_7_Uo4nw_acc5422e6f.jpg";
-
+import ModalQR from "../ModalQR";
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
   fecha.setDate(fecha.getDate() + 1);
@@ -23,8 +23,12 @@ function formatearFecha(fechaOriginal: any) {
 
 export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
   const { user } = useResponsivePageContext();
+  // variables para BotonModal(ModalInscribir)
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();
+  // variables para ModalQR
+  const [estadoModalQR, cambiarEstadoModalQR] = useState(false);
+
   const [fotoUrl, setFotoUrl] = useState("");
 
   useEffect(() => {
@@ -89,7 +93,11 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
 
       {/*@ts-ignore*/}
         {flag == true ? (
-          <Button className="btnInscribir" disabled={true} style={{"backgroundColor": "#3e8e41", "border": "none"}}>
+          <Button
+            className="btnInscribir"
+            disabled={true}
+            style={{ backgroundColor: "#3e8e41", border: "none" }}
+          >
             Inscrito
           </Button>
         ) : (
@@ -109,7 +117,10 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
         cambiarEstado={cambiarEstadoModal}
         catalogo={catalog}
         setCatalogo={setCatalogElement}
+        estadoModalQR = {estadoModalQR}
+        cambiarEstadoQR = {cambiarEstadoModalQR}
       />
+      <ModalQR estado={estadoModalQR} cambiarEstado={cambiarEstadoModalQR} />
     </Card>
   );
 };

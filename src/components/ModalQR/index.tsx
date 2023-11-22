@@ -22,7 +22,7 @@ const ModalQR = ({ estado, cambiarEstado }) => {
             </div>
             <button
               className="boton-cerrar"
-              onClick={() => {cambiarEstado(false); window.location.reload();}}
+              onClick={() => {cambiarEstado(false)}}
             >
               <img src="\close-solid.svg" alt="close" />
             </button>

@@ -1,8 +1,7 @@
 import { ResponsivePage } from "../components/ResponsivePage";
 import Link from "next/link";
 import CatalogsRepo from "../components/CatalogsRepo";
-import { BuscadorRepo } from "../components/BuscadorRepo";
-import Image from 'next/image';
+import { BuscadorRepo } from "../components/Buscador/BuscadorRepo";
 
 const VerCatalogo = () => {
   return (

@@ -4,7 +4,7 @@ import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import ModalInscribir from "../BotonModal";
 import { Inscripcion } from "../../types/Catalog";
-import Image from 'next/image';
+import ModalQR from "../ModalQR";
 
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
@@ -19,8 +19,12 @@ function formatearFecha(fechaOriginal: any) {
 const ProximasConfes = () => {
   const { user } = useResponsivePageContext();
   const { catalogs } = useCatalogs();
-  //@ts-ignore
-  function encontrarConferenciaMasTemprana(pc) {
+
+  const fechaActual = new Date();
+
+  const [estadoModalQR, cambiarEstadoModalQR] = useState(false);
+
+  function encontrarConferenciaMasTemprana(pc: any) {
     if (pc.length === 0) {
       return null;
     }
@@ -41,23 +45,29 @@ const ProximasConfes = () => {
 
   let proximasConferencias: Catalog[] = [];
 
-  if(catalogs.length != 0) {
-    catalogs.forEach(catalog => {
+  if (catalogs.length != 0) {
+    catalogs.forEach((catalog) => {
       let flag = false;
-      if(catalog.inscripciones != null){
-        catalog.inscripciones.forEach(inscripcion => {
-          if(inscripcion.codigo == user?.codigo){
-              flag = true;
+      const fechaMasTemprana = new Date(catalog.fecha);
+      if (catalog.inscripciones != null) {
+        catalog.inscripciones.forEach((inscripcion) => {
+          if (
+            inscripcion.codigo == user?.codigo
+          ) {
+            flag = true;
           }
-      })
+        });
       }
       {/*@ts-ignore*/}
-      if(flag != true){
-          proximasConferencias.push(catalog);
+      if (flag != true && fechaMasTemprana > fechaActual && catalog.disponible === true) {
+        proximasConferencias.push(catalog);
       }
     });
   }
-  
+
+  // const conferenciasDisponibles = proximasConferencias.filter(
+  //   (catalog) => (catalog.disponible && (convertirStringADate(catalog.fecha.toString(), catalog.hora) > fechaActual) && (convertirStringADate(catalog.fecha.toString(), catalog.hora).getTime() > fechaActual.getTime()))
+  // );
 
   const [estadoModal, cambiarEstadoModal] = useState(false);
   const [catalogElement, setCatalogElement] = useState<Catalog>();
@@ -102,6 +112,12 @@ const ProximasConfes = () => {
                 cambiarEstado={cambiarEstadoModal}
                 catalogo={cmt}
                 setCatalogo={setCatalogElement}
+                estadoModalQR={estadoModalQR}
+                cambiarEstadoQR={cambiarEstadoModalQR}
+              />
+              <ModalQR
+                estado={estadoModalQR}
+                cambiarEstado={cambiarEstadoModalQR}
               />
             </div>
           )}
