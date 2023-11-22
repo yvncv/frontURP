@@ -9,6 +9,7 @@ import { useState, useEffect } from "react";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import axios from "axios";
 import Image from 'next/image';
+const imagenPorDefecto = "https://res.cloudinary.com/dbe36qiba/image/upload/v1700542339/1_mcbxr_Q9dmg_X6v8_KA_7_Uo4nw_acc5422e6f.jpg";
 
 function formatearFecha(fechaOriginal: any) {
   const fecha = new Date(fechaOriginal);
@@ -56,7 +57,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
       <div className="cont-img">
         <Card.Img
           variant="top"
-          src={catalog.foto.data.attributes.url}
+          src={catalog.foto?.data?.attributes.url || imagenPorDefecto}
         />
         <p className="expositor-card card-fecha">
           <img src="\calendario-icon.svg" alt="fecha" />

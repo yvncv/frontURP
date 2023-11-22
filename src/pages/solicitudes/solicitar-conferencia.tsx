@@ -36,6 +36,7 @@ const NewCatalog = () => {
     //const [salonConferencia, setSalonConferencias] = useState<{ nombre: string; }[]>([]);
     //const { getSalonConferencias } = useSalonConferencia();
     const [salonId, setSalonId] = useState<number>(0);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
     
 
     const { SalonConferencia, getSalonConferencia } = useSalonConferencia();
@@ -43,6 +44,7 @@ const NewCatalog = () => {
     const handleSwitch = () => setIsAvailable(!isAvailable);
 
     const handleOnSubmit = async (data: any) => {
+        try {
         const catalog = {
             ...data,
             fecha: selectedDate,
@@ -53,6 +55,14 @@ const NewCatalog = () => {
         if (response) {
             await router.push('/solicitudes');
         }
+    } catch (error) {
+        if (error.response && error.response.status === 400) {
+            setErrorMessage(error.response.data.message);
+            console.log('Mensaje de error:', error.response.data.message);
+        } else {
+            console.error('Error desconocido:', error);
+        }
+    }
     };
 
     const diasNoHabiles = useMemo(() => {
@@ -147,13 +157,20 @@ const NewCatalog = () => {
                     <h1 className='mb-2'>Nueva solicitud</h1>
                 </div>
                 <hr />
+                
                 <div className=''>
+                
+                {errorMessage && (
+                        <div className="alert alert-danger" role="alert">
+                            {errorMessage}
+                        </div>
+                    )}
 
 
                     <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Tema de la conferencia</Form.Label>
-                            <Form.Control type="text" {...register("tema_conferencia")} />
+                            <Form.Control type="text" {...register("tema_conferencia",{required: 'Estecampo es requerido'})} />
                             {errors.tema_conferencia && (
                                 <Form.Text className='text-danger'>
                                     {errors.tema_conferencia.message}
@@ -162,7 +179,7 @@ const NewCatalog = () => {
                         </Form.Group>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Descripcion</Form.Label>
-                            <Form.Control type="text" {...register("descripcion")} />
+                            <Form.Control type="text" {...register("descripcion",{required: 'Estecampo es requerido'})} />
                             {errors.descripcion && (
                                 <Form.Text className='text-danger'>
                                     {errors.descripcion.message}
@@ -171,7 +188,7 @@ const NewCatalog = () => {
                         </Form.Group>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Expositor</Form.Label>
-                            <Form.Control type="text" {...register("expositor")} />
+                            <Form.Control type="text" {...register("expositor",{required: 'Estecampo es requerido'})} />
                             {errors.expositor && (
                                 <Form.Text className='text-danger'>
                                     {errors.expositor.message}
@@ -181,9 +198,12 @@ const NewCatalog = () => {
 
                         <Form.Group className="form-group mb-3">
                         <Form.Label style={{ fontWeight: 'bold' }}>Salón</Form.Label>
-                        <Form.Select onChange={event => {
+                        <Form.Select 
+                        {...register('salon', { required: 'Este campo es requerido' })}
+                        onChange={event => {
                             setValue('salon', event.target.value)
                             setSalonId(Number(event.target.value));
+                            console.log('Salón seleccionado:', event.target.value);
                         }}>
                         <option>Seleccionar</option>
                         {SalonConferencia.map((salon) => {
@@ -200,12 +220,17 @@ const NewCatalog = () => {
                         <Form.Group className="form-group mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }} >Fecha</Form.Label>
                             <DatePicker 
+                            
                                 minDate={new Date()}
                                 excludeDates={diasNoHabiles[salonId] || []}
                                 className="date-picker"
                                 selected={selectedDate} 
-                                onChange={(date: Date) => setSelectedDate(date)} 
-                                dateFormat="dd/MM/yyyy" />
+                                onChange={(date: Date) => {
+                                    console.log(date);
+                                    setSelectedDate(date)} }
+                                dateFormat="dd/MM/yyyy" 
+                                />
+                                
                             {errors.fecha && (
                                 <Form.Text className='text-danger'>
                                     {errors.fecha.message}
@@ -217,7 +242,7 @@ const NewCatalog = () => {
 
                         <Form.Group className="mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }}>Hora</Form.Label>
-                            <select style={{ borderColor: 'green' }} {...register("hora")}>
+                            <select style={{ borderColor: 'green' }} {...register("hora",{ required: 'Este campo es requerido' })}>
                                 <option value="" disabled>
                                     Seleccionar
                                 </option>
