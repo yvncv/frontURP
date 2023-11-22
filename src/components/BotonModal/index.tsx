@@ -82,6 +82,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
           listaDeAlumnos.push(nuevoAlumno);
         }
         else{
+          //@ts-ignore
           listaDeAlumnos.forEach(alumno => {
             if(alumno.codigo != nuevoAlumno.codigo) {
               //@ts-ignore
