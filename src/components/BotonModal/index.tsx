@@ -27,6 +27,8 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
     const { user } = useResponsivePageContext();
     const { updateUser} = useUsers();
     const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();
+
+    const [estadoModal, cambiarEstadoModal] = useState(false);
   
     const { updateCatalog } = useCatalog(); // Asegúrate de importar la función updateCatalog correctamente.
   
@@ -105,7 +107,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       if (response) {
         console.log("Nuevo alumno registrado con éxito:", response);
         // Realiza cualquier otra acción necesaria después de la actualización.
-        cambiarEstadoQR(!estadoModalQR);
+        cambiarEstadoModal(!estadoModal);
       } else {
         console.error("Error al registrar al nuevo alumno.");
       }
