@@ -56,8 +56,11 @@ const NewCatalog = () => {
             await router.push('/solicitudes');
         }
     } catch (error) {
+        //@ts-ignore
         if (error.response && error.response.status === 400) {
+            //@ts-ignore
             setErrorMessage(error.response.data.message);
+            //@ts-ignore
             console.log('Mensaje de error:', error.response.data.message);
         } else {
             console.error('Error desconocido:', error);
