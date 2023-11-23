@@ -2,10 +2,6 @@ import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
 import { ResponsivePage } from "../../components/ResponsivePage";
 import { QrReader } from 'react-qr-reader';
-<<<<<<< HEAD
-
-=======
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/router";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
@@ -14,10 +10,7 @@ import { useCatalog } from "../../hooks/catalog/useCatalog";
 const VerCatalogo = () => {
   const router = useRouter();
   const {getCatalogId, updateCatalog} = useCatalog();
-<<<<<<< HEAD
-=======
   const [catalogo, setCatalogo] = useState<Catalog | null>(null);
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
   const [showQr,setshowQr] = useState(true);
 
 
@@ -69,17 +62,11 @@ const VerCatalogo = () => {
   return (
 
     <ResponsivePage>
-<<<<<<< HEAD
-     
-          <QrReader
-          constraints={{ facingMode: 'environment' }}
-=======
      {showQr && (
           <QrReader
           constraints={{ facingMode: 'environment' }}
 
           
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
             onResult={async(result:any, error:any) => {
               if (!!result) {
                 const catalogId = router.query.id;
@@ -99,11 +86,7 @@ const VerCatalogo = () => {
             }}
             
           />
-<<<<<<< HEAD
-        
-=======
           )}
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
     </ResponsivePage>
 
    

@@ -3,17 +3,6 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
-<<<<<<< HEAD
-{/*@ts-ignore*/}
-const CatalogModalConfirm = ({estado, cambiarEstado, catalogo, setCatalogo, tipo}) => {
-    const { catalogs, removeCatalog, enabledCatalog } = useCatalogs();
-    const handleRemoveCatalog = async (catalogId: string) => {
-        await removeCatalog(catalogId);
-      };
-      const handleAddCatalog = async (catalogId: string) => {
-        await enabledCatalog(catalogId);
-      };
-=======
 import Alert from "react-bootstrap/Alert";
 
 interface CatalogModalConfirmProps {
@@ -46,7 +35,6 @@ const CatalogModalConfirm: React.FC<CatalogModalConfirmProps> = ({ estado, cambi
             cambiarEstado(false);
         }
     };
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
 
     return (
         <>

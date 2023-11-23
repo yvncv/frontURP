@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @types/react-qr-scanner
+  C:\Program Files\nodejs\node.exe C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js install
 
 PATH: 
   C:\Python310\Scripts\;C:\Python310\;C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\Python39\Scripts\;C:\Python39\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\Program Files\dotnet\;C:\Program Files\Microsoft SQL Server\130\Tools\Binn\;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\Azure Data Studio\bin;C:\apache-maven-3.8.3\bin;C:\sonar-scanner-4.6.2.2472-windows\bin;C:\Program Files (x86)\Rational\common;D:\LINGO64_19\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;D:\Program Files\PostgreSQL\15\bin;C:\Program Files\Git\cmd;%NVM_HOME%;%NVM_SYMLINK%;C:\Users\bengi\AppData\Local\Microsoft\WindowsApps;C:\Users\bengi\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\bengi\AppData\Local\GitHubDesktop\bin;C:\Program Files\Azure Data Studio\bin;C:\sonar-scanner-msbuild;C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\MSBuild\Current\Bin;C:\sonar-scanner-4.6.2.2472-windows\bin;C:\Users\bengi\AppData\Roaming\npm;C:\Users\bengi\.dotnet\tools;C:\Program Files\heroku\bin;C:\Users\bengi\AppData\Roaming\nvm;C:\Program Files\nodejs
@@ -14,17 +14,12 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@types%2freact-qr-scanner: Not found
-      at params.callback [as _callback] (C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66145:18)
-      at self.callback (C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
-      at Request.emit (node:events:514:28)
-      at Request.<anonymous> (C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
-      at Request.emit (node:events:514:28)
-      at IncomingMessage.<anonymous> (C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
-      at Object.onceWrapper (node:events:628:28)
-      at IncomingMessage.emit (node:events:526:35)
-      at endReadableNT (node:internal/streams/readable:1408:12)
-      at process.processTicksAndRejections (node:internal/process/task_queues:82:21)
+  SyntaxError: D:\2023-2\Integracion\SIHUAS\front\package.json: Expected double-quoted property name in JSON at position 961
+      at JSON.parse (<anonymous>)
+      at C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:1629:59
+      at Generator.next (<anonymous>)
+      at step (C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:310:30)
+      at C:\Users\bengi\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:321:13
 
 npm manifest: 
   {
@@ -60,7 +55,11 @@ npm manifest:
       "react-hook-form": "^7.46.2",
       "react-native-svg": "^13.14.0",
       "react-qr-code": "^2.0.12",
-      "react-qr-scanner": "^1.0.0-alpha.11",
+      "react-qr-reader": "^3.0.0-beta-1",
+  <<<<<<< HEAD
+  =======
+      "react-webcam": "^7.2.0",
+  >>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
       "typescript": "4.8.4",
       "yup": "^0.32.11"
     }
@@ -400,18 +399,25 @@ Lockfile:
       "@typescript-eslint/types" "5.42.1"
       eslint-visitor-keys "^3.3.0"
   
-  "@zxing/library@^0.19.1":
-    version "0.19.3"
-    resolved "https://registry.npmjs.org/@zxing/library/-/library-0.19.3.tgz"
-    integrity sha512-RUv5svewpDoD0ymXleOP8yVTO5BLkR0zn5coGC/Vs1671u0OBJ4xdtR8WVWf08OcvrieEMHdSfQY3ZKtqII/hg==
+  "@zxing/browser@0.0.7":
+    version "0.0.7"
+    resolved "https://registry.yarnpkg.com/@zxing/browser/-/browser-0.0.7.tgz#5fa7680a867b660f48d3288fdf63e0174ad531c7"
+    integrity sha512-AepzMgDnD6EjxewqmXpHJsi4S3Gw9ilZJLIbTf6fWuWySEcHBodnGu3p7FWlgq1Sd5QyfPhTum5z3CBkkhMVng==
+    optionalDependencies:
+      "@zxing/text-encoding" "^0.9.0"
+  
+  "@zxing/library@^0.18.3":
+    version "0.18.6"
+    resolved "https://registry.yarnpkg.com/@zxing/library/-/library-0.18.6.tgz#717af8c6c1fd982865e21051afdd7b470ae6674c"
+    integrity sha512-bulZ9JHoLFd9W36pi+7e7DnEYNJhljYjZ1UTsKPOoLMU3qtC+REHITeCRNx40zTRJZx18W5TBRXt5pq2Uopjsw==
     dependencies:
-      ts-custom-error "^3.2.1"
+      ts-custom-error "^3.0.0"
     optionalDependencies:
       "@zxing/text-encoding" "~0.9.0"
   
-  "@zxing/text-encoding@~0.9.0":
+  "@zxing/text-encoding@^0.9.0", "@zxing/text-encoding@~0.9.0":
     version "0.9.0"
-    resolved "https://registry.npmjs.org/@zxing/text-encoding/-/text-encoding-0.9.0.tgz"
+    resolved "https://registry.yarnpkg.com/@zxing/text-encoding/-/text-encoding-0.9.0.tgz#fb50ffabc6c7c66a0c96b4c03e3d9be74864b70b"
     integrity sha512-U/4aVJ2mxI0aDNI8Uq0wEhMgY+u4CNtEb0om3+y3+niDAsoTCOB33UF0sxpzqzdqXLqmvc+vZyAt4O8pPdfkwA==
   
   acorn-jsx@^5.3.2:
@@ -1125,6 +1131,11 @@ Lockfile:
     resolved "https://registry.npmjs.org/fs.realpath/-/fs.realpath-1.0.0.tgz"
     integrity sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==
   
+  fsevents@~2.3.2:
+    version "2.3.3"
+    resolved "https://registry.yarnpkg.com/fsevents/-/fsevents-2.3.3.tgz#cac6407785d03675a2a5e1a5305c697b347d90d6"
+    integrity sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==
+  
   function-bind@^1.1.1:
     version "1.1.1"
     resolved "https://registry.npmjs.org/function-bind/-/function-bind-1.1.1.tgz"
@@ -1817,7 +1828,7 @@ Lockfile:
   
   qr.js@0.0.0:
     version "0.0.0"
-    resolved "https://registry.npmjs.org/qr.js/-/qr.js-0.0.0.tgz"
+    resolved "https://registry.yarnpkg.com/qr.js/-/qr.js-0.0.0.tgz#cace86386f59a0db8050fa90d9b6b0e88a1e364f"
     integrity sha512-c4iYnWb+k2E+vYpRimHqSu575b1/wKl4XFeJGpFmrJQz5I88v9aY2czh7s0w36srfCM1sXgC/xpoJz5dJfq+OQ==
   
   qs@^6.11.0:
@@ -1913,19 +1924,20 @@ Lockfile:
   
   react-qr-code@^2.0.12:
     version "2.0.12"
-    resolved "https://registry.npmjs.org/react-qr-code/-/react-qr-code-2.0.12.tgz"
+    resolved "https://registry.yarnpkg.com/react-qr-code/-/react-qr-code-2.0.12.tgz#98f99e9ad5ede46d73ab819e2dd9925c5f5d7a2d"
     integrity sha512-k+pzP5CKLEGBRwZsDPp98/CAJeXlsYRHM2iZn1Sd5Th/HnKhIZCSg27PXO58zk8z02RaEryg+60xa4vyywMJwg==
     dependencies:
       prop-types "^15.8.1"
       qr.js "0.0.0"
   
-  react-qr-scanner@^1.0.0-alpha.11:
-    version "1.0.0-alpha.11"
-    resolved "https://registry.npmjs.org/react-qr-scanner/-/react-qr-scanner-1.0.0-alpha.11.tgz"
-    integrity sha512-TdaygL+4U9iapskJgK5Ilb1Cw4wwzQ3bVpIfzzbrEsxPaEJzmjQ7VuMz8E9hBQGCU4Ee+YtgglE3byEtgtRpkA==
+  react-qr-reader@^3.0.0-beta-1:
+    version "3.0.0-beta-1"
+    resolved "https://registry.yarnpkg.com/react-qr-reader/-/react-qr-reader-3.0.0-beta-1.tgz#e04a20876409313439959d8e0ea6df3ba6e36d68"
+    integrity sha512-5HeFH9x/BlziRYQYGK2AeWS9WiKYZtGGMs9DXy3bcySTX3C9UJL9EwcPnWw8vlf7JP4FcrAlr1SnZ5nsWLQGyw==
     dependencies:
-      "@zxing/library" "^0.19.1"
-      prop-types "^15.8.1"
+      "@zxing/browser" "0.0.7"
+      "@zxing/library" "^0.18.3"
+      rollup "^2.67.2"
   
   react-transition-group@^4.4.2:
     version "4.4.5"
@@ -1937,6 +1949,14 @@ Lockfile:
       loose-envify "^1.4.0"
       prop-types "^15.6.2"
   
+  <<<<<<< HEAD
+  =======
+  react-webcam@^7.2.0:
+    version "7.2.0"
+    resolved "https://registry.yarnpkg.com/react-webcam/-/react-webcam-7.2.0.tgz#64141c4c7bdd3e956620500187fa3fcc77e1fd49"
+    integrity sha512-xkrzYPqa1ag2DP+2Q/kLKBmCIfEx49bVdgCCCcZf88oF+0NPEbkwYk3/s/C7Zy0mhM8k+hpdNkBLzxg8H0aWcg==
+  
+  >>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
   react@18.2.0:
     version "18.2.0"
     resolved "https://registry.npmjs.org/react/-/react-18.2.0.tgz"
@@ -2002,6 +2022,13 @@ Lockfile:
     integrity sha512-JZkJMZkAGFFPP2YqXZXPbMlMBgsxzE8ILs4lMIX/2o0L9UBw9O/Y3o6wFw/i9YLapcUJWwqbi3kdxIPdC62TIA==
     dependencies:
       glob "^7.1.3"
+  
+  rollup@^2.67.2:
+    version "2.79.1"
+    resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.79.1.tgz#bedee8faef7c9f93a2647ac0108748f497f081c7"
+    integrity sha512-uKxbd0IhMZOhjAiD5oAFp7BqvkA4Dv47qpOCtaNvng4HBwdbWtdOh8f5nZNuk2rp51PMGk3bzfWu5oayNEuYnw==
+    optionalDependencies:
+      fsevents "~2.3.2"
   
   run-parallel@^1.1.9:
     version "1.2.0"
@@ -2159,9 +2186,9 @@ Lockfile:
     resolved "https://registry.npmjs.org/toposort/-/toposort-2.0.2.tgz"
     integrity sha512-0a5EOkAUp8D4moMi2W8ZF8jcga7BgZd91O/yabJCFY8az+XSzeGyTKs0Aoo897iV1Nj6guFq8orWDS96z91oGg==
   
-  ts-custom-error@^3.2.1:
+  ts-custom-error@^3.0.0:
     version "3.3.1"
-    resolved "https://registry.npmjs.org/ts-custom-error/-/ts-custom-error-3.3.1.tgz"
+    resolved "https://registry.yarnpkg.com/ts-custom-error/-/ts-custom-error-3.3.1.tgz#8bd3c8fc6b8dc8e1cb329267c45200f1e17a65d1"
     integrity sha512-5OX1tzOjxWEgsr/YEUWSuPrQ00deKLh6D7OTWcvNHm12/7QPyRh8SYpyWvA4IZv8H/+GQWQEh/kwo95Q9OVW1A==
   
   tsconfig-paths@^3.14.1:

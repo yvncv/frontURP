@@ -87,11 +87,7 @@ export const BuscadorRepo = () => {
       //NO FUNCIONA EL NO ASISTIO, FALTA VALIDARLO BIEN
       // FALTA HACER UN ELIMINAR FILTROS
       if(opcionSeleccionada == "Asistió"){
-<<<<<<< HEAD
-        flag = catalog.inscripciones.some(inscripcion => (inscripcion.asistencia === "Sí" && inscripcion.codigo == user?.codigo && opcionSeleccionada == "Asistió"));
-=======
         flag = catalog.inscripciones.some(inscripcion => (inscripcion.asistencia === "Si" && inscripcion.codigo == user?.codigo && opcionSeleccionada == "Asistió"));
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
         return flag;
       }
       else if(opcionSeleccionada == "No asistió"){

@@ -8,12 +8,9 @@ import {
   useResponsivePageDispatch,
 } from "../ResponsivePage/context";
 import Image from 'next/image';
-<<<<<<< HEAD
-=======
 import { Accordion } from "react-bootstrap";
 
 import { useSidebarContext } from '../SideBar/SidebarContext';
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
 
 export const Header = () => {
   const { toggleSidebar } = useSidebarContext();

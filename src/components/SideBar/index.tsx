@@ -2,10 +2,7 @@ import Link from "next/link";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import { Button, Dropdown, Accordion } from "react-bootstrap";
 import Image from 'next/image';
-<<<<<<< HEAD
-=======
 import { useSidebarContext } from '../SideBar/SidebarContext';
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
 
 export const SideBar = () => {
   const { isSidebarOpen, toggleSidebar } = useSidebarContext();

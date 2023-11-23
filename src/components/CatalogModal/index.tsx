@@ -19,11 +19,7 @@ function formatearFecha(fechaOriginal) {
   return `${diaFormateado}/${mesFormateado}/${anio}`;
 }
 //@ts-ignore
-<<<<<<< HEAD
-const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
-=======
 const CatalogModal = ({ estado, cambiarEstado, catalog, setCatalogo }) => {
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
   const { catalogs, removeCatalog, enabledCatalog } = useCatalogs();
   const handleRemoveCatalog = async (catalogId: string) => {
     await removeCatalog(catalogId);
@@ -77,11 +73,7 @@ const CatalogModal = ({ estado, cambiarEstado, catalog, setCatalogo }) => {
               </div>
               <div className="seccion">
                 <h5>Salón: </h5>
-<<<<<<< HEAD
-                <p>{catalogo?.salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons.data[0].attributes.nombre}</p>
-=======
                 <p>{catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}</p>
->>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
               </div>
               <div className="seccion">
                 <h5>Fecha: </h5>
