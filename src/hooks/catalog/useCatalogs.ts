@@ -5,13 +5,14 @@ import { Salon } from "../../types/Salon";
 
 export const useCatalogs = () => {
   const [catalogs, setCatalogs] = useState<Catalog[]>([]);
-
   const [SalonConferencia, setSalonConferencia] = useState<{ id: string; attributes:{nombre: string}; }[]>([]);
+  
 
   const getSalonNombre = (salonId: string) => {
     const salon = SalonConferencia.find(salon => salon.id === salonId);
     return salon ? salon.attributes.nombre : '';
   };
+
 
   const getCatalogs = async () => {
     const { data: { data: dataRaw } } = await api.get('/catologos?populate=*');
@@ -22,7 +23,9 @@ export const useCatalogs = () => {
     }));
 
     setCatalogs(catalogsMapping);
+    
   };
+  
 
   const removeCatalog = async (catalogId: string) => {
     await api.put(`/catologos/${catalogId}`, {
@@ -65,6 +68,27 @@ export const useCatalogs = () => {
     getCatalogs();
   }, []);
 
+  const setEditedCatalog = (editedCatalog: Catalog) => {
+    const updatedCatalogs = catalogs.map((catalog) => {
+      if (catalog.id === editedCatalog.id) {
+        return { ...catalog, ...editedCatalog };
+      }
+      return catalog;
+    });
+    setCatalogs(updatedCatalogs);
+  };
+  
+  const onUpdateCatalog = async (editedCatalog: Catalog) => {
+    try {
+      console.log("data for onUpdate", editedCatalog);
+      await api.put(`/catologos/${editedCatalog.id}`, { data: editedCatalog, });
+      await getCatalogs();
+    } catch (error) {
+      // Handle error
+      console.error(error);
+    }
+  };
+  
   return {
     catalogs,
     removeCatalog,
@@ -72,5 +96,7 @@ export const useCatalogs = () => {
     myCatalog,
     getCatalogId,
     getSalonNombre,
+    setEditedCatalog,
+    onUpdateCatalog,
   };
 };

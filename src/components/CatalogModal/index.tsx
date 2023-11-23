@@ -72,7 +72,7 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
               </div>
               <div className="seccion">
                 <h5>Salón: </h5>
-                <p>{catalogo?.salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons.data[0].attributes.nombre}</p>
+                <p>{catalogo?.salons&&salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons&&salons.data[0].attributes.nombre}</p>
               </div>
               <div className="seccion">
                 <h5>Fecha: </h5>
