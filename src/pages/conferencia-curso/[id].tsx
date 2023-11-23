@@ -57,7 +57,7 @@ const VerCatalogo = () => {
 
     <ResponsivePage>
       <QrReader
-      constraints={{ facingMode: 'enviroment' }}
+      constraints={{ facingMode: 'environment' }}
         onResult={(result:any, error:any) => {
           if (!!result) {
             handleScan(result?.text);
