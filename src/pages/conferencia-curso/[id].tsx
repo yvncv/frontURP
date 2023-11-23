@@ -22,7 +22,7 @@ const VerCatalogo = () => {
   },[updateCatalog])
 
   const handleScan = useCallback((codigo:string,catalog:Catalog,catalogId:string) => {
-    alert(codigo)
+    alert("Se a registrado correctamente:"+codigo)
 
     const estaInscrito = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo)
     const asistido = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo && catalogo.asistencia === "Si")
