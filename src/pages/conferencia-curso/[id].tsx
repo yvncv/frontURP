@@ -1,8 +1,7 @@
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
-import { PythonShell } from "python-shell";
 import { ResponsivePage } from "../../components/ResponsivePage";
-import QrReader from 'react-qr-scanner';
+import { QrReader } from 'react-qr-reader';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/router";
@@ -58,10 +57,18 @@ const VerCatalogo = () => {
 
     <ResponsivePage>
       <QrReader
-          delay={100}
-          onError={handleError}
-          onScan={handleScan}
-          />
+      constraints={{ facingMode: 'user' }}
+        onResult={(result:any, error:any) => {
+          if (!!result) {
+            handleScan(result?.text);
+          }
+
+          if (!!error) {
+            console.info(error);
+          }
+        }}
+        
+      />
         
     </ResponsivePage>
 
