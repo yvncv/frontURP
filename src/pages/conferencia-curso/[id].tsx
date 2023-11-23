@@ -2,11 +2,12 @@ import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
 import { PythonShell } from "python-shell";
 import { ResponsivePage } from "../../components/ResponsivePage";
+import QrReader from 'react-qr-scanner';
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useRouter } from "next/router";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
-import { Console } from "console";
+
 
 const VerCatalogo = () => {
   const router = useRouter();
@@ -29,70 +30,38 @@ const VerCatalogo = () => {
 
   },[updateCatalog])
 
+  const handleScan = (codigo:string) => {
+    if (catalog && catalog.inscripciones ){
+    const inscripciones = catalog.inscripciones.map(catalogo => {
 
-  useEffect(() => {
-    const domReady = (fn: Function) => {
-      if (document.readyState === "complete" || document.readyState === "interactive") {
-        setTimeout(fn, 1);
-      } else {
-        //@ts-ignore
-        document.addEventListener("DOMContentLoaded", fn);
-      }
-    };
-
-    domReady(() => {
-      const myqr = document.getElementById('your-qr-result');
-      let lastResult: string;
-      let countResults = 0;
-
-      const onScanSuccess = (decodeText: string, decodeResult: any) => {
-        if (decodeText !== lastResult) {
-          ++countResults;
-          lastResult = decodeText;
-          //alert("Su QR es: " + decodeText);
-          const inscripciones = catalog!.inscripciones.map(catalogo => {
-
-               if(catalogo.codigo === decodeText){
-                   
-                catalogo.asistencia = "Si";
-                return catalogo;
-
-               }
-               return catalogo
-
-          })
-
+      if(catalogo.codigo === codigo){
           
-          actualizar(inscripciones,catalog!.id)
+       catalogo.asistencia = "Si";
+       return catalogo;
 
+      }
+      return catalogo
 
-          if (myqr) {
-            myqr.innerHTML = ` you scan ${countResults} : ${decodeText} `;
-          }
-        }
-      };
+ })
 
-      const htmlscanner = new (window as any).Html5QrcodeScanner(
-        "my-qr-reader", { fps: 10, qrbox: 250 }
-      );
+ 
+         actualizar(inscripciones,catalog!.id)
+     }
+  }
 
-      htmlscanner.render(onScanSuccess);
-    });
-
-  }, [actualizar]);
+  const handleError = (error:any) => {
+    console.error(error);
+  }
 
 
   return (
 
     <ResponsivePage>
-      
-      <button>escanear</button>
-      <div id="your-qr-result"></div>
-      <div className="my-qr-reader-cont">
-        <div id="my-qr-reader" className="my-qr-reader"></div>
-      </div>
-
-        <script async src="https://unpkg.com/html5-qrcode"></script>
+      <QrReader
+          delay={100}
+          onError={handleError}
+          onScan={handleScan}
+          />
         
     </ResponsivePage>
 
