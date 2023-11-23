@@ -46,7 +46,7 @@ const VerCatalogo = () => {
       return catalogo
 
  })
-
+alert ("Catalogo Id:"+catalog.id)
  
          actualizar(inscripciones,catalog!.id)
      }
