@@ -42,19 +42,6 @@ h6 {
     color: #656565;
 }
 
-.sidebar--admin {
-    background-color: #00823a;
-    border: none;
-    width: 250px;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    padding: 15px;
-}
-
-.sidebar--admin li a {
-    color: #fff
-}
 
 .contenedor-main {
     width: calc(100% - 250px);
@@ -88,10 +75,12 @@ h6 {
     width: 30px;
     margin: 0px 10px;
 }
-.acciones-defecto > img,
-.alumno-acciones > img{
+
+.acciones-defecto>img,
+.alumno-acciones>img {
     display: none;
 }
+
 .alumno-acciones {
     display: flex;
 }
@@ -100,6 +89,31 @@ h6 {
     display: block;
     margin: auto;
     margin-bottom: 30px !important;
+}
+
+.sidebar--admin {
+    background-color: #00823a;
+    border: none;
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    padding: 15px;
+    z-index: 1000;
+    /* Asegura que el sidebar esté sobre otros elementos */
+    transition: transform 0.3s ease-in-out;
+    /* Suaviza la transición */
+}
+
+.sidebar-toggle {
+    background-color: transparent;
+}
+
+/* Estilos para pantallas menores de 767px */
+
+
+.sidebar--admin li a {
+    color: #fff;
 }
 
 .sidebar--admin hr {
@@ -351,6 +365,8 @@ body .form-control:focus {
     position: relative;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
+    width: 100%;
+    height: 230px;
     overflow: hidden;
 }
 
@@ -520,11 +536,6 @@ button {
     margin: 0 auto;
     max-width: 186px;
     width: 100%;
-}
-
-.contenedor-proximos {
-    max-height: 80vh;
-    overflow-y: scroll;
 }
 
 .textoQR {
@@ -893,6 +904,7 @@ button {
 
 .card-body-inscrito {
     padding-bottom: 0px !important;
+    border-radius: 15px;
 }
 
 .seccion-titulo-alumno {
@@ -1118,4 +1130,149 @@ textarea:focus {
 
 .envio-solicitud-form button:hover {
     background-color: #3e8e41;
+}
+
+.senalizacion {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.senalizacion-seccion {
+    display: flex;
+}
+
+.senalizacion img {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.circulo-asistio {
+    height: 20px;
+    width: 20px;
+    background-color: #28a745;
+    border-radius: 50%;
+}
+
+.circulo-no-asistio {
+    height: 20px;
+    width: 20px;
+    background-color: #BF1300;
+    border-radius: 50%;
+}
+
+.circulo-pendiente {
+    height: 20px;
+    width: 20px;
+    background-color: #5E5E5E;
+    border-radius: 50%;
+}
+
+.inputBuscar {
+    width: 50% !important;
+    height: 40px;
+    border: none;
+    background-color: #eeeeee;
+    border-radius: 0px 5px 5px 0px;
+}
+
+.inputBuscar:focus {
+    outline: none;
+}
+
+.contenedor-input {
+    justify-content: center;
+    display: flex;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.botonBuscador {
+    border-radius: 5px 0px 0px 5px;
+    padding: 0 10px 0 10px;
+
+}
+
+.card-img,
+.card-img-bottom,
+.card-img-top {
+    width: 100%;
+    height: 100%;
+}
+
+.card-estado-conferencia {
+    background-color: #fff;
+    padding: 9px;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+.card {
+    position: relative;
+}
+
+.filtrado-comboBox {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.filtrado-comboBox-seccion {
+    width: 400px;
+}
+
+@media (min-width: 767px) {
+
+    .sidebar-toggle,
+    .close-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 767px) {
+    .sidebar--admin {
+        width: 100%;
+        /* Ocupa todo el ancho de la pantalla */
+        transform: translateX(-100%);
+        /* Inicia fuera de la pantalla */
+    }
+
+    .sidebar--admin.active {
+        transform: translateX(0);
+        /* Mueve el sidebar a la vista */
+    }
+
+    .sidebar--admin {
+        /* ...estilos existentes */
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+    }
+
+    .sidebar--admin.active {
+        transform: translateX(0);
+    }
+
+    .close-sidebar {
+        background: transparent;
+        /* o el color que prefieras */
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        margin: 10px;
+        cursor: pointer;
+    }
+
+    .cabecera--principal {
+        width: 100%;
+    }
+    .contenedor-main{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .contenedor-main .iniciar-sesion-pg{
+        margin: 0;
+    }
 }

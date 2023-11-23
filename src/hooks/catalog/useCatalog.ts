@@ -11,6 +11,11 @@ export const useCatalog = () => {
           id: dataRaw.id,
       };
   };
+  const getCatalogId = async (catalogId: string) => {
+    const response = await api.get(`/catologos/${catalogId}`);
+    const catalogData = response.data.data.attributes;
+    return catalogData;
+  }
   const updateCatalog = async (catalogId: string, updatedCatalog: any): Promise<any> => {
     const response = await api.put(`/catologos/${catalogId}`, {
       data: updatedCatalog,
@@ -43,6 +48,7 @@ export const useCatalog = () => {
   return {
       createCatalog,
       uploadPhoto,
-      updateCatalog
+      updateCatalog,
+      getCatalogId
   };
 }

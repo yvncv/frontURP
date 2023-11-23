@@ -4,19 +4,16 @@ export type Catalog = {
   id: string;
   tema_conferencia: string;
   descripcion: string;
-  foto: {
-    url: string; 
-  };
+  foto:any; 
   expositor: string;
-  fecha: DateSchema;
+  fecha: Date;
   hora: DateSchema;
   dirigido: string;
   disponible: boolean;
   solicitado_por:string; 
-  miconf: boolean;
   inscripciones: Inscripcion[];
   repositorio: string;
-  salons: any;
+  salon: any;
 };
 
 

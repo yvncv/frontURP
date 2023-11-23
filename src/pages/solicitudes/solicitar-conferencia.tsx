@@ -2,8 +2,9 @@ import { ResponsivePage } from "../../components/ResponsivePage";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Catalog } from "../../types/Catalog";
-import { useEffect,useState } from "react";
+import { useEffect,useMemo,useState } from "react";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
+import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { useRouter } from 'next/router';
 
 //de aqui pa bajo es otro
@@ -20,6 +21,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import axios from 'axios';
 import { useSalonConferencia } from "../../hooks/salonConferencia/useSalonConferencia";
 import { Salon } from "../../types/Salon";
+import { number } from "yup";
 
 const NewCatalog = () => {
     const { register, handleSubmit, formState: { errors },setValue } = useForm<Catalog>();
@@ -28,16 +30,21 @@ const NewCatalog = () => {
     const [isAvailable, setIsAvailable] = useState(false); // Cambiamos el valor por defecto a "no disponible"
     const [showModal, setShowModal] = useState(false);
     const { createCatalog } = useCatalog();
+    const { catalogs } = useCatalogs();
     const router = useRouter();
     const [selectedDate, setSelectedDate] = useState(new Date());
     //const [salonConferencia, setSalonConferencias] = useState<{ nombre: string; }[]>([]);
     //const { getSalonConferencias } = useSalonConferencia();
+    const [salonId, setSalonId] = useState<number>(0);
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    
 
     const { SalonConferencia, getSalonConferencia } = useSalonConferencia();
 
     const handleSwitch = () => setIsAvailable(!isAvailable);
 
     const handleOnSubmit = async (data: any) => {
+        try {
         const catalog = {
             ...data,
             fecha: selectedDate,
@@ -48,9 +55,35 @@ const NewCatalog = () => {
         if (response) {
             await router.push('/solicitudes');
         }
+    } catch (error) {
+        //@ts-ignore
+        if (error.response && error.response.status === 400) {
+            //@ts-ignore
+            setErrorMessage(error.response.data.message);
+            //@ts-ignore
+            console.log('Mensaje de error:', error.response.data.message);
+        } else {
+            console.error('Error desconocido:', error);
+        }
+    }
     };
 
-    
+    const diasNoHabiles = useMemo(() => {
+
+        const dias = catalogs.reduce((acc: Record<number,Date[]>, catalogs) => {
+            const salonId = catalogs?.salon?.data?.id;
+            const fecha = new Date(new Date (catalogs.fecha).toLocaleString('en', {timeZone: 'UTC'}))
+            if(acc[salonId]){
+            acc[salonId] = acc[salonId].concat(fecha);
+            return acc;
+            }
+            acc[salonId] = [fecha]
+            return acc
+        },{})
+        console.log(dias);
+        return dias
+
+    }, [catalogs]) 
     
 
     const handleOpenModal = () => setShowModal(true);
@@ -127,13 +160,20 @@ const NewCatalog = () => {
                     <h1 className='mb-2'>Nueva solicitud</h1>
                 </div>
                 <hr />
+                
                 <div className=''>
+                
+                {errorMessage && (
+                        <div className="alert alert-danger" role="alert">
+                            {errorMessage}
+                        </div>
+                    )}
 
 
                     <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Tema de la conferencia</Form.Label>
-                            <Form.Control type="text" {...register("tema_conferencia")} />
+                            <Form.Control type="text" {...register("tema_conferencia",{required: 'Estecampo es requerido'})} />
                             {errors.tema_conferencia && (
                                 <Form.Text className='text-danger'>
                                     {errors.tema_conferencia.message}
@@ -142,7 +182,7 @@ const NewCatalog = () => {
                         </Form.Group>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Descripcion</Form.Label>
-                            <Form.Control type="text" {...register("descripcion")} />
+                            <Form.Control type="text" {...register("descripcion",{required: 'Estecampo es requerido'})} />
                             {errors.descripcion && (
                                 <Form.Text className='text-danger'>
                                     {errors.descripcion.message}
@@ -151,7 +191,7 @@ const NewCatalog = () => {
                         </Form.Group>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Expositor</Form.Label>
-                            <Form.Control type="text" {...register("expositor")} />
+                            <Form.Control type="text" {...register("expositor",{required: 'Estecampo es requerido'})} />
                             {errors.expositor && (
                                 <Form.Text className='text-danger'>
                                     {errors.expositor.message}
@@ -160,12 +200,40 @@ const NewCatalog = () => {
                         </Form.Group>
 
                         <Form.Group className="form-group mb-3">
+                        <Form.Label style={{ fontWeight: 'bold' }}>Salón</Form.Label>
+                        <Form.Select 
+                        {...register('salon', { required: 'Este campo es requerido' })}
+                        onChange={event => {
+                            setValue('salon', event.target.value)
+                            setSalonId(Number(event.target.value));
+                            console.log('Salón seleccionado:', event.target.value);
+                        }}>
+                        <option>Seleccionar</option>
+                        {SalonConferencia.map((salon) => {
+                        console.log(salon); // Mueve el console.log aquí para que se ejecute correctamente
+                        return (
+                        <option key={salon.id} value={salon.id}>
+                        {salon.attributes.nombre}
+                        </option>
+                        );
+                        })}
+                        </Form.Select>
+                        </Form.Group>
+
+                        <Form.Group className="form-group mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }} >Fecha</Form.Label>
                             <DatePicker 
+                            
+                                minDate={new Date()}
+                                excludeDates={diasNoHabiles[salonId] || []}
                                 className="date-picker"
                                 selected={selectedDate} 
-                                onChange={(date: Date) => setSelectedDate(date)} 
-                                dateFormat="dd/MM/yyyy" />
+                                onChange={(date: Date) => {
+                                    console.log(date);
+                                    setSelectedDate(date)} }
+                                dateFormat="dd/MM/yyyy" 
+                                />
+                                
                             {errors.fecha && (
                                 <Form.Text className='text-danger'>
                                     {errors.fecha.message}
@@ -177,7 +245,7 @@ const NewCatalog = () => {
 
                         <Form.Group className="mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }}>Hora</Form.Label>
-                            <select style={{ borderColor: 'green' }} {...register("hora")}>
+                            <select style={{ borderColor: 'green' }} {...register("hora",{ required: 'Este campo es requerido' })}>
                                 <option value="" disabled>
                                     Seleccionar
                                 </option>
@@ -196,18 +264,7 @@ const NewCatalog = () => {
 
                         
                         <>
-                        
-                        <Form.Select onChange={event => setValue('salons', event.target.value)}>
-                        <option>Seleccionar</option>
-                        {SalonConferencia.map((salon) => {
-                        console.log(salon); // Mueve el console.log aquí para que se ejecute correctamente
-                        return (
-                        <option key={salon.id} value={salon.id}>
-                        {salon.attributes.nombre}
-                        </option>
-                        );
-                        })}
-                        </Form.Select>
+                       
       
                         </>
 

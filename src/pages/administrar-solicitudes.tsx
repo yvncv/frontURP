@@ -5,7 +5,7 @@ import { useCatalogs } from "../hooks/catalog/useCatalogs";
 import { useState } from "react";
 import CatalogModal from "../components/CatalogModal";
 import { Catalog } from "../types/Catalog";
-
+import Image from 'next/image';
 
 const Catalogo = () => {
   const router = useRouter();
@@ -48,7 +48,7 @@ const Catalogo = () => {
                   <td>{catalog.id}</td>
                   <td>{catalog.tema_conferencia}</td>
                   <td>{catalog.dirigido}</td>
-                  <td>{catalog.salon}</td>
+                  <td>{catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}</td>
                   <td>{catalog.solicitado_por}</td>
                   <td>{catalog.disponible === null
                       ? "En Espera"
@@ -76,7 +76,7 @@ const Catalogo = () => {
         <CatalogModal
           estado={estadoModal}
           cambiarEstado={cambiarEstadoModal}
-          catalogo={catalogElement}
+          catalog={catalogElement}
           setCatalogo={setCatalogElement}
         />
       </div>

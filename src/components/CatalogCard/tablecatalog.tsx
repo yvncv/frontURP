@@ -3,8 +3,9 @@ import { Catalog } from "../../types/Catalog";
 import { useState } from "react";
 import ModalInscribir from "../BotonModal";
 import TablaInscritos from "../BotonModal/tablainscritos";
+import Link from "next/link";
 
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
   const dia = fecha.getDate();
@@ -23,14 +24,22 @@ export const CatalogRow = ({ catalog }: { catalog: Catalog }) => {
       <div className="catalog-row-info">
         <span>
           {formatearFecha(catalog.fecha)} -{" "}
+          {/*@ts-ignore*/}
           {catalog.hora ? catalog.hora.slice(0, 5) : ""}
         </span>
-        <span>{catalog.salon}</span>
+        <span>{catalog.salon?.data?.attributes.nombre}</span>
         <span>{catalog.tema_conferencia}</span>
       </div>
-      <div className="catalog-row-action">
+      
+      <div className="catalog-row-action flex-column">
+      <Link
+          className="btnInscribir position-relative w-100"
+          href={`/conferencia-curso/${catalog.id}`}
+        >
+          Pasar asistencia
+        </Link>
         <Button
-          className="btnInscribir"
+          className="btnInscribir position-relative w-100"
           onClick={() => {
             cambiarEstadoModal(!estadoModal);
             setCatalogElement(catalog);
