@@ -2,5 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/relacion-conferencias": "pages/relacion-conferencias.js",
+  "/repositorio": "pages/repositorio.js",
   "/mis-conferencias": "pages/mis-conferencias.js"
 }

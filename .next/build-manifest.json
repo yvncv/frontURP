@@ -29,6 +29,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/mis-conferencias.js"
+    ],
+    "/relacion-conferencias": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/relacion-conferencias.js"
+    ],
+    "/repositorio": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/repositorio.js"
     ]
   },
   "ampFirstPages": []
