@@ -16,7 +16,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <link rel="stylesheet" href="sweetalert2.min.css"></link>
         
         </Head>
-        <Script src="sweetalert2.min.js"/>;
+        <Script src="sweetalert2.min.js"/>
           <Script src="//cdn.jsdelivr.net/npm/sweetalert2@11"/>
         <Component {...pageProps} />
       </>

@@ -11,6 +11,7 @@ import { useCatalog } from "../../hooks/catalog/useCatalog";
 const VerCatalogo = () => {
   const router = useRouter();
   const {getCatalogId, updateCatalog} = useCatalog();
+  const [showQr,setshowQr] = useState(true);
 //@ts-ignore
   const catalog = useMemo<Catalog | null>(async ( ) => {
 
@@ -26,12 +27,15 @@ const VerCatalogo = () => {
   const actualizar = useCallback(async(inscripciones:any, catalogId:string) => {
 
     await updateCatalog(catalogId, {inscripciones});
+    setshowQr(true);
 
   },[updateCatalog])
 
   const handleScan = (codigo:string) => {
+    alert(codigo)
     if (catalog && catalog.inscripciones ){
-    const inscripciones = catalog.inscripciones.map(catalogo => {
+      setshowQr(false)
+      const inscripciones = catalog.inscripciones.map(catalogo => {
 
       if(catalogo.codigo === codigo){
           
@@ -56,19 +60,24 @@ const VerCatalogo = () => {
   return (
 
     <ResponsivePage>
-      <QrReader
-      constraints={{ facingMode: 'environment' }}
-        onResult={(result:any, error:any) => {
-          if (!!result) {
-            handleScan(result?.text);
-          }
-
-          if (!!error) {
-            console.info(error);
-          }
-        }}
-        
-      />
+      {
+        showQr && (
+          <QrReader
+          constraints={{ facingMode: 'environment' }}
+            onResult={(result:any, error:any) => {
+              if (!!result) {
+                handleScan(result?.text);
+              }
+    
+              if (!!error) {
+                console.info(error);
+              }
+            }}
+            
+          />
+        )
+      }
+     
         
     </ResponsivePage>
 
