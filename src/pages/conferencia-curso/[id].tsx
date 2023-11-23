@@ -12,7 +12,7 @@ const VerCatalogo = () => {
   const router = useRouter();
   const {getCatalogId, updateCatalog} = useCatalog();
   const [showQr,setshowQr] = useState(true);
- const [catalog,setcalog] = useState<Catalog>();
+
 
   const actualizar = useCallback(async(inscripciones:any, catalogId:string) => {
 
@@ -21,10 +21,21 @@ const VerCatalogo = () => {
 
   },[updateCatalog])
 
-  const handleScan = useCallback((codigo:string) => {
+  const handleScan = useCallback((codigo:string,catalog:Catalog,catalogId:string) => {
     alert(codigo)
-    alert ("Catalogo Id:"+catalog?.id)
-    if (catalog && catalog.inscripciones ){
+
+    const estaInscrito = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo)
+    const asistido = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo && catalogo.asistencia === "Si")
+    if (!estaInscrito){
+      alert("Usted No esta Inscrito en esta conferencia")
+      return;
+    }
+
+    if (asistido){
+      alert("Ya marcó asistencia")
+      return;
+    }
+   
       setshowQr(false)
       const inscripciones = catalog.inscripciones.map(catalogo => {
 
@@ -37,42 +48,34 @@ const VerCatalogo = () => {
       return catalogo
 
  })
-alert ("Catalogo Id:"+catalog.id)
+
  
-         actualizar(inscripciones,catalog!.id)
-     }
-  },[catalog]);
+         actualizar(inscripciones,catalogId)
+     
+  },[]);
 
   const handleError = (error:any) => {
     console.error(error);
   }
-
-  useEffect (() => {
-    
-    const catalogId = router.query.id;
-    const load = async() =>{
-      if(catalogId && typeof catalogId === "string"){
-        const catalogo = await getCatalogId(catalogId);
-        console.log(catalogo);
-        setcalog(catalogo);
-        return catalogo;
-        }
-    }
-    load()
-
-  },[] 
-  ) 
+ 
 
   return (
 
     <ResponsivePage>
-      {
-        showQr && (
+     
           <QrReader
           constraints={{ facingMode: 'environment' }}
-            onResult={(result:any, error:any) => {
+            onResult={async(result:any, error:any) => {
               if (!!result) {
-                handleScan(result?.text);
+                const catalogId = router.query.id;
+    
+               if(catalogId && typeof catalogId === "string" && showQr){
+
+                  const catalogo = await getCatalogId(catalogId);
+                  console.log(catalogo);
+                  handleScan(result?.text,catalogo,catalogId);
+
+               }
               }
     
               if (!!error) {
@@ -81,9 +84,6 @@ alert ("Catalogo Id:"+catalog.id)
             }}
             
           />
-        )
-      }
-     
         
     </ResponsivePage>
 
