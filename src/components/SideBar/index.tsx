@@ -2,12 +2,18 @@ import Link from "next/link";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import { Button, Dropdown, Accordion } from "react-bootstrap";
 import Image from 'next/image';
+<<<<<<< HEAD
+=======
+import { useSidebarContext } from '../SideBar/SidebarContext';
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
 
 export const SideBar = () => {
+  const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const { user } = useResponsivePageContext();
   return (
-    <div className="sidebar--admin">
+    <div className={`sidebar--admin ${isSidebarOpen ? 'active' : ''}`}>
       <div>
+      <button onClick={toggleSidebar} className="close-sidebar"><img src="\menu.svg" alt="Logo" /></button>
         <img src="\logo-urp.png" alt="" className="logo-urp" />
         <hr />
       </div>
@@ -82,7 +88,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 6 CENTRO DE EXTENSION
-          user?.role.id === 6 && (
+          user?.role.id === 7 && (
             <li className="nav-item">
               <Link className="nav-link" href="/administrar-solicitudes">
                 Administrar solicitudes de conferencias

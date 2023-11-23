@@ -23,7 +23,11 @@ function formatearFecha(fechaOriginal) {
     return `${dia} de ${mes}`;
   }
 //@ts-ignore
+<<<<<<< HEAD
 const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
+=======
+const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo,estadoModalQR,cambiarEstadoQR}) => {
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
     const { user } = useResponsivePageContext();
     const { updateUser} = useUsers();
     const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();
@@ -77,24 +81,43 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       }
 
       function modificarInscripciones(listaDeAlumnos:any) {
+<<<<<<< HEAD
         if(listaDeAlumnos?.length == 0){
           //@ts-ignore
+=======
+        let flag = false;
+        if(listaDeAlumnos?.length == 0){
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
           listaDeAlumnos.push(nuevoAlumno);
         }
         else{
           //@ts-ignore
           listaDeAlumnos.forEach(alumno => {
             if(alumno.codigo != nuevoAlumno.codigo) {
+<<<<<<< HEAD
               //@ts-ignore
               listaDeAlumnos.push(nuevoAlumno);
+=======
+              flag = true;
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
             }
             else{
               console.log("El alumno ya se inscrbio")
             }
           });
+<<<<<<< HEAD
         }
         return listaDeAlumnos;
       }
+=======
+          //@ts-ignore
+          if (flag == true){
+            listaDeAlumnos.push(nuevoAlumno);
+          }
+        }
+        return listaDeAlumnos;
+      }
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
   
       // Actualiza el campo JSON del catálogo con la lista actualizada
       const updatedCatalog = {
@@ -108,7 +131,11 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       if (response) {
         console.log("Nuevo alumno registrado con éxito:", response);
         // Realiza cualquier otra acción necesaria después de la actualización.
+<<<<<<< HEAD
         cambiarEstadoModal(!estadoModal);
+=======
+        cambiarEstadoQR(!estadoModalQR);
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
       } else {
         console.error("Error al registrar al nuevo alumno.");
       }

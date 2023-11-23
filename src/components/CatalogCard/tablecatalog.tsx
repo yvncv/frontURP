@@ -27,7 +27,11 @@ export const CatalogRow = ({ catalog }: { catalog: Catalog }) => {
           {/*@ts-ignore*/}
           {catalog.hora ? catalog.hora.slice(0, 5) : ""}
         </span>
+<<<<<<< HEAD
         <span>{catalog.salon.data.attributes.nombre}</span>
+=======
+        <span>{catalog.salon?.data?.attributes.nombre}</span>
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
         <span>{catalog.tema_conferencia}</span>
       </div>
       

@@ -48,7 +48,11 @@ const Catalogo = () => {
                   <td>{catalog.id}</td>
                   <td>{catalog.tema_conferencia}</td>
                   <td>{catalog.dirigido}</td>
+<<<<<<< HEAD
                   <td>{catalog?.salon.data.attributes.nombre}</td>
+=======
+                  <td>{catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}</td>
+>>>>>>> 1be5c294a980d49383fb3658c2dfbd8e763789c6
                   <td>{catalog.solicitado_por}</td>
                   <td>{catalog.disponible === null
                       ? "En Espera"
@@ -76,7 +80,7 @@ const Catalogo = () => {
         <CatalogModal
           estado={estadoModal}
           cambiarEstado={cambiarEstadoModal}
-          catalogo={catalogElement}
+          catalog={catalogElement}
           setCatalogo={setCatalogElement}
         />
       </div>
