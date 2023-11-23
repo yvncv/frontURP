@@ -54,6 +54,7 @@ alert ("Catalogo Id:"+catalog.id)
       if(catalogId && typeof catalogId === "string"){
         const catalogo = await getCatalogId(catalogId);
         console.log(catalogo);
+        setcalog(catalogo);
         return catalogo;
         }
     }
