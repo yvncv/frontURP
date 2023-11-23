@@ -31,8 +31,9 @@ const VerCatalogo = () => {
 
   },[updateCatalog])
 
-  const handleScan = (codigo:string) => {
+  const handleScan = useCallback((codigo:string) => {
     alert(codigo)
+    alert ("Catalogo Id:"+catalog?.id)
     if (catalog && catalog.inscripciones ){
       setshowQr(false)
       const inscripciones = catalog.inscripciones.map(catalogo => {
@@ -50,7 +51,7 @@ alert ("Catalogo Id:"+catalog.id)
  
          actualizar(inscripciones,catalog!.id)
      }
-  }
+  },[catalog]);
 
   const handleError = (error:any) => {
     console.error(error);
