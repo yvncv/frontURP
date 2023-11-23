@@ -12,17 +12,7 @@ const VerCatalogo = () => {
   const router = useRouter();
   const {getCatalogId, updateCatalog} = useCatalog();
   const [showQr,setshowQr] = useState(true);
-//@ts-ignore
-  const catalog = useMemo<Catalog | null>(async ( ) => {
-
-    const catalogId = router.query.id;
-    if(catalogId && typeof catalogId === "string"){
-    const catalogo = await getCatalogId(catalogId);
-    console.log(catalogo);
-    return catalogo;
-    }
-   return null;
-  },[router])
+ const [catalog,setcalog] = useState<Catalog>();
 
   const actualizar = useCallback(async(inscripciones:any, catalogId:string) => {
 
@@ -57,6 +47,20 @@ alert ("Catalogo Id:"+catalog.id)
     console.error(error);
   }
 
+  useEffect (() => {
+    
+    const catalogId = router.query.id;
+    const load = async() =>{
+      if(catalogId && typeof catalogId === "string"){
+        const catalogo = await getCatalogId(catalogId);
+        console.log(catalogo);
+        return catalogo;
+        }
+    }
+    load()
+
+  },[] 
+  ) 
 
   return (
 
