@@ -6,7 +6,7 @@ const SidebarContext = createContext({
 });
 
 export const useSidebarContext = () => useContext(SidebarContext);
-
+//@ts-ignore
 export const SidebarProvider = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
