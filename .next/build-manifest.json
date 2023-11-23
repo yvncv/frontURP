@@ -25,20 +25,10 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/conferencia-curso/[id]": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/conferencia-curso/[id].js"
-    ],
     "/mis-conferencias": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
       "static/chunks/pages/mis-conferencias.js"
-    ],
-    "/solicitudes/solicitar-conferencia": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/solicitudes/solicitar-conferencia.js"
     ]
   },
   "ampFirstPages": []

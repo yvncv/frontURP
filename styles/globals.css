@@ -719,26 +719,28 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 60vh;
+    flex-wrap: wrap
 }
 
+
+.excepcion {
+    padding-top: 20px !important;
+}
 .seccion-mis-conferencias {
     display: flex;
     align-items: center;
     flex-direction: column;
     background-color: #ffffff;
     border-radius: 20px;
-    width: 341px;
     height: 360px;
     margin: 20px;
+    padding: 20px;
     padding-top: 70px;
     justify-content: space-around;
     box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
     position: relative;
-}
-
-.excepcion {
-    padding-top: 20px !important;
+    width: calc(100%/4);
+    min-width: 280px;
 }
 
 .seccion-mis-conferencias img {
@@ -761,6 +763,21 @@ button {
 .seccion-mis-conferencias a {
     text-decoration: none;
     color: #42B247;
+}
+@media (max-width: 767px) {
+    .contenido-mis-conferencias {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .seccion-mis-conferencias {
+        width: 100%;
+        margin: 10px 0;
+    }
+    [role="progressbar"]::before{
+        scale: .7;
+    }
+   
 }
 
 @keyframes progress {
