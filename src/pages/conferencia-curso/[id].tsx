@@ -39,12 +39,24 @@ const VerCatalogo = () => {
       setshowQr(false)
       const inscripciones = catalog.inscripciones.map(catalogo => {
 
-      if(catalogo.codigo === codigo){
+      if(catalogo.codigo === codigo && !catalogo.entrada){
           
-       catalogo.asistencia = "Si";
+       catalogo.entrada = true;
+
        return catalogo;
 
       }
+
+      if(catalogo.codigo === codigo && catalogo.entrada && !catalogo.salida){
+          
+        catalogo.salida = true;
+        catalogo.asistencia = "Si";
+    
+ 
+        return catalogo;
+ 
+       }
+
       return catalogo
 
  })
