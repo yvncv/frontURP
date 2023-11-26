@@ -63,7 +63,9 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo,estadoMod
         apellido: user?.apellido,
         codigo: user?.codigo,
         carrera: user?.escuela,
-        asistencia: "No"
+        asistencia: "No",
+        entrada: false,
+        salida: false
       };
       // Obtén la lista de objetos actual del campo JSON
       let la;
