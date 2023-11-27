@@ -22,18 +22,20 @@ export const CatalogRow = ({ catalog }: { catalog: Catalog }) => {
   return (
     <div className="catalog-row" key={`catalog-${catalog.id}`}>
       <div className="catalog-row-info">
+      <h5>{catalog.tema_conferencia}</h5>
+      <h6>{catalog.salon?.data?.attributes.nombre}</h6>
         <span>
           {formatearFecha(catalog.fecha)} -{" "}
           {/*@ts-ignore*/}
           {catalog.hora ? catalog.hora.slice(0, 5) : ""}
         </span>
-        <span>{catalog.salon?.data?.attributes.nombre}</span>
-        <span>{catalog.tema_conferencia}</span>
+
+
       </div>
       
       <div className="catalog-row-action flex-column">
       <Link
-          className="btnInscribir position-relative w-100"
+          className="btnPasarAsistencia btnInscribir position-relative w-100"
           href={`/conferencia-curso/${catalog.id}`}
         >
           Pasar asistencia
