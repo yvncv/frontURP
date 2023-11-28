@@ -47,7 +47,7 @@ export const SideBar = () => {
         </li>
         {
           // ROLE 4 ADMINISTRADOR
-          user?.role.id === 4 && (
+          user?.role.id === 1 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/administracion-salones">
@@ -95,11 +95,14 @@ export const SideBar = () => {
         }
         {
           // ROLE 5 SECRETARIA
-          user?.role.id === 4 && (
+          user?.role.id === 6 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/relacion-conferencias">
                   VER RELACIÓN DE CONFERENCIAS
+                </Link>
+                <Link className="nav-link" href="/convalidar-conferencia-A">
+                Convalidar Conferencias
                 </Link>
               </li>
             </>
