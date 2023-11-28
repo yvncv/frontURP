@@ -1,18 +1,98 @@
-import {api} from "../../utils/api";
+import { useEffect, useState } from "react";
+import { api } from "../../utils/api";
+import { Convalida } from "../../types/Convalida";
 
 export const useConvalida = () => {
-    const createConvalida = async (convalida: any, studentInfo: any): Promise<any> => {
-        const { data: { data: dataRaw } } = await api.post('/convalidas', {
-            data: convalida,
-        });
-  
-        return {
-            ...dataRaw.attributes,
-            id: dataRaw.id,
-        };
+    const [users, setUsers] = useState<Convalida[]>([]);
+    const [convalidan, setConvalida] = useState<Convalida[]>([]);
+
+    const createConvalida = async (data: Convalida): Promise<boolean> => {
+         const response = await api.post('/convalidas', {
+                 data,
+
+         }).catch(response => {
+             return response.response;
+         });
+
+        if (response.data?.error) {
+            const { details: { errors } } = response.data.error;
+
+
+            return false;
+        }
+
+         await getUsers();
+
+         return response.status === 200;
     };
 
-    return {
-        createConvalida
+    const removeConvalida = async (data: string) => {
+        await api.put(`/convalidas/${data}`, {
+          data: {
+            disponible: false,
+            miconf: false
+          }
+        });
+    
+        await getConvalida();
+      };
+    
+      const enabledConvalida = async (data: string) => {
+        await api.put(`/convalidas/${data}`, {
+          data: {
+            disponible: true,
+            miconf: false
+          }
+        });
+    
+        await getConvalida();
+      };
+    const getConvalida= async () => {
+        const { data: { data: dataRaw } } = await api.get('/convalidas');
+    
+        const convalidaMapping = dataRaw.map(({ id, attributes }: { id: number; attributes: any }) => ({
+          ...attributes,
+          id,
+        }));
+    
+        setConvalida(convalidaMapping);
+      };
+
+      const uploadPhoto = async (files: any): Promise<boolean> => {
+        const formData = new FormData();
+  
+        formData.append('files',files);
+        formData.append('ref','api::convalida.convalida');
+        formData.append('field','foto_certificado');
+  
+        const response = await api.post('/upload', formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        });
+  
+        return response.status === 200;
+    }
+
+
+    const getUsers = async () => {
+        const { data } = await api.get('/users');
+
+        setUsers(data);
     };
-}
+
+    useEffect(() => {
+        getConvalida();
+    }, []);
+
+    return {
+        users,
+        convalidan,
+        enabledConvalida,
+        removeConvalida,
+        createConvalida,
+        getConvalida,
+        uploadPhoto,
+       
+    };
+};

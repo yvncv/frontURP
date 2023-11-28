@@ -17,6 +17,7 @@ import DatePicker from 'react-datepicker';
 //import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
 
+
 //import 'react-time-picker/dist/TimePicker.css';
 import axios from 'axios';
 import { useSalonConferencia } from "../../hooks/salonConferencia/useSalonConferencia";
@@ -51,7 +52,8 @@ const NewCatalog = () => {
     //const [salonConferencia, setSalonConferencias] = useState<{ nombre: string; }[]>([]);
     //const { getSalonConferencias } = useSalonConferencia();
     const [salonId, setSalonId] = useState<number>(0);
-
+    const [errorMessage, setErrorMessage] = useState<string | null>(null);
+    
 
     const { SalonConferencia, getSalonConferencia } = useSalonConferencia();
 
@@ -175,8 +177,15 @@ const NewCatalog = () => {
                     <h1 className='mb-2'>Nueva solicitud</h1>
                 </div>
                 <hr />
+                
                 <div className=''>
-           
+                
+                {errorMessage && (
+                        <div className="alert alert-danger" role="alert">
+                            {errorMessage}
+                        </div>
+                    )}
+
 
                     <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>
                         <Form.Group controlId="formFileSm" className="mb-3">
@@ -233,6 +242,7 @@ const NewCatalog = () => {
                         <Form.Group className="form-group mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }}  >Fecha</Form.Label>
                             <DatePicker 
+                            
                                 minDate={new Date()}
                                 excludeDates={diasNoHabiles[salonId] || []}
                                 className="date-picker"
@@ -252,7 +262,7 @@ const NewCatalog = () => {
                         </Form.Group>
                         <Form.Group className="mb-3">
                             <Form.Label style={{ fontWeight: 'bold' }}>Hora</Form.Label>
-                            <select style={{ borderColor: '#00823A' }} {...register("hora")}>
+                            <select style={{ borderColor: 'green' }} {...register("hora",{ required: 'Este campo es requerido' })}>
                                 <option value="" disabled>
                                     Seleccionar
                                 </option>

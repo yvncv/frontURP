@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { useResponsivePageContext } from "../ResponsivePage/context";
 import { Button, Dropdown, Accordion } from "react-bootstrap";
+import Image from 'next/image';
+import { useSidebarContext } from '../SideBar/SidebarContext';
+
 export const SideBar = () => {
+  const { isSidebarOpen, toggleSidebar } = useSidebarContext();
   const { user } = useResponsivePageContext();
   return (
-    <div className="sidebar--admin">
+    <div className={`sidebar--admin ${isSidebarOpen ? 'active' : ''}`}>
       <div>
+      <button onClick={toggleSidebar} className="close-sidebar"><img src="\menu.svg" alt="Logo" /></button>
         <img src="\logo-urp.png" alt="" className="logo-urp" />
         <hr />
       </div>
@@ -42,7 +47,7 @@ export const SideBar = () => {
         </li>
         {
           // ROLE 4 ADMINISTRADOR
-          user?.role.id === 4 && (
+          user?.role.id === 1 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/administracion-salones">
@@ -53,7 +58,7 @@ export const SideBar = () => {
           )
         }
         {
-          // ROLE 7 DOCENTE
+          // ROLE 3 DOCENTE
           user?.role.id === 3 && (
             <>
             <Accordion defaultActiveKey="0" className="acordeon-confes">
@@ -69,9 +74,6 @@ export const SideBar = () => {
                   <Link className="nav-link" href="/relacion-conferencias">
                     Relación de conferencias
                   </Link>
-                  <Link className="nav-link" href="/conferencia-curso/">
-                    Conferencias en curso
-                  </Link>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -80,7 +82,7 @@ export const SideBar = () => {
         }
         {
           // ROLE 6 CENTRO DE EXTENSION
-          user?.role.id === 6 && (
+          user?.role.id === 7 && (
             <li className="nav-item">
               <Link className="nav-link" href="/administrar-solicitudes">
                 Administrar solicitudes de conferencias
@@ -90,11 +92,15 @@ export const SideBar = () => {
         }
         {
           // ROLE 5 SECRETARIA
-          user?.role.id === 4 && (
+          user?.role.id === 6 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/relacion-conferencias">
                   VER RELACIÓN DE CONFERENCIAS
+                </Link>
+                <br />
+                <Link className="nav-link" href="/convalida-conferencia-A">
+                  RELACIÓN DE CONVALIDACIONES
                 </Link>
               </li>
             </>
@@ -111,11 +117,8 @@ export const SideBar = () => {
                     <Link className="nav-link" href="/proximas-conferencias">
                       Próximas conferencias
                     </Link>
-                    <Link className="nav-link" href="/conferencias-pasadas">
+                    <Link className="nav-link" href="/repositorio">
                       Conferencias pasadas
-                    </Link>
-                    <Link className="nav-link" href="/sugiere-conferencia">
-                      Sugiere una conferencia
                     </Link>
                     <Link className="nav-link" href="/mis-conferencias">
                       Mis conferencias

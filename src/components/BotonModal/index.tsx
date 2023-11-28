@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { Catalog, Inscripcion } from "../../types/Catalog";
@@ -11,7 +12,7 @@ import { useCatalogs } from '../../hooks/catalog/useCatalogs';
 import { useUsers } from '../../hooks/user/useUsers';
 import { url } from 'inspector';
 import axios from 'axios';
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
     const fecha = new Date(fechaOriginal);
     fecha.setDate(fecha.getDate() + 1);
@@ -21,33 +22,33 @@ function formatearFecha(fechaOriginal) {
   
     return `${dia} de ${mes}`;
   }
-
-const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
+//@ts-ignore
+const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo,estadoModalQR,cambiarEstadoQR}) => {
     const { user } = useResponsivePageContext();
     const { updateUser} = useUsers();
     const { register, handleSubmit, formState: { errors } } = useForm<Catalog>();
+
+    const [estadoModal, cambiarEstadoModal] = useState(false);
   
     const { updateCatalog } = useCatalog(); // Asegúrate de importar la función updateCatalog correctamente.
   
     const { catalogs, myCatalog } = useCatalogs();
 
-    const [estadoModal, cambiarEstadoModal] = useState(false);
-
     const [fotoUrl, setFotoUrl] = useState();
 
-    // useEffect(() => {
-    //   const fetchData = async () => {
-    //     try {
-    //       const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalogo.id}?populate=foto`);
-    //       setFotoUrl(apiFoto.data.data.attributes.foto);
-    //       console.log(fotoUrl);
-    //     } catch (error) {
-    //       console.error("Error al obtener la foto:", error);
-    //     }
-    //   };
+    useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const apiFoto = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/catologos/${catalogo.id}?populate=foto`);
+          setFotoUrl(apiFoto.data.data.attributes.foto);
+          console.log(fotoUrl);
+        } catch (error) {
+          console.error("Error al obtener la foto:", error);
+        }
+      };
   
-    //   fetchData();
-    // }, [catalogo.id]);
+      fetchData();
+    }, [catalogo.id]);
 
     //al darle click al boton
     const handleOnSubmit = async (data: any) => {
@@ -62,31 +63,47 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
         apellido: user?.apellido,
         codigo: user?.codigo,
         carrera: user?.escuela,
-        asistencia: "No"
+        asistencia: "No",
+        entrada: false,
+        salida: false
       };
       // Obtén la lista de objetos actual del campo JSON
-      let listaDeAlumnos: Inscripcion[] = [];
+      let la;
+      if(catalogo.inscripciones != null) {
+        let listaDeAlumnos = catalogo.inscripciones;
+        la = modificarInscripciones(listaDeAlumnos);
+      }
+      else{
+        let listaDeAlumnos: Inscripcion[] = [];
+        la = modificarInscripciones(listaDeAlumnos);
+      }
 
+      function modificarInscripciones(listaDeAlumnos:any) {
+        let flag = false;
         if(listaDeAlumnos?.length == 0){
           listaDeAlumnos.push(nuevoAlumno);
         }
         else{
+          //@ts-ignore
           listaDeAlumnos.forEach(alumno => {
             if(alumno.codigo != nuevoAlumno.codigo) {
-              listaDeAlumnos.push(nuevoAlumno);
+              flag = true;
             }
             else{
               console.log("El alumno ya se inscrbio")
             }
           });
+          //@ts-ignore
+          if (flag == true){
+            listaDeAlumnos.push(nuevoAlumno);
+          }
         }
-        
+        return listaDeAlumnos;
+      }
   
       // Actualiza el campo JSON del catálogo con la lista actualizada
       const updatedCatalog = {
-        ...catalogo,
-        inscripciones: listaDeAlumnos,
-        // foto: fotoUrl,
+        inscripciones: la,
       };
   
       // Llama a la función updateCatalog para actualizar el catálogo con la nueva lista de objetos.
@@ -96,10 +113,11 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
       if (response) {
         console.log("Nuevo alumno registrado con éxito:", response);
         // Realiza cualquier otra acción necesaria después de la actualización.
+        cambiarEstadoQR(!estadoModalQR);
       } else {
         console.error("Error al registrar al nuevo alumno.");
       }
-      cambiarEstadoModal(!estadoModal);
+      cambiarEstado(!estado);
     };
 
     const fechaFormateada = formatearFecha(Date.parse(catalogo?.fecha));
@@ -157,9 +175,6 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo}) => {
                       <div className="botones-modal">
                         <button className="inscribirme-ahora" onClick={handleSubmit(handleOnSubmit)} >INSCRIBIRME AHORA</button>
                       </div>
-                      <ModalQR
-                      estado={estadoModal}
-                      cambiarEstado={cambiarEstadoModal}/>
                     </div>
                   </div>
                 </div>

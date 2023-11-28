@@ -4,7 +4,8 @@ import { useState } from "react";
 import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import CatalogModalConfirm from "../../components/CatalogModalConfirmation";
-
+import Image from 'next/image';
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
   const dia = fecha.getDate();
@@ -17,8 +18,8 @@ function formatearFecha(fechaOriginal) {
 
   return `${diaFormateado}/${mesFormateado}/${anio}`;
 }
-
-const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
+//@ts-ignore
+const CatalogModal = ({ estado, cambiarEstado, catalog, setCatalogo }) => {
   const { catalogs, removeCatalog, enabledCatalog } = useCatalogs();
   const handleRemoveCatalog = async (catalogId: string) => {
     await removeCatalog(catalogId);
@@ -34,7 +35,7 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
   const aprobar = "Aprobar";
   const rechazar = "Rechazar";
 
-  const fechaFormateada = formatearFecha(Date.parse(catalogo?.fecha));
+  const fechaFormateada = formatearFecha(Date.parse(catalog?.fecha));
   return (
     <>
       {estado && (
@@ -52,27 +53,27 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
             <div className="contenido">
               <div className="seccion-tema-descripcion">
                 <h5>Tema de conferencia: </h5>
-                <p>{catalogo.tema_conferencia}</p>
+                <p>{catalog.tema_conferencia}</p>
               </div>
               <div className="seccion-tema-descripcion">
                 <h5>Descripción: </h5>
-                <p>{catalogo.descripcion === null ? "No establecida" : catalogo.descripcion}</p>
+                <p>{catalog.descripcion === null ? "No establecida" : catalog.descripcion}</p>
               </div>
               <div className="seccion">
                 <h5>Expositor: </h5>
-                <p>{catalogo.expositor === null ? "No establecido" : catalogo.expositor}</p>
+                <p>{catalog.expositor === null ? "No establecido" : catalog.expositor}</p>
               </div>
               <div className="seccion">
                 <h5>Dirigido a: </h5>
-                <p>{catalogo.dirigido === null ? "No establecido" : catalogo.dirigido}</p>
+                <p>{catalog.dirigido === null ? "No establecido" : catalog.dirigido}</p>
               </div>
               <div className="seccion">
                 <h5>Solicitado por: </h5>
-                <p>{catalogo.solicitado_por === null ? "No establecido" : catalogo.solicitado_por}</p>
+                <p>{catalog.solicitado_por === null ? "No establecido" : catalog.solicitado_por}</p>
               </div>
               <div className="seccion">
                 <h5>Salón: </h5>
-                <p>{catalogo?.salons&&salons.data[0].attributes.nombre === null ? "No establecido" : catalogo?.salons&&salons.data[0].attributes.nombre}</p>
+                <p>{catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}</p>
               </div>
               <div className="seccion">
                 <h5>Fecha: </h5>
@@ -80,7 +81,7 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
               </div>
               <div className="seccion">
                 <h5>Hora: </h5>
-                <p>{catalogo.hora === null ? "No establecida" : catalogo.hora.slice(0, 5)}</p>
+                <p>{catalog.hora === null ? "No establecida" : catalog.hora.slice(0, 5)}</p>
               </div>
 
               <div className="seccion-botones">
@@ -116,7 +117,7 @@ const CatalogModal = ({ estado, cambiarEstado, catalogo, setCatalogo }) => {
           <CatalogModalConfirm
           estado={estadoModal}
           cambiarEstado={cambiarEstadoModal}
-          catalogo={catalogo}
+          catalogo={catalog}
           setCatalogo={setCatalogo}
           tipo={tipo}
         />

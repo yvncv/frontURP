@@ -4,7 +4,7 @@ export type Catalog = {
   id: string;
   tema_conferencia: string;
   descripcion: string;
-  foto:string; 
+  foto:any; 
   expositor: string;
   fecha: Date;
   hora: DateSchema;
@@ -23,4 +23,6 @@ export type Inscripcion = {
     codigo: string;
     carrera: string;
     asistencia: string;
+    entrada: boolean;
+    salida: boolean;
 };
