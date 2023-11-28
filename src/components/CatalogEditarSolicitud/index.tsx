@@ -7,12 +7,13 @@ import { AnyMxRecord } from "dns";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from "react-hook-form";
+//@ts-ignore
 import DatePicker from 'react-datepicker';
 //import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { useSalonConferencia } from "../../hooks/salonConferencia/useSalonConferencia";
 
-
+//@ts-ignore
 function formatearFecha(fechaOriginal) {
   const fecha = new Date(fechaOriginal);
   fecha.setDate(fecha.getDate() + 1);
@@ -66,6 +67,7 @@ const horasDelDia = [
       horaValue: "09:00:00.000",
   },
 ];
+//@ts-ignore
 const CatalogModalEditar = ({ estado, cambiarEstado,catalogo,setCatalogo}) => {
   const router = useRouter();
   const { catalogs, removeCatalog, setEditedCatalog, onUpdateCatalog, enabledCatalog } =
