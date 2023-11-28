@@ -9,22 +9,22 @@ import { Convalida } from "../types/Convalida";
 import { useRouter } from "next/router";
 import { useConvalidas } from "../hooks/convalida/useConvalidas";
 import axios from "axios";
+import { api } from "../utils/api";
+
 
 const Convalidar = ({ id }: { id: number }) => {
   
-  const handleDescargarImagen = async (convalidaId: any) => {
+  const handleDescargarImagen = async (convalidaId: any,foto_certificado:string) => {
     
     try {
       // hacer get en el strapi con el id 
-      const response = await axios.get(`https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/convalidas/${convalidaId}`);
-      const imagen = response.data.data.attributes.foto_certificado; // Suponiendo que la respuesta contiene la URL de la imagen
+      
+      const imagen = foto_certificado; // Suponiendo que la respuesta contiene la URL de la imagen
 
-      const apiAxios = axios.create({
-        baseURL: 'https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api', // Cambia esto a la URL de tu API
-      });
+      
 
       // decargar la imagen
-      const imagenResponse = await apiAxios.get(imagen, { responseType: 'arraybuffer' });
+      const imagenResponse = await api.get(imagen, { responseType: 'arraybuffer' });
       const blob = new Blob([imagenResponse.data], { type: 'image/jpeg' });
 
       // crea enlace temporal al hacer clic ddescarga
@@ -84,7 +84,7 @@ const Convalidar = ({ id }: { id: number }) => {
                   <td>
                     {/* <Button className='me-2' variant='danger' onClick={() => handleRemoveCatalog(catalog.id)}>Rechazar</Button>
                               <Button variant='primary' onClick={() => handleAddCatalog(catalog.id)}>Aprobar</Button> */}
-                            <button onClick={() => handleDescargarImagen(convalida.id)}>Descargar Imágenes</button>
+                            <button onClick={() => handleDescargarImagen(convalida.id,convalida.foto_certificado)}>Descargar Imágenes</button>
                     <Button
                       className="btn-ojo"
                       onClick={() => {

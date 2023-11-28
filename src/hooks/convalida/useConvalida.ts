@@ -7,11 +7,9 @@ export const useConvalida = () => {
     const [convalidan, setConvalida] = useState<Convalida[]>([]);
 
     const createConvalida = async (data: Convalida): Promise<boolean> => {
-         const response = await api.post('/convalidars', {
-                 ...data,
-                 tema_conferencia:data.tema_conferencia,
-                 nombre_institucion: data.nombre_institucion,
-                 ubicacion: data.ubicacion,
+         const response = await api.post('/convalidas', {
+                 data,
+
          }).catch(response => {
              return response.response;
          });
