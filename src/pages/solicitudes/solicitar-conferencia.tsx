@@ -49,6 +49,7 @@ const NewCatalog = () => {
         const catalog = {
             ...data,
             fecha: selectedDate,
+            solicitado_por: 'Pedro Carpio'
         };
 {/*@ts-ignore*/}
         const response = await createCatalog(catalog);

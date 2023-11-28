@@ -74,9 +74,6 @@ export const SideBar = () => {
                   <Link className="nav-link" href="/relacion-conferencias">
                     Relación de conferencias
                   </Link>
-                  <Link className="nav-link" href="/conferencia-curso/">
-                    Conferencias en curso
-                  </Link>
                 </Accordion.Body>
               </Accordion.Item>
             </Accordion>
@@ -101,8 +98,9 @@ export const SideBar = () => {
                 <Link className="nav-link" href="/relacion-conferencias">
                   VER RELACIÓN DE CONFERENCIAS
                 </Link>
-                <Link className="nav-link" href="/convalidar-conferencia-A">
-                Convalidar Conferencias
+                <br />
+                <Link className="nav-link" href="/convalida-conferencia-A">
+                  RELACIÓN DE CONVALIDACIONES
                 </Link>
               </li>
             </>
@@ -119,11 +117,8 @@ export const SideBar = () => {
                     <Link className="nav-link" href="/proximas-conferencias">
                       Próximas conferencias
                     </Link>
-                    <Link className="nav-link" href="/conferencias-pasadas">
+                    <Link className="nav-link" href="/repositorio">
                       Conferencias pasadas
-                    </Link>
-                    <Link className="nav-link" href="/sugiere-conferencia">
-                      Sugiere una conferencia
                     </Link>
                     <Link className="nav-link" href="/mis-conferencias">
                       Mis conferencias

@@ -74,11 +74,14 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
       <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
       <div className="card-inscrito">
         <div className="card-inscrito-seccion-texto">
-          <div className="card-estado-conferencia">{estado === "Asistió"? (
-            <img src="\icon-check.png" alt="asistio" />
-          ): estado === "No asistió"? (
-            <img src="\icon-equis.png" alt="noAsistio" />
-          ): <img src="\icon-clock.png" alt="pendiente" />}</div>
+        {/*@ts-ignore
+          <div className="card-estado-conferencia">
+            {estado === "Pendiente"?  <img src="\icon-clock.png" alt="pendiente" /> :
+            (estado === "Asistió"?
+            <img src="\icon-check.png" alt="asistio" /> : <img src="\icon-equis.png" alt="noAsistio" />)}
+          </div>
+
+          */}
           <p className="card-inscrito-texto">
             <img src="\calendario-icon-black.svg" alt="fecha" />
             {catalog.fecha} -{" "}

@@ -26,6 +26,7 @@ h6 {
     justify-content: space-between;
     margin-left: auto;
     width: calc(100% - 250px);
+    justify-content: space-between;
 }
 
 .card-body {
@@ -1088,7 +1089,6 @@ button {
 .contenido-tabla-relaciones {
     width: 100%;
     border-collapse: collapse;
-    border: 1px solid #ccc;
 }
 
 .seccion-tabla-relaciones {
@@ -1303,4 +1303,29 @@ textarea:focus {
     .contenedor-main .iniciar-sesion-pg{
         margin: 0;
     }
+}
+
+
+.contenedor-buscador-general{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.botones-tabla{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+.botones-tabla button{
+    background-color: #00662e;
+    border: none;
+    outline: none;
+}
+.botones-tabla button:hover{
+    background-color: #1f884e;
+}
+.btnPasarAsistencia{
+    text-align: center;
+    text-decoration: none;
+    background-color: #28a745;
 }
