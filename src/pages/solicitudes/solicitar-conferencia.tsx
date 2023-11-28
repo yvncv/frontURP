@@ -2,7 +2,7 @@ import { ResponsivePage } from "../../components/ResponsivePage";
 import { Button, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { Catalog } from "../../types/Catalog";
-import { useEffect, useMemo, useState } from "react";
+import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { useRouter } from 'next/router';
@@ -25,6 +25,7 @@ import { Salon } from "../../types/Salon";
 import { number } from "yup";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { api } from "../../utils/api";
 
 
 const schema = yup.object().shape({
@@ -58,7 +59,13 @@ const NewCatalog = () => {
     const { SalonConferencia, getSalonConferencia } = useSalonConferencia();
 
     const handleSwitch = () => setIsAvailable(!isAvailable);
+    const [file, setFile] = useState<File | null>(null);
 
+    const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+      const selectedFile = event.target.files && event.target.files[0];
+      console.log("VerConvalida.handleChange event.target.files", selectedFile);
+      setFile(selectedFile);
+    };
     const handleOnSubmit = async (data: any) => {
         //console.log(" Selectdate ",selectedDate);
         const isValid = await trigger(); // Este método activará todas las validaciones y devolverá un booleano
@@ -66,9 +73,19 @@ const NewCatalog = () => {
 
 
         if (isValid) {
+            const formData = new FormData();
+    if(file)
+    formData.append("files", file); // Asumiendo que 'file' está definido en tu componente
+    
+         const {data: uploadRes} = await api.post("upload/",formData,{
+         headers: {
+         "Content-Type": "multipart/form-data",
+          },
+         });
         const catalog = {
             ...data,
            fecha: selectedDate,
+           foto: uploadRes[0].id,
         };
        
         {/*@ts-ignore*/ }
@@ -78,6 +95,7 @@ const NewCatalog = () => {
             await router.push('/solicitudes');
         }
     }
+    
     };
     
     const diasNoHabiles = useMemo(() => {
@@ -190,7 +208,10 @@ const NewCatalog = () => {
                     <Form className="envio-solicitud-form" onSubmit={handleSubmit(handleOnSubmit)}>
                         <Form.Group controlId="formFileSm" className="mb-3">
                             <Form.Label>FOTO</Form.Label>
-                            <Form.Control type="file" size="sm" />
+                            <Form.Control type="file" size="sm" onChange={(e:any) => {
+        
+                                    handleChange(e);
+                               }} />
                         </Form.Group>
                         <Form.Group className="form-group mb-3">
                             <Form.Label>Tema de la conferencia</Form.Label>
