@@ -1,5 +1,6 @@
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { Catalog } from "../../types/Catalog";
+import { Salon } from "../../types/Salon";
 import { ResponsivePage } from "../../components/ResponsivePage";
 //@ts-ignore
 import Quagga from 'quagga';
@@ -8,13 +9,14 @@ import { useRouter } from "next/router";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
 
+let contador = 0;
 
 const VerCatalogo = () => {
   const router = useRouter();
   const {getCatalogId, updateCatalog} = useCatalog();
   const [catalogo, setCatalogo] = useState<Catalog | null>(null);
   const [showQr,setshowQr] = useState(true);
-
+  
   //lector barras
   const firstUpdate = useRef(true);
   const [isStart, setIsStart] = useState(false);
@@ -32,6 +34,7 @@ const VerCatalogo = () => {
 
     const estaInscrito = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo)
     const asistido = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo && catalogo.asistencia === "Si")
+    const marcoEntrada = catalog.inscripciones.some((catalogo:any)=> catalogo.codigo === codigo && catalogo.entrada === true)
     if (!estaInscrito){
       alert("Usted No esta Inscrito en esta conferencia")
       return;
@@ -41,6 +44,13 @@ const VerCatalogo = () => {
       alert("Ya marcó asistencia")
       return;
     }
+
+    console.log(contador);
+    if(contador>=catalog.salon?.data?.attributes.aforo && !marcoEntrada){
+      alert("Ya esta full el salon")
+      return
+    
+      }
    
       setshowQr(false)
       const inscripciones = catalog.inscripciones.map(catalogo => {
@@ -48,10 +58,12 @@ const VerCatalogo = () => {
       if(catalogo.codigo === codigo && !catalogo.entrada){
           
        catalogo.entrada = true;
-
+       
+       contador = contador + 1;
        return catalogo;
 
       }
+
 
       if(catalogo.codigo === codigo && catalogo.entrada && !catalogo.salida){
           
@@ -62,13 +74,18 @@ const VerCatalogo = () => {
         return catalogo;
  
        }
+      
 
       return catalogo
 
  })
 
  
+         
+
+         console.log(catalog.salon?.data?.attributes.aforo);
          actualizar(inscripciones,catalogId)
+         
      
   },[]);
 
@@ -79,6 +96,7 @@ const VerCatalogo = () => {
   useEffect(() => {
     return () => {
       if (isStart) stopScanner();
+      
     };
   }, []);
 
@@ -102,7 +120,7 @@ const VerCatalogo = () => {
          if(catalogId && typeof catalogId === "string"){
 
             const catalogo = await getCatalogId(catalogId);
-            console.log(catalogo);
+           
             handleScan(res.codeResult.code,catalogo,catalogId);
 
       
@@ -318,6 +336,9 @@ const VerCatalogo = () => {
       <span>Barcode: {barcode}</span>
     </React.Fragment>}
   </div>
+  <div>
+        <span>Contador: {contador}</span>
+      </div>
     </ResponsivePage>
 
    

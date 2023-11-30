@@ -12,7 +12,7 @@ export const useCatalog = () => {
       };
   };
   const getCatalogId = async (catalogId: string) => {
-    const response = await api.get(`/catologos/${catalogId}`);
+    const response = await api.get(`/catologos/${catalogId}?populate=*`);
     const catalogData = response.data.data.attributes;
     return catalogData;
   }
