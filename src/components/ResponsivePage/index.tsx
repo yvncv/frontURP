@@ -28,8 +28,12 @@ export const ResponsivePage = ({ children, user }: ResponsivePageProps) => {
 
     useEffect(() => {
         const userRaw = localStorage.getItem('user');
+        console.log(userRaw);
         if (userRaw) {
             const user = JSON.parse(userRaw) as User;
+
+            
+
 
             if (user) {
                 const isEmployee = user.role.id !== 999;

@@ -55,12 +55,13 @@ export const BuscadorRepo = () => {
         catalog.expositor
           .toString()
           .toLowerCase()
-          .includes(terminoBusqueda.toLowerCase()) ||
-        catalog.dirigido
+          .includes(terminoBusqueda.toLowerCase())
+          ||
+        catalog.dirigido && catalog.dirigido
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
-        catalog?.salon.data?.attributes?.nombre
+          catalog?.salon.data?.attributes?.nombre
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
@@ -68,7 +69,7 @@ export const BuscadorRepo = () => {
           .toString()
           .toLowerCase()
           .includes(terminoBusqueda.toLowerCase()) ||
-        (terminoBusqueda.toLowerCase() === "hoy" &&
+          (terminoBusqueda.toLowerCase() === "hoy" &&
           fechaConferencia.toLocaleDateString() == hoy.toLocaleDateString())
       ) {
         return catalog;

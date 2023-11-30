@@ -42,44 +42,50 @@ const IniciarSesion = (props: { user?: User }) => {
     };
 
     return (
-        <ResponsivePage user={user}>
-            <div className='container mt-5 mb-5 iniciar-sesion-pg'>
-                <div className='d-flex flex-column justify-content-center align-items-center cont-login'>
-                    <div>
-                    <h1>Iniciar Sesion</h1>
-                    <Form onSubmit={handleSubmit(handleOnSubmit)}>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" {...register("email")} />
-                            {errors.email && (
-                                <Form.Text className='text-danger'>
-                                    {errors.email.message}
-                                </Form.Text>
-                            )}
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Label>Contraseña</Form.Label>
-                            <Form.Control type="password" {...register("password")} />
-                            {errors.password && (
-                                <Form.Text className='text-danger'>
-                                    {errors.password.message}
-                                </Form.Text>
-                            )}
-                        </Form.Group>
-                        <Button variant="primary" type='submit' className="btn_loguin">
-                            Iniciar sesion
-                        </Button>
-                    </Form>
-                    
-                    <hr />
-                    <p className="enlace-extra-login">Aun no tienes una cuenta? ingresa <Link href="/registrarse">aqui</Link></p>
-                <p className="enlace-extra-login">Olvidaste tu contraseña? ingresa <Link href="/olvidaste-contrasena">aqui</Link></p>
-                    </div>
-
-                </div>
-
+        <div className="iniciar-sesion-pg">
+        <Form className="formulario-login-urp" onSubmit={handleSubmit(handleOnSubmit)}>
+            <h1>Intranet - U R P</h1>
+            <Form.Group className="mb-3">
+                <Form.Label>Email</Form.Label>
+                <Form.Control type="email" {...register("email")} />
+                {errors.email && (
+                    <Form.Text className="text-danger">
+                        {errors.email.message}
+                    </Form.Text>
+                )}
+            </Form.Group>
+            <Form.Group className="mb-3">
+                <Form.Label>Contraseña</Form.Label>
+                <Form.Control type="password" {...register("password")} />
+                {errors.password && (
+                    <Form.Text className="text-danger">
+                        {errors.password.message}
+                    </Form.Text>
+                )}
+            </Form.Group>
+            <Button variant="primary" type="submit" className="btn_loguin">
+                Iniciar sesion
+            </Button>
+        </Form>
+        <div
+            className="waveWrappe r waveAnimation">
+            <div className="waveWrapperInner bgTop">
+                <div
+                    className="wave waveTop"
+                ></div>
             </div>
-        </ResponsivePage>
+            <div className="waveWrapperInner bgMiddle">
+                <div
+                    className="wave waveMiddle"
+                ></div>
+            </div>
+            <div className="waveWrapperInner bgBottom">
+                <div
+                    className="wave waveBottom "
+                ></div>
+            </div>
+        </div>
+    </div>
     );
 }
 
