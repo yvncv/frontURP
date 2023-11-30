@@ -779,6 +779,17 @@ button {
     text-decoration: none;
     color: #42B247;
 }
+
+#scanner-container {
+    position: relative;
+  }
+   
+  .drawingBuffer {
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
 @media (max-width: 767px) {
     .contenido-mis-conferencias {
         flex-direction: column;
