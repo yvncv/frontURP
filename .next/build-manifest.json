@@ -1,34 +1,258 @@
 {
   "polyfillFiles": [
-    "static/chunks/polyfills.js"
+    "static/chunks/polyfills-c67a75d1b6f99dc8.js"
   ],
-  "devFiles": [
-    "static/chunks/react-refresh.js"
-  ],
-  "ampDevFiles": [
-    "static/chunks/webpack.js",
-    "static/chunks/amp.js"
-  ],
+  "devFiles": [],
+  "ampDevFiles": [],
   "lowPriorityFiles": [
-    "static/development/_buildManifest.js",
-    "static/development/_ssgManifest.js"
+    "static/1fznG_Sc51pWpw80rmmQY/_buildManifest.js",
+    "static/1fznG_Sc51pWpw80rmmQY/_ssgManifest.js"
   ],
   "rootMainFiles": [],
   "pages": {
+    "/": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/653-6979a9a4ee49e4e8.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/612-1b21639bd9db8ced.js",
+      "static/chunks/pages/index-b71238bf38ea5b32.js"
+    ],
     "/_app": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_app.js"
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/css/0f0b7f550c7032e8.css",
+      "static/chunks/pages/_app-988317168c1ca9c8.js"
     ],
     "/_error": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/_error.js"
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/pages/_error-8e848193de3c139c.js"
+    ],
+    "/administracion-salones": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/administracion-salones-68918fa5cbe52b3d.js"
+    ],
+    "/administrar-solicitudes": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/administrar-solicitudes-7f6fb793a300c510.js"
+    ],
+    "/conferencia-curso/[id]": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/369-d6e99ad779d4a3ee.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/conferencia-curso/[id]-6878c498aacea2da.js"
+    ],
+    "/conferencias-pasadas": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/conferencias-pasadas-35a43d7b67f4fa55.js"
+    ],
+    "/convalida-conferencia": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/convalida-conferencia-6c3ebf1e1c6c86a9.js"
+    ],
+    "/convalida-conferencia-A": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/convalida-conferencia-A-f9facea0755bcf2a.js"
+    ],
+    "/convalidar-conferencia-A": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/convalidar-conferencia-A-cbfc18e5c14c713c.js"
     ],
     "/iniciar-sesion": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/iniciar-sesion.js"
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/pages/iniciar-sesion-93c62b655ee63a5a.js"
+    ],
+    "/mis-conferencias": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/653-6979a9a4ee49e4e8.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/612-1b21639bd9db8ced.js",
+      "static/chunks/pages/mis-conferencias-cd183158e2a99b2b.js"
+    ],
+    "/olvidaste-contrasena": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/olvidaste-contrasena-56d544a5d887ea30.js"
+    ],
+    "/perfil": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/perfil-d6be4a154e1c6bf4.js"
+    ],
+    "/proximas-conferencias": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/c16184b3-0133c1887aba0a68.js",
+      "static/css/455380e8d74e6160.css",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/455-07fdf57e3bf4b943.js",
+      "static/chunks/653-6979a9a4ee49e4e8.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/612-1b21639bd9db8ced.js",
+      "static/chunks/pages/proximas-conferencias-206b0829e9a1d7d1.js"
+    ],
+    "/registrarse": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/registrarse-df4214610e6aa087.js"
+    ],
+    "/relacion-conferencias": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/c16184b3-0133c1887aba0a68.js",
+      "static/css/455380e8d74e6160.css",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/455-07fdf57e3bf4b943.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/relacion-conferencias-439b6a0b2468a095.js"
+    ],
+    "/repositorio": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/c16184b3-0133c1887aba0a68.js",
+      "static/css/455380e8d74e6160.css",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/455-07fdf57e3bf4b943.js",
+      "static/chunks/291-891f5dcd707fe91c.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/repositorio-41f3b67183f0ade5.js"
+    ],
+    "/restablecer-contrasena": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/restablecer-contrasena-b899e47bf85da7a3.js"
+    ],
+    "/solicitudes": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/css/194767c9b65e6f06.css",
+      "static/chunks/960-1127dbad87fff24c.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/solicitudes-50d6edf42d23fe9b.js"
+    ],
+    "/solicitudes/solicitar-conferencia": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/css/194767c9b65e6f06.css",
+      "static/chunks/960-1127dbad87fff24c.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/solicitudes/solicitar-conferencia-e09c0ff19ae50fe6.js"
+    ],
+    "/sugiere-conferencia": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/sugiere-conferencia-6a9a803bedb4a305.js"
+    ],
+    "/usuario": [
+      "static/chunks/webpack-4f514a437c77bb0f.js",
+      "static/chunks/framework-ffee79c6390da51e.js",
+      "static/chunks/main-e71c796c4d7cc2e4.js",
+      "static/chunks/560-822f3ad81dbd52b7.js",
+      "static/chunks/366-7571ee56cf6fd197.js",
+      "static/chunks/732-05ee9aacfc5c0547.js",
+      "static/chunks/325-64cfe7941537987f.js",
+      "static/chunks/648-93495260cd90262f.js",
+      "static/chunks/776-af1f5d4956bd9011.js",
+      "static/chunks/pages/usuario-cf1361cd90dfaeee.js"
     ]
   },
   "ampFirstPages": []

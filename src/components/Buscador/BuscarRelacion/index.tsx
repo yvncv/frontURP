@@ -12,14 +12,15 @@ export const BuscadorRelacion = () => {
   const { catalogs } = useCatalogs();
 
   useEffect(() => {
+    //@ts-ignore
     setConfe(catalogs);
   }, [catalogs]);
-
+//@ts-ignore
   const handleChange = (e) => {
     setBusqueda(e.target.value);
     filtrar(e.target.value);
   };
-
+//@ts-ignore
   const filtrar = (terminoBusqueda) => {
     const resultadosBusqueda = catalogs.filter((catalog) => {
       return (
@@ -42,6 +43,7 @@ export const BuscadorRelacion = () => {
           .includes(terminoBusqueda.toLowerCase()))
       );
     });
+    //@ts-ignore
     setConfe(resultadosBusqueda);
   };
 
@@ -65,6 +67,7 @@ export const BuscadorRelacion = () => {
 
       <div className="container contenedor-proximos">
         {conferencias.map((catalog) => (
+          //@ts-ignore
             <CatalogRow key={catalog.id} catalog={catalog} />
           ))}
       </div>
