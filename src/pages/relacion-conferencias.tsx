@@ -1,6 +1,7 @@
 import {ResponsivePage} from "../components/ResponsivePage";
 import {useCatalogs} from "../hooks/catalog/useCatalogs";
 import {CatalogRow} from "../components/CatalogCard/tablecatalog";
+import {BuscadorRelacion} from "../components/Buscador/BuscarRelacion"
 
 const VerCatalogo = () => {
     const { catalogs } = useCatalogs(); // Usar "catalogs" en lugar de "catalogsClient"
@@ -16,11 +17,9 @@ const VerCatalogo = () => {
                 <h2>Ver relación de conferencias</h2>
             </div>
             
+            <BuscadorRelacion/>
 
-
-            {conferenciasDisponibles.map((catalog) => (
-            <CatalogRow key={catalog.id} catalog={catalog} /> // Usar "catalog.id" como clave
-          ))}
+        
 
         </ResponsivePage>
     );

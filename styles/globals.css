@@ -721,6 +721,8 @@ button {
 .envio-solicitud-form {
     width: 100%;
     max-width: 350px;
+    margin-right: auto;
+    width: 100%;
 }
 
 .header-mis-conferencias {
@@ -779,17 +781,6 @@ button {
     text-decoration: none;
     color: #42B247;
 }
-
-#scanner-container {
-    position: relative;
-  }
-   
-  .drawingBuffer {
-    position: absolute;
-    left: 0;
-    top: 0;
-  }
-
 @media (max-width: 767px) {
     .contenido-mis-conferencias {
         flex-direction: column;
@@ -1133,8 +1124,7 @@ button {
 }
 
 .envio-solicitud-form {
-    margin: 0 auto;
-    width: 50%;
+
 }
 
 .envio-solicitud-form input,

@@ -92,6 +92,7 @@ const NewCatalog = () => {
         const response = await createCatalog(catalog);
 
         if (response) {
+            alert('Envio de solicitud exitoso, su solicitud está pendiente por responder');
             await router.push('/solicitudes');
         }
     }
