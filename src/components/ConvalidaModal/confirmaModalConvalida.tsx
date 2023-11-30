@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import { Catalog } from "../../types/Catalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { useConvalidas } from "../../hooks/convalida/useConvalidas";
-
+//@ts-ignore
 const CatalogModalConfirm = ({estado, cambiarEstado, convalida, setConvalidas, tipo}) => {
     const { convalidan, removeConvalida, enabledConvalida } = useConvalidas();
     const handleRemoveCatalog = async (catalogId: string) => {

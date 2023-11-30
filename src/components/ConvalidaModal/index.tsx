@@ -3,8 +3,8 @@ import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import {Convalida} from "../../types/Convalida";
 import {useConvalidas} from "../../hooks/convalida/useConvalidas";
-import ModalConfirmaConvalida from "../../components/ConvalidaModal/confirmaModalConvalida";
-
+import ModalConfirmaConvalida from "./confirmaModalConvalida";
+//@ts-ignore
 const ConvalidaModal = ({ convalida , setConvalidas, cambiarEstado, estado}) => {
   const { users, enabledConvalida , removeConvalida} = useConvalidas();
  
@@ -68,6 +68,7 @@ const ConvalidaModal = ({ convalida , setConvalidas, cambiarEstado, estado}) => 
           estado={estadoModal}
           cambiarEstado={cambiarEstadoModal}
           convalida={convalida}
+          //@ts-ignore
           setConvalida={setConvalidas}
           tipo={tipo}
         />

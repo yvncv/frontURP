@@ -47,7 +47,7 @@ export const SideBar = () => {
         </li>
         {
           // ROLE 4 ADMINISTRADOR
-          user?.role.id === 4 && (
+          user?.role.id === 1 && (
             <>
               <li className="nav-item">
                 <Link className="nav-link" href="/administracion-salones">

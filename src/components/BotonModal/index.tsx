@@ -63,7 +63,9 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo,estadoMod
         apellido: user?.apellido,
         codigo: user?.codigo,
         carrera: user?.escuela,
-        asistencia: "No"
+        asistencia: "No",
+        entrada: false,
+        salida: false
       };
       // Obtén la lista de objetos actual del campo JSON
       let la;
@@ -107,7 +109,7 @@ const ModalInscribir = ({ estado, cambiarEstado, catalogo, setCatalogo,estadoMod
       // Llama a la función updateCatalog para actualizar el catálogo con la nueva lista de objetos.
       const response = await updateCatalog(catalogo.id, updatedCatalog);
 
-  
+          
       if (response) {
         console.log("Nuevo alumno registrado con éxito:", response);
         // Realiza cualquier otra acción necesaria después de la actualización.

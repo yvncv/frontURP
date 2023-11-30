@@ -7,6 +7,7 @@ import { useRouter } from "next/router";
 import { useConvalida } from "../hooks/convalida/useConvalida";
 import { Convalida } from "../types/Convalida";
 import axios from "axios";
+import { api } from "../utils/api";
 
 
 
@@ -27,26 +28,20 @@ const VerConvalida: React.FC = () => {
     setFile(selectedFile);
   };
 
-  const handleOnSubmit = async (data: Convalida, event: FormEvent) => {
-    event.preventDefault();
+  const handleOnSubmit = async (data: Convalida) => {
     console.log("VerConvalida.handleSubmit this.state.file", file);
+    
 
     const formData = new FormData();
+    if(file)
     formData.append("files", file); // Asumiendo que 'file' está definido en tu componente
-
-    const uploadRes = await axios({
-      method: "POST",
-      url: "https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/upload/",
-      data: formData,
-    });
-
-    const pene = await axios({
-      method: "GET",
-      url: "https://shrieking-web-97943-0c89be05ca8d.herokuapp.com/api/upload/files",
-      data: formData,
-    });
-
-    console.log("Ver uploads", pene.data[pene.data.length - 1].url);
+    
+    const {data: uploadRes} = await api.post("upload/",formData,{
+  headers: {
+    "Content-Type": "multipart/form-data",
+  },
+});
+     
 
     console.log("VerConvalida.handleSubmit uploadRes", uploadRes);
 
@@ -54,11 +49,11 @@ const VerConvalida: React.FC = () => {
       ...data,
     };
 
-    convalida.foto_certificado = pene.data[pene.data.length - 1].url;
+    convalida.foto_certificado = uploadRes[0].url;
     console.log(convalida.foto_certificado)
     console.log(convalida)
 
-    const response = await createConvalida(convalida, null);
+    const response = await createConvalida(convalida);
 
     if (response) {
       await router.push("/mis-conferencias");
@@ -127,7 +122,8 @@ const VerConvalida: React.FC = () => {
   <Form.Label>Subir tu certificado</Form.Label>
   <Controller
     render={({ field }) => (
-      <Form.Control type="file" onChange={(e) => {
+      <Form.Control type="file" onChange={(e:any) => {
+        
         handleChange(e);
         field.onChange(e);
       }} />
