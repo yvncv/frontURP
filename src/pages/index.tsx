@@ -78,65 +78,15 @@ const Home = () => {
   return (
     
     <ResponsivePage>
-      <h1>hola</h1>
+      
       
       <div className='container-fluid'>
       {
         // ROLE 3 DOCENTE
        
         
-        user?.role.id === 3 && (
-          <>
-            <div className="seccion-mis-conferencias">
-              <img src="\icon-proxima-conferencia.png" alt="conferencias" />
-              <h2>Próxima Conferencia</h2>
-              <div>
-                {proximasConferencias.length === 0 ? (
-                  <div>
-                    <h6 className="devolverCadena">
-                      No hay conferencias pendientes por ahora.
-                    </h6>
-                  </div>
-                ) : (
-                  <div>
-                    <h6 className="devolverCadena">
-                      {cmt?.tema_conferencia}
-                      <br />
-                      {fechaFormateada}
-                    </h6>
-                    <a
-                      style={{
-                        color: "#42B247",
-                        cursor: "pointer",
-                        display: "flex",
-                        justifyContent: "center",
-                      }}
-                      onClick={() => {
-                        cambiarEstadoModal(!estadoModal);
-                        setCatalogElement(cmt);
-                      }}
-                    >
-                      Inscribirse
-                    </a>
-                    <ModalInscribir
-                      estado={estadoModal}
-                      cambiarEstado={cambiarEstadoModal}
-                      catalogo={cmt}
-                      setCatalogo={setCatalogElement}
-                      //@ts-ignore
-                      estadoModalQR={estadoModalQR}
-                      cambiarEstadoQR={cambiarEstadoModalQR}
-                    />
-                    <ModalQR
-                      estado={estadoModalQR}
-                      cambiarEstado={cambiarEstadoModalQR}
-                    />
-                  </div>
-                )}
-              </div>
-            </div>
-          </>
-        )
+       
+        <h1>INTRANET</h1>
       }
       </div>
     </ResponsivePage>
