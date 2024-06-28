@@ -14,7 +14,7 @@ export const ResponsivePage = ({ children, user }: ResponsivePageProps) => {
     const [state, dispatch] = useReducer(responsivePageReducer, { user, isLogged: false, isEmployee: false, inventories: [] });
     const [checkUser, setCheckUser] = useState(true);
     const [showSideBar, setShowSideBar] = useState(false);
-    const { inventories } = useInventory();
+   /*  const { inventories } = useInventory(); */
 
     const contextValue = useMemo(() => ({ ...state, dispatch }), [state]);
 
@@ -44,13 +44,13 @@ export const ResponsivePage = ({ children, user }: ResponsivePageProps) => {
         }
     }, []);
 
-    useEffect(() => {
+    /* useEffect(() => {
         if (inventories.length) {
             const availableInventories = inventories.filter(inventory => inventory.disponible);
             console.info('inventory', availableInventories);
             dispatch({ type: 'SET_INVENTORIES', inventories: availableInventories });
         }
-    }, [inventories]);
+    }, [inventories]); */
 
   return (
       <ResponsivePageContext.Provider value={contextValue}>

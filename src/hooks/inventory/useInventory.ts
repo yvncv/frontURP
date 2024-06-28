@@ -12,21 +12,21 @@ export const useInventory = () => {
       setProducts(data);
     };
 
-    const getInventories = async () => {
+    /* const getInventories = async () => {
         const { data } = await api.get('/inventarios');
 
         setInventories(data);
-    };
+    }; */
 
-    const createInventory = async (inventory: Inventory) => {
+    /* const createInventory = async (inventory: Inventory) => {
         await api.post('/inventarios', {
             data: inventory
         });
 
         await getInventories();
     };
-
-    const removeInventory = async (inventoryId: string) => {
+ */
+    /* const removeInventory = async (inventoryId: string) => {
         await api.put(`/inventarios/${inventoryId}`, {
             data: {
                 disponible: false,
@@ -34,9 +34,9 @@ export const useInventory = () => {
         });
 
         await getInventories();
-    };
+    }; */
 
-    const updateInventory = async (inventory: Omit<Inventory, 'producto'>) => {
+    /* const updateInventory = async (inventory: Omit<Inventory, 'producto'>) => {
         await api.put(`/inventarios/${inventory.id}`, {
             data: {
                 stock: inventory.stock,
@@ -45,9 +45,9 @@ export const useInventory = () => {
         });
 
         await getInventories();
-    };
+    }; */
 
-    useEffect(() => {
+    /* useEffect(() => {
         getInventories();
     }, []);
 
@@ -58,5 +58,5 @@ export const useInventory = () => {
         getProducts,
         removeInventory,
         updateInventory
-    };
+    }; */
 };

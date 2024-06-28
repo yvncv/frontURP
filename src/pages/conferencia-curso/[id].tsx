@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useMemo,useRef, useState } from 'react';
 import { useRouter } from "next/router";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import BarcodeScannerComponent from "react-qr-barcode-scanner";
+import { QrReader } from 'react-qr-reader';
 
 let contador = 0;
 
@@ -95,12 +96,12 @@ const VerCatalogo = () => {
 
   useEffect(() => {
     return () => {
-      if (isStart) stopScanner();
+      if (isStart) setIsStart(false);
       
     };
   }, []);
 
-  useEffect(() => {
+  /* useEffect(() => {
     if (firstUpdate.current) {
       firstUpdate.current = false;
       return;
@@ -108,10 +109,10 @@ const VerCatalogo = () => {
 
     if (isStart) startScanner();
     else stopScanner();
-  }, [isStart]);
+  }, [isStart]); */
   
   const _onDetected = async (res:any) => {
-    setBarcode(res.codeResult.code);
+    setBarcode(res.text);
     // Obtener el catalogId de la URL
     const catalogId = router.query.id as string | undefined;
     
@@ -121,7 +122,7 @@ const VerCatalogo = () => {
 
             const catalogo = await getCatalogId(catalogId);
            
-            handleScan(res.codeResult.code,catalogo,catalogId);
+            handleScan(res.text,catalogo,catalogId);
 
       
       
@@ -131,7 +132,7 @@ const VerCatalogo = () => {
     }
   };
 
-  const startScanner = () => {
+  /* const startScanner = () => {
     Quagga.init(
       {
         inputStream: {
@@ -227,12 +228,12 @@ const VerCatalogo = () => {
       }
     });
   };
-
-  const stopScanner = () => {
+ */
+ /*  const stopScanner = () => {
     Quagga.offProcessed();
     Quagga.offDetected();
     Quagga.stop();
-  };
+  }; */
 /*
   const actualizar = useCallback(async(inscripciones:any, catalogId:string) => {
 
@@ -291,52 +292,37 @@ const VerCatalogo = () => {
   }
  */
 //QrReader
+const handleQrScan = (result: any) => {
+  if (result) {
+    const catalogId = router.query.id as string | undefined;
+    if (catalogId && typeof catalogId === "string" && showQr) {
+      getCatalogId(catalogId).then(catalogo => {
+        handleScan(result?.text, catalogo, catalogId);
+      });
+    }
+  }
+};
   return (
 
     <ResponsivePage>
-
-      {/*
-     {showQr && (
-          //@ts-ignore
-          <BarcodeScannerComponent
-             
-             facingMode="environment"
-             width={500}
-             height={500}
-
-
-          
-            onUpdate={async(error:any,result:any ) => {
+      <div>
+        <h3>Pasar Lista </h3>
+        <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
+        {isStart && (
+          <QrReader
+            onResult={(result, error) => {
               if (!!result) {
-                const catalogId = router.query.id;
-    
-               if(catalogId && typeof catalogId === "string" && showQr){
-
-                  const catalogo = await getCatalogId(catalogId);
-                  console.log(catalogo);
-                  handleScan(result?.text,catalogo,catalogId);
-
-               }
+                handleQrScan(result);
               }
-    
               if (!!error) {
-                console.info(error);
+                handleError(error);
               }
             }}
-            
+            constraints={{ facingMode: 'environment' }}
           />
-          )}
-          */}
-
-<div>
-    <h3>Pasar Lista </h3>
-    <button onClick={() => setIsStart(prevStart => !prevStart)} style={{ marginBottom: 20 }}>{isStart ? 'Stop' : 'Start'}</button>
-    {isStart && <React.Fragment>
-      <div id="scanner-container" />
-      <span>Barcode: {barcode}</span>
-    </React.Fragment>}
-  </div>
-  <div>
+        )}
+      </div>
+      <div>
         <span>Contador: {contador}</span>
       </div>
     </ResponsivePage>

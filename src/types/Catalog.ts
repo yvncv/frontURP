@@ -1,4 +1,5 @@
 import { DateSchema } from "yup";
+import { Salon } from "./Salon";
 
 export type Catalog = {
   id: string;
@@ -13,7 +14,7 @@ export type Catalog = {
   solicitado_por:string; 
   inscripciones: Inscripcion[];
   repositorio: string;
-  salon: any;
+  salon:any;
 };
 
 

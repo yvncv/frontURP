@@ -15,7 +15,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <title>SGAPP</title>
         <link rel="stylesheet" href="sweetalert2.min.css"></link>
       </Head>
-      <Script src="sweetalert2.min.js"/>
+      <script src="sweetalert2.min.js"></script>
       <Script src="//cdn.jsdelivr.net/npm/sweetalert2@11"/>
       <SidebarProvider>
         <Component {...pageProps} />

@@ -67,36 +67,40 @@ const NewCatalog = () => {
       setFile(selectedFile);
     };
     const handleOnSubmit = async (data: any) => {
-        //console.log(" Selectdate ",selectedDate);
-        const isValid = await trigger(); // Este método activará todas las validaciones y devolverá un booleano
-     
-
-
-        if (isValid) {
-            const formData = new FormData();
-    if(file)
-    formData.append("files", file); // Asumiendo que 'file' está definido en tu componente
+        try {
+            //console.log(" Selectdate ",selectedDate);
+            const isValid = await trigger(); // Este método activará todas las validaciones y devolverá un booleano
+            
+            if (isValid) {
+                const formData = new FormData();
+                if (file) {
+                    formData.append("files", file); // Asumiendo que 'file' está definido en tu componente
+                }
+                
+                const { data: uploadRes } = await api.post("upload/", formData, {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                });
     
-         const {data: uploadRes} = await api.post("upload/",formData,{
-         headers: {
-         "Content-Type": "multipart/form-data",
-          },
-         });
-        const catalog = {
-            ...data,
-           fecha: selectedDate,
-           foto: uploadRes[0].id,
-        };
-       
-        {/*@ts-ignore*/ }
-        const response = await createCatalog(catalog);
-
-        if (response) {
-            alert('Envio de solicitud exitoso, su solicitud está pendiente por responder');
-            await router.push('/solicitudes');
+                const catalog = {
+                    ...data,
+                    fecha: selectedDate,
+                    foto: uploadRes[0].id,
+                };
+                
+                {/*@ts-ignore*/}
+                const response = await createCatalog(catalog);
+    
+                if (response) {
+                    alert('Envio de solicitud exitoso, su solicitud está pendiente por responder');
+                    await router.push('/solicitudes');
+                }
+            }
+        } catch (error) {
+            console.error('Error en el envío de la solicitud:', error);
+            alert('Ocurrió un error durante el envío de la solicitud. Por favor, inténtelo de nuevo.');
         }
-    }
-    
     };
     
     const diasNoHabiles = useMemo(() => {
@@ -124,15 +128,15 @@ const NewCatalog = () => {
     const handleCloseModal = () => setShowModal(false);
 
     // const [selectedTime, setSelectedTime] = useState('');
-    /*
-        useEffect(() => {
+    
+       /*  useEffect(() => {
             const getSalonConferencia = async () => {
                 const salones = await getSalonConferencia()
                 console.log(salones)
             }
             getSalonConferencia()
-        }, [])
-        */
+        }, []) */
+       
     useEffect(() => {
         const fetchData = async () => {
             try {

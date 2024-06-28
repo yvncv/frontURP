@@ -16,6 +16,8 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
   const fechaConferencia = new Date(catalog.fecha);
   fechaConferencia.setDate(fechaConferencia.getDate() + 1);
 
+  
+
 
   if(catalog.inscripciones != null){
     catalog.inscripciones.forEach(inscripcion => {
@@ -55,6 +57,7 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
       } catch (error) {
         console.error("Error al obtener la foto:", error);
       }
+      
     };
 
     fetchData();
