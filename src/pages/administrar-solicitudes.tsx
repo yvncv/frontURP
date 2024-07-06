@@ -32,9 +32,7 @@ const Catalogo = () => {
         <table className="table">
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Tema</th>
-              <th scope="col">Dirigido a</th>
               <th scope="col">Salón</th>
               <th scope="col">Solicitado por</th>
               <th scope="col">Estado de solicitud</th>
@@ -45,9 +43,7 @@ const Catalogo = () => {
             {catalogs.length > 0 &&
               catalogs.map((catalog) => (
                 <tr key={`catalog-${catalog.id}`}>
-                  <td>{catalog.id}</td>
                   <td>{catalog.tema_conferencia}</td>
-                  <td>{catalog.dirigido}</td>
                   <td>{catalog?.salon.data?.attributes?.nombre === null ? "" : catalog.salon.data?.attributes?.nombre}</td>
                   <td>{catalog.solicitado_por}</td>
                   <td>{catalog.disponible === null

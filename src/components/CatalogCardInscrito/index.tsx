@@ -74,7 +74,7 @@ export const CatalogCardInscrito = ({ catalog }: { catalog: Catalog }) => {
 
     <Card.Body className="card-body-inscrito">
       <Card.Title>{catalog.tema_conferencia}</Card.Title>
-      <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
+      <p className="nombre-expositor">Expositor: {catalog.expositor}</p>
       <div className="card-inscrito">
         <div className="card-inscrito-seccion-texto">
         {/*@ts-ignore

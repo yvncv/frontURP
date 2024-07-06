@@ -66,13 +66,13 @@ export const SideBar = () => {
                 <Accordion.Header>CONFERENCIAS</Accordion.Header>
                 <Accordion.Body>
                   <Link className="nav-link" href="/solicitudes/">
-                    Solicitudes pendientes
+                    Solicitudes enviadas
                   </Link>
                   <Link className="nav-link" href="/solicitudes/solicitar-conferencia">
                     Nueva solicitud
                   </Link>
-                  <Link className="nav-link" href="/relacion-conferencias">
-                    Relación de conferencias
+                  <Link className="nav-link" href="/registro-asistencias">
+                    Registro de asistencias
                   </Link>
                 </Accordion.Body>
               </Accordion.Item>
@@ -95,12 +95,11 @@ export const SideBar = () => {
           user?.role.id === 5 && (
             <>
               <li className="nav-item">
+                <Link className="nav-link" href="/administrar-solicitudes">
+                  Administrar solicitudes de conferencias
+                </Link>
                 <Link className="nav-link" href="/relacion-conferencias">
                   VER RELACIÓN DE CONFERENCIAS
-                </Link>
-                <br />
-                <Link className="nav-link" href="/convalida-conferencia-A">
-                  RELACIÓN DE CONVALIDACIONES
                 </Link>
               </li>
             </>
@@ -118,7 +117,7 @@ export const SideBar = () => {
                       Próximas conferencias
                     </Link>
                     <Link className="nav-link" href="/repositorio">
-                      Conferencias pasadas
+                      Repositorio de Conferencias
                     </Link>
                     <Link className="nav-link" href="/mis-conferencias">
                       Mis conferencias

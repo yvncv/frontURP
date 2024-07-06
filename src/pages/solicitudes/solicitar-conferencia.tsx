@@ -6,23 +6,12 @@ import { ChangeEvent, useEffect, useMemo, useState } from "react";
 import { useCatalog } from "../../hooks/catalog/useCatalog";
 import { useCatalogs } from "../../hooks/catalog/useCatalogs";
 import { useRouter } from 'next/router';
-import CatalogModalEditar from "../../components/CatalogEditarSolicitud";
-//de aqui pa bajo es otro
-import Col from 'react-bootstrap/Col';
-import Container from 'react-bootstrap/Container';
-import Image from 'react-bootstrap/Image';
-import Row from 'react-bootstrap/Row';
+import { useResponsivePageContext } from "../../components/ResponsivePage/context"; // Importa el contexto del usuario
+
 {/*@ts-ignore*/ }
 import DatePicker from 'react-datepicker';
-//import TimePicker from 'react-time-picker';
 import 'react-datepicker/dist/react-datepicker.css';
-
-
-//import 'react-time-picker/dist/TimePicker.css';
-import axios from 'axios';
 import { useSalonConferencia } from "../../hooks/salonConferencia/useSalonConferencia";
-import { Salon } from "../../types/Salon";
-import { number } from "yup";
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { api } from "../../utils/api";
@@ -43,6 +32,7 @@ const NewCatalog = () => {
     const { register, handleSubmit, formState: { errors }, setValue, trigger } = useForm<Catalog>({
         resolver: yupResolver(schema),
       });
+      const { user } = useResponsivePageContext(); // Usa el contexto del usuario
 
     const [isAvailable, setIsAvailable] = useState(false); // Cambiamos el valor por defecto a "no disponible"
     const [showModal, setShowModal] = useState(false);
@@ -54,9 +44,9 @@ const NewCatalog = () => {
     //const { getSalonConferencias } = useSalonConferencia();
     const [salonId, setSalonId] = useState<number>(0);
     const [errorMessage, setErrorMessage] = useState<string | null>(null);
-    
 
     const { SalonConferencia, getSalonConferencia } = useSalonConferencia();
+    const [availableTimes, setAvailableTimes] = useState([]);
 
     const handleSwitch = () => setIsAvailable(!isAvailable);
     const [file, setFile] = useState<File | null>(null);
@@ -68,27 +58,29 @@ const NewCatalog = () => {
     };
     const handleOnSubmit = async (data: any) => {
         try {
-            //console.log(" Selectdate ",selectedDate);
             const isValid = await trigger(); // Este método activará todas las validaciones y devolverá un booleano
-            
+    
             if (isValid) {
-                const formData = new FormData();
+                let fotoId = null;
                 if (file) {
-                    formData.append("files", file); // Asumiendo que 'file' está definido en tu componente
+                    const formData = new FormData();
+                    formData.append("files", file);
+    
+                    const { data: uploadRes } = await api.post("upload/", formData, {
+                        headers: {
+                            "Content-Type": "multipart/form-data",
+                        },
+                    });
+                    fotoId = uploadRes[0].id;
                 }
-                
-                const { data: uploadRes } = await api.post("upload/", formData, {
-                    headers: {
-                        "Content-Type": "multipart/form-data",
-                    },
-                });
     
                 const catalog = {
                     ...data,
                     fecha: selectedDate,
-                    foto: uploadRes[0].id,
+                    foto: fotoId, // Permite que este campo sea null si no hay foto
+                    solicitado_por: `Pedro Carpio` // Agrega el nombre del usuario
                 };
-                
+    
                 {/*@ts-ignore*/}
                 const response = await createCatalog(catalog);
     
@@ -102,6 +94,7 @@ const NewCatalog = () => {
             alert('Ocurrió un error durante el envío de la solicitud. Por favor, inténtelo de nuevo.');
         }
     };
+    
     
     const diasNoHabiles = useMemo(() => {
 
@@ -197,7 +190,7 @@ const NewCatalog = () => {
         <ResponsivePage>
             <div className='container mt-3'>
                 <div className='d-flex justify-content-between'>
-                    <h1 className='mb-2'>Nueva solicitud</h1>
+                    <h1 className='mb-2'>Nueva solicitud aca</h1>
                 </div>
                 <hr />
                 
@@ -265,7 +258,7 @@ const NewCatalog = () => {
                             </Form.Select>
                         </Form.Group>
 
-                        <Form.Group className="form-group mb-3">
+                        <Form.Group className="form-group mb-3 group-fecha">
                             <Form.Label style={{ fontWeight: 'bold' }}  >Fecha</Form.Label>
                             <DatePicker 
                             

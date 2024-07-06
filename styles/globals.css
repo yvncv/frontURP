@@ -28,9 +28,12 @@ h6 {
     width: calc(100% - 250px);
     justify-content: space-between;
 }
-
+.group-fecha{
+    display: flex;
+    flex-direction: column;
+}
 .card-body {
-    padding-bottom: 60px;
+    padding-bottom: 60px !important;
 }
 
 .nombre-expositor {
@@ -41,6 +44,11 @@ h6 {
 
 .descripcion-card {
     color: #656565;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* number of lines to show */
+            line-clamp: 3; 
+    -webkit-box-orient: vertical;
 }
 
 .sidebar--admin {
@@ -50,6 +58,7 @@ h6 {
     height: 100vh;
     position: absolute;
     top: 0;
+    z-index: 1 !important;
     padding: 15px;
     position: fixed;
 }
@@ -589,13 +598,19 @@ button {
 }
 
 .contenido-modal {
-    width: 655px;
+    width: 680px;
     min-height: 100px;
     background: #fff;
     position: relative;
     border-radius: 30px;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 20px;
+    z-index: 2 !important;
+}
+.container > .overlay > .contenido-modal,
+.contenedor-catalogo > div > .overlay > .contenido-modal{
+    height: 100%;
+    overflow-y: scroll;
 }
 
 .encabezado-modal {

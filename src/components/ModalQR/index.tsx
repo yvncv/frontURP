@@ -43,12 +43,9 @@ const ModalQR = ({ estado, cambiarEstado }) => {
             </div>
             <p className="textoQR">
               Se ha registrado correctamente a la conferencia, por favor, guarde
-              su pase QR con el botón de abajo o con una captura de pantalla,
+              su pase QR con una captura de pantalla,
               será necesario para el ingreso a la conferencia.
             </p>
-            <button className="inscribirme-ahora" style={{display: "flex", justifyContent: "center"}}>
-            Descargar QR
-          </button>
           </div>
         </div>
       )}

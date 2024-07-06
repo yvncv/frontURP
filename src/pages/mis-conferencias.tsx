@@ -17,11 +17,7 @@ const VerCatalogo = () => {
         {
           
 
-        <div className="seccion-mis-conferencias">
-          <img src="\icon-convalida-conferencia.png" alt="conferencias" />
-          <h2>Convalida tus conferencia</h2>
-          <Link href="/convalida-conferencia">Convalida conferencia</Link>
-        </div>
+
                   
       }
         <div className="seccion-mis-conferencias">

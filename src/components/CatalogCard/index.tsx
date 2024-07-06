@@ -78,7 +78,7 @@ export const CatalogCard = ({ catalog }: { catalog: Catalog }) => {
 
       <Card.Body>
         <Card.Title>{catalog.tema_conferencia}</Card.Title>
-        <p className="nombre-expositor">Dirigido por: {catalog.expositor}</p>
+        <p className="nombre-expositor">Expositor: {catalog.expositor}</p>
 
         <p className="descripcion-card">{catalog.descripcion}</p>
       </Card.Body>

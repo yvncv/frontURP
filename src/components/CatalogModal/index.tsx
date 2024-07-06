@@ -64,10 +64,6 @@ const CatalogModal = ({ estado, cambiarEstado, catalog, setCatalogo }) => {
                 <p>{catalog.expositor === null ? "No establecido" : catalog.expositor}</p>
               </div>
               <div className="seccion">
-                <h5>Dirigido a: </h5>
-                <p>{catalog.dirigido === null ? "No establecido" : catalog.dirigido}</p>
-              </div>
-              <div className="seccion">
                 <h5>Solicitado por: </h5>
                 <p>{catalog.solicitado_por === null ? "No establecido" : catalog.solicitado_por}</p>
               </div>
