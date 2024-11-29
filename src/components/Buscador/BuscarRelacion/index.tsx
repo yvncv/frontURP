@@ -2,13 +2,14 @@ import { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { useCatalogs } from "../../../hooks/catalog/useCatalogs";
 import { CatalogRow } from "../../CatalogCard/tablecatalog";
 
 export const BuscadorRelacion = () => {
   const [conferencias, setConfe] = useState([]);
   const [busqueda, setBusqueda] = useState("");
-
+  const iconSearch = faSearch as IconProp;
   const { catalogs } = useCatalogs();
 
   useEffect(() => {
@@ -55,7 +56,7 @@ export const BuscadorRelacion = () => {
     <div className="contenedor-buscador-confes">
       <div className="contenedor-input">
         <button className="botonBuscador">
-          <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={iconSearch} />;
         </button>
         <input
           className="inputBuscar"

@@ -7,6 +7,7 @@ import { Catalog } from "../../../types/Catalog";
 import { CatalogCardInscrito } from "../../CatalogCardInscrito";
 import { useResponsivePageContext } from "../../ResponsivePage/context";
 import { MultiSelect, Option } from "react-multi-select-component";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 // USAR:
 // npm i bootstrap axios
@@ -168,14 +169,14 @@ export const BuscadorRepo = () => {
     const o = new Option(s,s);
     return o;
   }
-
+  const iconSearch = faSearch as IconProp;
   const opcionesSeleccionadas = opciones.filter(opcion => opcionsSeleccionadas.includes(opcion.value));
   return (
     <div className="contenedor-buscador-confes">
       <div className="contenedor-buscador-general">
       <div className="contenedor-input">
         <button className="botonBuscador">
-          <FontAwesomeIcon icon={faSearch} />
+        <FontAwesomeIcon icon={iconSearch} />;
         </button>
         <input
           className="inputBuscar"

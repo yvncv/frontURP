@@ -7,6 +7,7 @@ import { Catalog } from "../../../types/Catalog";
 import { CatalogCardInscrito } from "../../CatalogCardInscrito";
 import { CatalogCard } from "../../CatalogCard";
 import CatalogsRepo from "../../CatalogsRepo";
+import { IconProp } from "@fortawesome/fontawesome-svg-core";
 
 // USAR:
 // npm i bootstrap axios
@@ -86,12 +87,13 @@ export const BuscadorProximas = () => {
   useEffect(() => {
     filtrar(busqueda);
   }, [busqueda, catalogs]);
+  const iconSearch = faSearch as IconProp;
 
   return (
     <div className="contenedor-buscador-confes">
       <div className="contenedor-input">
       <button className="botonBuscador">
-          <FontAwesomeIcon icon={faSearch} />
+      <FontAwesomeIcon icon={iconSearch} />;
         </button>
         <input
           className="inputBuscar"
