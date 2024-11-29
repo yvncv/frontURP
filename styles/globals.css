@@ -52,25 +52,23 @@ h6 {
 }
 
 .sidebar--admin {
-    background-color: #00823a;
-    border: none;
-    width: 250px;
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    z-index: 1 !important;
-    padding: 15px;
+    width: 250px; /* O el tamaño que desees */
     position: fixed;
-}
+    top: 0;
+    left: 0;
+    height: 100%;
+    background-color: #f4f4f4; /* O el color que desees */
+    z-index: 1000;
+  }
 
 .sidebar--admin li a {
     color: #fff
 }
 
 .contenedor-main {
-    width: calc(100% - 250px);
-    margin-left: 250px;
-}
+    margin-left: 250px; /* Asegúrate de que el contenido no se solape con el sidebar */
+    padding: 20px; /* Ajusta el padding como sea necesario */
+  }
 
 .contenedor-main .iniciar-sesion-pg {
     width: calc(100%);

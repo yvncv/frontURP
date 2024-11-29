@@ -1,9 +1,8 @@
-import {Header} from "../Header";
-import {ReactNode, useEffect, useMemo, useReducer, useState} from "react";
-import {SideBar} from "../SideBar";
-import {ResponsivePageContext, responsivePageReducer} from "./context";
-import {User} from "../../types/User";
-import {useInventory} from "../../hooks/inventory/useInventory";
+import { Header } from "../Header";
+import { ReactNode, useEffect, useMemo, useReducer, useState } from "react";
+import { SideBar } from "../SideBar";
+import { ResponsivePageContext, responsivePageReducer } from "./context";
+import { User } from "../../types/User";
 
 type ResponsivePageProps = {
     children: ReactNode;
@@ -13,56 +12,41 @@ type ResponsivePageProps = {
 export const ResponsivePage = ({ children, user }: ResponsivePageProps) => {
     const [state, dispatch] = useReducer(responsivePageReducer, { user, isLogged: false, isEmployee: false, inventories: [] });
     const [checkUser, setCheckUser] = useState(true);
-    const [showSideBar, setShowSideBar] = useState(false);
-   /*  const { inventories } = useInventory(); */
+    const [showSideBar, setShowSideBar] = useState(true); // Sidebar siempre visible
 
     const contextValue = useMemo(() => ({ ...state, dispatch }), [state]);
 
     useEffect(() => {
         if (checkUser && user && user !== state.user) {
             const isEmployee = user.role.id !== 3;
-            setShowSideBar(isEmployee);
+            setShowSideBar(true); // Mostrar sidebar siempre
             dispatch({ type: 'SET_USER', user, isLogged: true, isEmployee });
         }
     }, [user, state.user, checkUser]);
 
     useEffect(() => {
         const userRaw = localStorage.getItem('user');
-        console.log(userRaw);
         if (userRaw) {
             const user = JSON.parse(userRaw) as User;
-
-            
-
-
             if (user) {
-                const isEmployee = user.role.id !== 999;
                 setCheckUser(false);
-                setShowSideBar(isEmployee);
-                dispatch({ type: 'SET_USER', user, isLogged: true, isEmployee });
+                setShowSideBar(true); // Mostrar sidebar siempre
+                dispatch({ type: 'SET_USER', user, isLogged: true, isEmployee: user.role.id !== 999 });
             }
         }
     }, []);
 
-    /* useEffect(() => {
-        if (inventories.length) {
-            const availableInventories = inventories.filter(inventory => inventory.disponible);
-            console.info('inventory', availableInventories);
-            dispatch({ type: 'SET_INVENTORIES', inventories: availableInventories });
-        }
-    }, [inventories]); */
-
-  return (
-      <ResponsivePageContext.Provider value={contextValue}>
-          <div>
-            <Header />
-            {showSideBar && <SideBar />}
-            <div className='d-flex contenedor-main' >
-                <div className='container-fluid'>
-                    {children}
+    return (
+        <ResponsivePageContext.Provider value={contextValue}>
+            <div>
+                <Header />
+                {showSideBar && <SideBar />} {/* Mostrar sidebar */}
+                <div className="d-flex contenedor-main">
+                    <div className="container-fluid">
+                        {children}
+                    </div>
                 </div>
             </div>
-          </div>
-      </ResponsivePageContext.Provider>
-  );
+        </ResponsivePageContext.Provider>
+    );
 }
